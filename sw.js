@@ -1,0 +1,4 @@
+self.addEventListener("install",e=>{self.skipWaiting()});
+self.addEventListener("activate",e=>{e.waitUntil(clients.claim())});
+self.addEventListener("push",e=>{let d={title:"Order Mpya!",body:"Angalia app yako!",icon:"/onlinestores-tz/icon.png"};try{d=e.data.json()}catch(x){}e.waitUntil(self.registration.showNotification(d.title,{body:d.body,icon:d.icon,badge:d.icon,vibrate:[200,100,200],data:{orderId:d.orderId},actions:[{action:"view",title:"Angalia Order"},{action:"close",title:"Funga"}]}))});
+self.addEventListener("notificationclick",e=>{e.notification.close();if(e.action!=="close"){e.waitUntil(clients.matchAll({type:"window"}).then(cl=>{for(const c of cl)if("focus" in c)return c.focus();return clients.openWindow("/onlinestores-tz/")}))}});
