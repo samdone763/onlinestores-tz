@@ -2359,6 +2359,170 @@ function setLang(lang){showToast('🌍 Language: '+lang.toUpperCase());}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
 
 fetch(BACKEND+'/api/health').catch(()=>{});
+  // ════════════════════════════════════════════
+// SEO & SHARING
+// ════════════════════════════════════════════
+
+async function updateShopSEO(shopId) {
+  try {
+    const res = await fetch(`${BACKEND}/api/seo/${shopId}`);
+    if (!res.ok) return;
+    const data = await res.json();
+
+    document.getElementById('og-title').content = `${data.title} — Online Stores TZ`;
+    document.getElementById('og-description').content = data.description;
+    document.getElementById('og-image').content = data.image;
+    document.getElementById('og-url').content = data.url;
+    document.getElementById('tw-title').content = data.title;
+    document.getElementById('tw-description').content = data.description;
+    document.getElementById('tw-image').content = data.image;
+    document.title = `${data.title} — Online Stores TZ`;
+
+    const url = new URL(window.location);
+    url.searchParams.set('shop', shopId);
+    window.history.replaceState({}, '', url);
+  } catch (e) {
+    console.log('SEO update failed:', e);
+  }
+}
+
+function shareShop(shopId, shopName) {
+  const link = `https://samdone763.github.io/onlinestores-tz?shop=${shopId}`;
+  const text = `🛒 Tembelea ${shopName} kwenye Online Stores TZ!\n${link}`;
+  if (navigator.share) {
+    navigator.share({ title: shopName, text, url: link });
+  } else {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('🔗 Link imenakiliwa! Weza kushare WhatsApp');
+    });
+  }
+}
+
+function checkShopFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const shopId = params.get('shop');
+  if (shopId) {
+    openShop(shopId);
+    updateShopSEO(shopId);
+  }
+}
+
+// ════════════════════════════════════════════
+// REVIEWS & RATINGS
+// ════════════════════════════════════════════
+
+let selectedRating = 0;
+
+function selectRating(star) {
+  selectedRating = star;
+  document.querySelectorAll('.star-interactive').forEach((el, i) => {
+    el.textContent = i < star ? '★' : '☆';
+    el.style.color = i < star ? '#f5a623' : '#ccc';
+  });
+}
+
+function renderStars(rating) {
+  return [1,2,3,4,5].map(i =>
+    `<span style="color:${i <= rating ? '#f5a623' : '#ccc'};font-size:16px">${i <= rating ? '★' : '☆'}</span>`
+  ).join('');
+}
+
+async function loadReviews(shopId) {
+  const container = document.getElementById('reviews-container');
+  if (!container) return;
+  try {
+    const res = await fetch(`${BACKEND}/api/reviews/${shopId}`);
+    const data = await res.json();
+    const { reviews, stats } = data;
+
+    container.innerHTML = `
+      <div style="background:rgba(255,255,255,0.05);border-radius:16px;padding:16px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="text-align:center">
+            <div style="font-size:40px;font-weight:700;color:#f5a623">${stats.average || '—'}</div>
+            <div>${renderStars(Math.round(stats.average))}</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">${stats.total} maoni</div>
+          </div>
+          <div style="flex:1">
+            ${stats.distribution.map(d => `
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+                <span style="font-size:12px;color:rgba(255,255,255,0.7);width:16px">${d.star}</span>
+                <div style="flex:1;height:6px;background:rgba(255,255,255,0.1);border-radius:3px">
+                  <div style="width:${stats.total ? (d.count/stats.total*100) : 0}%;height:100%;background:#f5a623;border-radius:3px"></div>
+                </div>
+                <span style="font-size:12px;color:rgba(255,255,255,0.5);width:16px">${d.count}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.05);border-radius:16px;padding:16px;margin-bottom:16px">
+        <h4 style="margin:0 0 12px;color:#fff">✍️ Andika Maoni Yako</h4>
+        <div style="margin-bottom:12px">
+          ${[1,2,3,4,5].map(s => `
+            <span class="star-interactive" onclick="selectRating(${s})"
+              style="font-size:32px;cursor:pointer;color:#ccc;transition:color 0.2s">☆</span>
+          `).join('')}
+        </div>
+        <input id="review-name" type="text" placeholder="Jina lako"
+          style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);
+          background:rgba(255,255,255,0.08);color:#fff;font-size:14px;margin-bottom:8px;box-sizing:border-box">
+        <textarea id="review-comment" placeholder="Maoni yako (optional)" rows="3"
+          style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);
+          background:rgba(255,255,255,0.08);color:#fff;font-size:14px;resize:none;box-sizing:border-box"></textarea>
+        <button onclick="submitReview('${shopId}')"
+          style="margin-top:10px;width:100%;padding:12px;border-radius:12px;border:none;
+          background:linear-gradient(135deg,#f5a623,#f07a00);color:#fff;font-weight:700;font-size:15px;cursor:pointer">
+          Tuma Maoni
+        </button>
+      </div>
+
+      ${reviews.length === 0 ? `
+        <p style="text-align:center;color:rgba(255,255,255,0.4);padding:20px">Hakuna maoni bado. Kuwa wa kwanza! 🌟</p>
+      ` : reviews.map(r => `
+        <div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:12px;margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-weight:600;color:#fff">${r.customerName}</span>
+            <span>${renderStars(r.rating)}</span>
+          </div>
+          ${r.comment ? `<p style="margin:0;font-size:14px;color:rgba(255,255,255,0.7)">${r.comment}</p>` : ''}
+          <span style="font-size:11px;color:rgba(255,255,255,0.3)">${new Date(r.createdAt).toLocaleDateString('sw-TZ')}</span>
+        </div>
+      `).join('')}
+    `;
+  } catch (e) {
+    if (container) container.innerHTML = '<p style="color:rgba(255,255,255,0.4);text-align:center">Imeshindwa kupata maoni</p>';
+  }
+}
+
+async function submitReview(shopId) {
+  const name = document.getElementById('review-name').value.trim();
+  const comment = document.getElementById('review-comment').value.trim();
+
+  if (!name) return showToast('⚠️ Weka jina lako');
+  if (!selectedRating) return showToast('⚠️ Chagua nyota kwanza');
+
+  try {
+    const res = await fetch(`${BACKEND}/api/reviews/${shopId}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ customerName: name, rating: selectedRating, comment })
+    });
+    const data = await res.json();
+    if (!res.ok) return showToast(`❌ ${data.error}`);
+    showToast('✅ Asante! Maoni yako yametumwa');
+    selectedRating = 0;
+    document.getElementById('review-name').value = '';
+    document.getElementById('review-comment').value = '';
+    loadReviews(shopId);
+  } catch (e) {
+    showToast('❌ Imeshindwa kutuma maoni');
+  }
+}
+
+// Ita hii ukipakia page
+window.addEventListener('load', checkShopFromURL);
 </script>
 </body>
 </html>
