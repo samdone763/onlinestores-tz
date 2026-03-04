@@ -1676,6 +1676,8 @@ function openBusinessById(id, encoded) {
     currentBusiness = JSON.parse(decodeURIComponent(encoded));
     isAdmin = false;
     loadBusinessApp(false);
+    updateShopSEO(currentBusiness._id);
+setTimeout(() => loadReviews(currentBusiness._id), 500);
   } catch(e) { showToast('❌ Failed to open store'); }
 }
 
