@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#0a4f2e">
+<meta name="description" content="Online Stores TZ — Jukwaa la biashara Tanzania. Fungua duka lako online leo!">
+<title>Online Stores TZ 🇹🇿</title>
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #0a4f2e;
+  --green2: #0d6b3e;
+  --gold: #f5a623;
+  --gold2: #ffbe4a;
+  --dark: #06291a;
+  --light: #f0faf4;
+  --white: #ffffff;
+  --gray: #6b7280;
+  --gray2: #f3f4f6;
+  --red: #e53e3e;
+  --shadow: 0 4px 20px rgba(10,79,46,0.15);
+  --shadow2: 0 2px 10px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius2: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',sans-serif;background:#f0faf4;color:#1a1a1a;overflow-x:hidden;min-height:100vh}
+h1,h2,h3,h4{font-family:'Sora',sans-serif}
+
+/* ===== SCREENS ===== */
+.screen{display:none;min-height:100vh;animation:fadeIn 0.3s ease}
+.screen.active{display:flex;flex-direction:column}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== LANDING ===== */
+#landing{background:linear-gradient(160deg,#0a4f2e 0%,#0d6b3e 50%,#1a8a4f 100%);color:white;position:relative;overflow:hidden;justify-content:space-between}
+.landing-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:0.15}
+.blob1{width:300px;height:300px;background:#f5a623;top:-100px;right:-80px}
+.blob2{width:200px;height:200px;background:#ffffff;bottom:100px;left:-60px}
+.blob3{width:150px;height:150px;background:#f5a623;bottom:50px;right:50px}
+.landing-header{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+.landing-header-right{display:flex;align-items:center;gap:8px}
+.logo-text{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;letter-spacing:-0.5px}
+.logo-text span{color:#f5a623}
+.lang-toggle-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;backdrop-filter:blur(10px)}
+.bot-landing-btn{width:36px;height:36px;background:rgba(245,166,35,0.25);border:1px solid rgba(245,166,35,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:transform 0.2s;position:relative;flex-shrink:0}
+.bot-landing-btn:active{transform:scale(0.95)}
+.bot-landing-pulse{position:absolute;top:-2px;right:-2px;width:10px;height:10px;background:#4ade80;border-radius:50%;border:2px solid rgba(10,79,46,0.5);animation:pulse 1.5s infinite}
+.landing-hero{flex:1;padding:20px 24px 0;position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,0.2);border:1px solid rgba(245,166,35,0.4);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;color:#ffd080;margin-bottom:16px;width:fit-content}
+.hero-badge::before{content:'';width:6px;height:6px;background:#f5a623;border-radius:50%;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-title{font-size:36px;font-weight:800;line-height:1.15;margin-bottom:12px;letter-spacing:-1px}
+.hero-title span{color:#f5a623}
+.hero-sub{font-size:15px;opacity:0.85;line-height:1.6;margin-bottom:28px;font-weight:300}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+.stat-card{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:14px 10px;text-align:center;backdrop-filter:blur(10px)}
+.stat-num{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:#f5a623}
+.stat-label{font-size:11px;opacity:0.75;margin-top:2px}
+.hero-btns{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.btn-primary{background:linear-gradient(135deg,#f5a623,#ffbe4a);color:#0a4f2e;padding:16px;border-radius:14px;font-size:16px;font-weight:700;border:none;cursor:pointer;font-family:'Sora',sans-serif;letter-spacing:-0.3px;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(245,166,35,0.4)}
+.btn-primary:active{transform:scale(0.98)}
+.btn-secondary{background:rgba(255,255,255,0.12);color:white;padding:16px;border-radius:14px;font-size:15px;font-weight:600;border:1px solid rgba(255,255,255,0.25);cursor:pointer;backdrop-filter:blur(10px);transition:background 0.2s}
+.btn-secondary:active{background:rgba(255,255,255,0.2)}
+
+/* ===== SLIDER ===== */
+.slider-section{position:relative;z-index:2;padding:0 0 4px}
+.slider-label{font-size:11px;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;padding:0 24px}
+.slider-wrap{position:relative;overflow:hidden;border-radius:0}
+.slider-track{display:flex;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);will-change:transform}
+.slide{min-width:100%;position:relative;height:220px;flex-shrink:0;cursor:pointer}
+.slide-inner{width:100%;height:100%;position:relative;overflow:hidden}
+.slide-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 6s ease}
+.slide-inner:hover .slide-img{transform:scale(1.05)}
+.slide-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.1) 60%,transparent 100%)}
+.slide-info{position:absolute;bottom:14px;left:16px;right:60px;color:white}
+.slide-store{font-size:10px;opacity:0.8;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;display:flex;align-items:center;gap:4px}
+.slide-store::before{content:'';width:4px;height:4px;background:#f5a623;border-radius:50%;display:inline-block}
+.slide-product{font-family:'Sora',sans-serif;font-size:17px;font-weight:800;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.slide-price{font-size:14px;color:#f5a623;font-weight:800;margin-top:4px}
+.slide-order-btn{position:absolute;bottom:14px;right:14px;background:rgba(245,166,35,0.9);border:none;color:#0a4f2e;width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:800;backdrop-filter:blur(4px)}
+.slider-dots{display:flex;justify-content:center;gap:5px;padding:10px 0 4px;position:relative;z-index:3}
+.slider-dot{width:5px;height:5px;border-radius:3px;background:rgba(255,255,255,0.25);transition:all 0.3s;cursor:pointer}
+.slider-dot.active{width:22px;background:#f5a623}
+.slide-counter{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.4);color:white;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;backdrop-filter:blur(4px);z-index:5}
+
+.landing-features{background:rgba(0,0,0,0.2);padding:20px 24px;position:relative;z-index:2}
+.features-title{font-size:13px;opacity:0.6;margin-bottom:14px;font-weight:500;text-transform:uppercase;letter-spacing:1px}
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.feature-item{display:flex;align-items:center;gap:8px;font-size:13px;opacity:0.9}
+.feature-icon{width:28px;height:28px;background:rgba(245,166,35,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+
+/* ===== NAVBAR ===== */
+.navbar{background:var(--green);color:white;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.2)}
+.nav-back{background:rgba(255,255,255,0.15);border:none;color:white;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px}
+.nav-title{font-family:'Sora',sans-serif;font-size:16px;font-weight:700}
+.nav-action{background:rgba(255,255,255,0.15);border:none;color:white;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px}
+
+/* ===== REGISTER ===== */
+#register{background:white}
+.form-body{padding:20px;flex:1;overflow-y:auto}
+.form-section{margin-bottom:24px}
+.form-section-title{font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.form-section-title::after{content:'';flex:1;height:1px;background:#e5e7eb}
+.input-group{margin-bottom:14px}
+.input-label{font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;display:block}
+.input-field{width:100%;padding:13px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:15px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s,box-shadow 0.2s;background:white}
+.input-field:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(10,79,46,0.1)}
+select.input-field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.logo-upload{border:2px dashed #d1fae5;border-radius:14px;padding:24px;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s;position:relative}
+.logo-upload:hover{border-color:var(--green);background:#f0faf4}
+.logo-upload input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.logo-preview{width:70px;height:70px;border-radius:50%;object-fit:cover;border:3px solid var(--green);margin:0 auto 8px}
+.logo-placeholder{width:60px;height:60px;background:linear-gradient(135deg,var(--green),var(--green2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 8px}
+.logo-text-hint{font-size:13px;color:var(--gray);font-weight:500}
+.btn-submit{width:100%;padding:16px;background:linear-gradient(135deg,var(--green),var(--green2));color:white;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;box-shadow:var(--shadow);transition:transform 0.2s}
+.btn-submit:active{transform:scale(0.99)}
+.delivery-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.delivery-opt{padding:12px;border:2px solid #e5e7eb;border-radius:12px;text-align:center;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.2s}
+.delivery-opt.selected{border-color:var(--green);background:#f0faf4;color:var(--green)}
+
+/* ===== LOGIN ===== */
+#login{background:white}
+.login-body{padding:30px 24px;flex:1;display:flex;flex-direction:column;justify-content:center}
+.login-logo{text-align:center;margin-bottom:30px}
+.login-logo-icon{width:80px;height:80px;background:linear-gradient(135deg,var(--green),var(--green2));border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 12px}
+.login-title{font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--green);text-align:center}
+.login-sub{font-size:14px;color:var(--gray);text-align:center;margin-top:4px}
+.login-link{text-align:center;margin-top:16px;font-size:14px;color:var(--gray)}
+.login-link a{color:var(--green);font-weight:700;cursor:pointer;text-decoration:none}
+
+/* ===== CUSTOMER VIEW ===== */
+#customer{background:#f0faf4}
+.search-bar{padding:16px 20px;background:white;border-bottom:1px solid #e5e7eb}
+.search-input-wrap{position:relative}
+.search-input-wrap input{width:100%;padding:12px 16px 12px 44px;border:2px solid #e5e7eb;border-radius:12px;font-size:15px;font-family:'DM Sans',sans-serif;outline:none;background:#f9fafb;transition:border-color 0.2s}
+.search-input-wrap input:focus{border-color:var(--green);background:white}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray);font-size:18px}
+.filter-scroll{padding:12px 20px;overflow-x:auto;white-space:nowrap;display:flex;gap:8px;background:white;border-bottom:1px solid #e5e7eb}
+.filter-scroll::-webkit-scrollbar{display:none}
+.filter-chip{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;background:#f3f4f6;border:2px solid transparent;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.filter-chip.active{background:var(--green);color:white;border-color:var(--green)}
+.stores-grid{padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1}
+.store-card{background:white;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow2);cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;position:relative}
+.store-card:active{transform:scale(0.98)}
+.store-card-img{width:100%;height:100px;object-fit:cover;background:linear-gradient(135deg,var(--green),var(--green2))}
+.store-card-img-placeholder{width:100%;height:100px;background:linear-gradient(135deg,var(--green),var(--green2));display:flex;align-items:center;justify-content:center;font-size:32px}
+.store-card-body{padding:12px}
+.store-card-name{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.store-card-type{font-size:11px;color:var(--gray);margin-bottom:6px}
+.store-card-footer{display:flex;align-items:center;justify-content:space-between}
+.store-status{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px}
+.store-status.open{background:#d1fae5;color:#065f46}
+.store-status.closed{background:#fee2e2;color:#991b1b}
+.store-rating{font-size:11px;color:var(--gold);font-weight:600}
+.store-card-badge{position:absolute;top:8px;right:8px;background:var(--gold);color:var(--green);font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px}
+.empty-state{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center;gap:12px}
+.empty-icon{font-size:48px;opacity:0.5}
+.empty-title{font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:var(--green)}
+.empty-sub{font-size:14px;color:var(--gray)}
+
+/* ===== STORE PAGE ===== */
+#store{background:#f0faf4}
+.store-hero{background:linear-gradient(160deg,var(--green),var(--green2));color:white;padding:20px;position:relative;overflow:hidden}
+.store-hero-bg{position:absolute;inset:0;opacity:0.1}
+.store-hero-img{width:70px;height:70px;border-radius:20px;object-fit:cover;border:3px solid rgba(255,255,255,0.3);margin-bottom:12px;position:relative;z-index:1}
+.store-hero-placeholder{width:70px;height:70px;border-radius:20px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:12px;position:relative;z-index:1}
+.store-hero-name{font-size:22px;font-weight:800;position:relative;z-index:1}
+.store-hero-type{font-size:13px;opacity:0.8;position:relative;z-index:1;margin-bottom:12px}
+.store-hero-info{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:relative;z-index:1}
+.hero-info-item{background:rgba(255,255,255,0.12);border-radius:10px;padding:10px;text-align:center;backdrop-filter:blur(10px)}
+.hero-info-icon{font-size:16px;margin-bottom:2px}
+.hero-info-label{font-size:10px;opacity:0.7}
+.hero-info-value{font-size:13px;font-weight:700}
+.store-tabs{display:flex;background:white;border-bottom:2px solid #e5e7eb;overflow-x:auto;position:sticky;top:0;z-index:50}
+.store-tabs::-webkit-scrollbar{display:none}
+.store-tab{padding:14px 16px;font-size:13px;font-weight:600;color:var(--gray);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.2s}
+.store-tab.active{color:var(--green);border-bottom-color:var(--green)}
+.store-content{padding:16px;flex:1}
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.product-card{background:white;border-radius:var(--radius2);overflow:hidden;box-shadow:var(--shadow2);cursor:pointer}
+.product-img{width:100%;height:110px;object-fit:cover;background:linear-gradient(135deg,#f0faf4,#d1fae5)}
+.product-img-placeholder{width:100%;height:110px;background:linear-gradient(135deg,#f0faf4,#d1fae5);display:flex;align-items:center;justify-content:center;font-size:36px}
+.product-body{padding:10px}
+.product-name{font-size:13px;font-weight:700;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.product-price{font-size:15px;font-weight:800;color:var(--green)}
+.product-price span{font-size:10px;font-weight:400;color:var(--gray)}
+.product-btn{width:100%;padding:10px;background:var(--green);color:white;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;margin-top:8px;font-family:'DM Sans',sans-serif}
+
+/* ===== ACTION BAR ===== */
+.action-bar{padding:16px;background:white;border-top:1px solid #e5e7eb;display:flex;gap:10px}
+.action-btn-green{flex:1;padding:14px;background:var(--green);color:white;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px}
+.action-btn-gold{flex:1;padding:14px;background:var(--gold);color:var(--dark);border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px}
+.action-btn-outline{flex:1;padding:14px;background:white;color:var(--green);border:2px solid var(--green);border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px}
+
+/* ===== ADMIN ===== */
+#admin{background:#f0faf4}
+.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px}
+.admin-stat{background:white;border-radius:var(--radius2);padding:16px;text-align:center;box-shadow:var(--shadow2)}
+.admin-stat-num{font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--green)}
+.admin-stat-label{font-size:12px;color:var(--gray);margin-top:2px}
+.admin-sections{padding:0 16px 16px;display:flex;flex-direction:column;gap:14px}
+.admin-section{background:white;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow2)}
+.admin-section-header{padding:16px;border-bottom:1px solid #f3f4f6;display:flex;justify-content:space-between;align-items:center}
+.admin-section-title{font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:var(--green)}
+.admin-section-btn{background:var(--green);color:white;border:none;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.admin-section-body{padding:16px}
+.product-admin-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #f3f4f6}
+.product-admin-item:last-child{border-bottom:none}
+.product-admin-img{width:50px;height:50px;border-radius:10px;object-fit:cover;background:#f0faf4;flex-shrink:0}
+.product-admin-info{flex:1}
+.product-admin-name{font-size:14px;font-weight:700}
+.product-admin-price{font-size:13px;color:var(--green);font-weight:600}
+.product-admin-actions{display:flex;gap:6px}
+.btn-edit{background:#f0faf4;color:var(--green);border:none;padding:7px 12px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer}
+.btn-delete{background:#fee2e2;color:var(--red);border:none;padding:7px 12px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer}
+.order-item{padding:12px;background:#f9fafb;border-radius:12px;margin-bottom:8px}
+.order-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.order-id{font-size:12px;font-weight:700;color:var(--green)}
+.order-status{font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px}
+.order-pending{background:#fef3c7;color:#92400e}
+.order-confirmed{background:#d1fae5;color:#065f46}
+.order-details{font-size:13px;color:var(--gray)}
+.order-actions{display:flex;gap:8px;margin-top:8px}
+.btn-confirm{flex:1;padding:8px;background:var(--green);color:white;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer}
+.btn-whatsapp{flex:1;padding:8px;background:#25d366;color:white;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer}
+
+/* ===== ADD PRODUCT MODAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;display:none;align-items:flex-end;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex;animation:slideUp 0.3s ease}
+@keyframes slideUp{from{opacity:0}to{opacity:1}}
+.modal{background:white;border-radius:24px 24px 0 0;padding:24px;width:100%;max-height:90vh;overflow-y:auto}
+.modal-handle{width:40px;height:4px;background:#e5e7eb;border-radius:2px;margin:0 auto 20px}
+.modal-title{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:var(--green);margin-bottom:20px}
+
+/* ===== REVIEWS ===== */
+.review-item{padding:14px;background:#f9fafb;border-radius:12px;margin-bottom:10px}
+.review-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.review-name{font-size:14px;font-weight:700}
+.review-stars{color:var(--gold);font-size:14px}
+.review-text{font-size:13px;color:var(--gray);line-height:1.5}
+.review-date{font-size:11px;color:#9ca3af;margin-top:4px}
+.rating-input{display:flex;gap:6px;margin-bottom:14px}
+.star-btn{font-size:28px;cursor:pointer;opacity:0.3;transition:opacity 0.2s,transform 0.2s}
+.star-btn.active{opacity:1;transform:scale(1.1)}
+
+/* ===== BOT ===== */
+.bot-fab{position:fixed;bottom:24px;right:20px;width:56px;height:56px;background:linear-gradient(135deg,var(--green),var(--green2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;box-shadow:0 4px 20px rgba(10,79,46,0.4);z-index:500;border:none;animation:bounceIn 0.5s ease;transition:transform 0.2s}
+.bot-fab:active{transform:scale(0.95)}
+@keyframes bounceIn{0%{transform:scale(0)}80%{transform:scale(1.1)}100%{transform:scale(1)}}
+.bot-panel{position:fixed;inset:0;background:white;z-index:600;display:none;flex-direction:column;animation:slideInBot 0.3s ease}
+.bot-panel.open{display:flex}
+@keyframes slideInBot{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.bot-header{background:linear-gradient(135deg,var(--green),var(--green2));color:white;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.bot-title{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px}
+.bot-online{width:8px;height:8px;background:#4ade80;border-radius:50%;animation:pulse 1.5s infinite}
+.bot-close{background:rgba(255,255,255,0.2);border:none;color:white;width:32px;height:32px;border-radius:10px;cursor:pointer;font-size:18px}
+.bot-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:#f9fafb}
+.msg{max-width:80%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.5;animation:msgIn 0.2s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.msg-bot{background:white;color:#1a1a1a;border-radius:4px 16px 16px 16px;align-self:flex-start;box-shadow:var(--shadow2)}
+.msg-user{background:var(--green);color:white;border-radius:16px 4px 16px 16px;align-self:flex-end}
+.msg-typing{background:white;padding:16px;border-radius:4px 16px 16px 16px;align-self:flex-start;box-shadow:var(--shadow2);display:none}
+.typing-dots{display:flex;gap:4px}
+.dot{width:8px;height:8px;background:var(--gray);border-radius:50%;animation:typing 1s infinite}
+.dot:nth-child(2){animation-delay:0.2s}
+.dot:nth-child(3){animation-delay:0.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-8px)}}
+.bot-suggestions{padding:10px 16px;display:flex;gap:8px;overflow-x:auto;background:white;border-top:1px solid #f3f4f6}
+.bot-suggestions::-webkit-scrollbar{display:none}
+.suggestion{padding:8px 14px;background:#f0faf4;border:1px solid #d1fae5;border-radius:20px;font-size:12px;font-weight:600;color:var(--green);cursor:pointer;white-space:nowrap;flex-shrink:0}
+.bot-input-area{padding:12px 16px;background:white;border-top:1px solid #e5e7eb;display:flex;gap:8px}
+.bot-input{flex:1;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:15px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s}
+.bot-input:focus{border-color:var(--green)}
+.bot-send{width:44px;height:44px;background:var(--green);color:white;border:none;border-radius:12px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* ===== SETTINGS ===== */
+#settings-screen{background:#f0faf4}
+.settings-body{padding:16px;flex:1;display:flex;flex-direction:column;gap:14px}
+.settings-card{background:white;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow2)}
+.settings-item{padding:16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f3f4f6;cursor:pointer}
+.settings-item:last-child{border-bottom:none}
+.settings-item-left{display:flex;align-items:center;gap:12px}
+.settings-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.settings-icon.green{background:#d1fae5}
+.settings-icon.blue{background:#dbeafe}
+.settings-icon.orange{background:#fef3c7}
+.settings-icon.red{background:#fee2e2}
+.settings-item-title{font-size:15px;font-weight:600}
+.settings-item-sub{font-size:12px;color:var(--gray);margin-top:1px}
+.toggle{width:44px;height:24px;background:#e5e7eb;border-radius:12px;position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0}
+.toggle.on{background:var(--green)}
+.toggle::after{content:'';width:20px;height:20px;background:white;border-radius:50%;position:absolute;top:2px;left:2px;transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.2)}
+.toggle.on::after{transform:translateX(20px)}
+.lang-selector{display:flex;background:#f3f4f6;border-radius:10px;padding:3px;gap:3px}
+.lang-opt{padding:6px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;color:var(--gray)}
+.lang-opt.active{background:white;color:var(--green);box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+
+/* ===== ORDER MODAL ===== */
+.delivery-zones{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.zone-opt{padding:12px;border:2px solid #e5e7eb;border-radius:12px;cursor:pointer;transition:all 0.2s;display:flex;justify-content:space-between;align-items:center}
+.zone-opt.selected{border-color:var(--green);background:#f0faf4}
+.zone-name{font-size:14px;font-weight:600}
+.zone-price{font-size:14px;font-weight:700;color:var(--green)}
+
+/* ===== GALLERY ===== */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.gallery-item{aspect-ratio:1;overflow:hidden;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s}
+.gallery-item:active img{transform:scale(0.95)}
+
+/* ===== BUDGET ===== */
+.budget-section{padding:16px}
+.budget-slider-wrap{margin-bottom:20px}
+.budget-amount{font-family:'Sora',sans-serif;font-size:28px;font-weight:800;color:var(--green);margin-bottom:10px}
+.budget-range{width:100%;-webkit-appearance:none;height:6px;border-radius:3px;background:linear-gradient(to right,var(--green) 50%,#e5e7eb 50%);outline:none}
+.budget-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--green);cursor:pointer;box-shadow:0 2px 8px rgba(10,79,46,0.4)}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a1a1a;color:white;padding:12px 20px;border-radius:12px;font-size:14px;font-weight:600;z-index:9999;opacity:0;transition:all 0.3s;white-space:nowrap;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.success{background:var(--green)}
+.toast.error{background:var(--red)}
+
+/* ===== LOADER ===== */
+.loader{display:flex;align-items:center;justify-content:center;padding:40px;flex-direction:column;gap:12px}
+.spinner{width:40px;height:40px;border:3px solid #e5e7eb;border-top-color:var(--green);border-radius:50%;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-text{font-size:14px;color:var(--gray);font-weight:500}
+
+/* ===== MISC ===== */
+.section-title{font-family:'Sora',sans-serif;font-size:16px;font-weight:800;color:var(--green);margin-bottom:14px}
+.danger-zone{background:#fff5f5;border:2px solid #fed7d7;border-radius:14px;padding:16px;margin-top:8px}
+.danger-title{font-size:14px;font-weight:700;color:var(--red);margin-bottom:8px}
+.danger-text{font-size:13px;color:#c53030;margin-bottom:12px;line-height:1.5}
+.btn-danger{width:100%;padding:14px;background:var(--red);color:white;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+.whatsapp-float{position:fixed;bottom:90px;right:20px;width:50px;height:50px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:490;border:none;display:none}
+.badge-count{position:absolute;top:-4px;right:-4px;background:var(--red);color:white;width:18px;height:18px;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+
+<!-- ===== LANDING ===== -->
+<div class="screen active" id="landing">
+  <div class="landing-bg">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+  <div class="landing-header">
+    <div class="logo-text">OST<span>·TZ</span></div>
+    <div class="landing-header-right">
+      <button class="bot-landing-btn" onclick="openBotPanel()" title="AI Assistant">
+        🤖
+        <div class="bot-landing-pulse"></div>
+      </button>
+      <button class="lang-toggle-btn" onclick="toggleLandingLang()">🌐 <span id="landing-lang-text">SW</span></button>
+    </div>
+  </div>
+  <div class="landing-hero">
+    <div class="hero-badge" id="hero-badge">🇹🇿 Biashara ya Tanzania</div>
+    <h1 class="hero-title" id="hero-title">Fungua Duka Lako <span>Online</span> Leo!</h1>
+    <p class="hero-sub" id="hero-sub">Jukwaa bora la biashara Tanzania. Fikia wateja kote nchini kwa urahisi na haraka.</p>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-stores">0</div>
+        <div class="stat-label" id="stat-stores-label">Maduka</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">26</div>
+        <div class="stat-label" id="stat-regions-label">Mikoa</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label" id="stat-online-label">Online</div>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="showScreen('register')" id="btn-register-landing">🚀 Anza Biashara Yako</button>
+      <button class="btn-secondary" onclick="showScreen('customer')" id="btn-browse-landing">🛍️ Tazama Maduka</button>
+      <button class="btn-secondary" onclick="showScreen('login')" id="btn-login-landing">🔑 Ingia kama Mmiliki</button>
+    </div>
+  </div>
+  <!-- SLIDER -->
+  <div class="slider-section">
+    <div class="slider-label" id="slider-label">Bidhaa Mpya</div>
+    <div class="slider-wrap" id="main-slider-wrap">
+      <div class="slider-track" id="main-slider-track"></div>
+      <div class="slide-counter" id="slide-counter">1/1</div>
+      <div class="slider-dots" id="main-slider-dots"></div>
+    </div>
+  </div>
+
+  <div class="landing-features">
+    <div class="features-title" id="features-title">Kwa nini OST?</div>
+    <div class="features-grid">
+      <div class="feature-item"><div class="feature-icon">📱</div><span id="f1">PWA — Kama App</span></div>
+      <div class="feature-item"><div class="feature-icon">🤖</div><span id="f2">AI Assistant</span></div>
+      <div class="feature-item"><div class="feature-icon">💬</div><span id="f3">WhatsApp Orders</span></div>
+      <div class="feature-item"><div class="feature-icon">🔔</div><span id="f4">Notifications</span></div>
+      <div class="feature-item"><div class="feature-icon">⭐</div><span id="f5">Reviews & Ratings</span></div>
+      <div class="feature-item"><div class="feature-icon">💰</div><span id="f6">Budget Filter</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== REGISTER ===== -->
+<div class="screen" id="register">
+  <div class="navbar">
+    <button class="nav-back" onclick="showScreen('landing')">←</button>
+    <span class="nav-title" id="nav-register">Fungua Duka</span>
+    <div style="width:34px"></div>
+  </div>
+  <div class="form-body">
+    <div class="form-section">
+      <div class="form-section-title">📋 Taarifa za Biashara</div>
+      <div class="input-group">
+        <label class="input-label" id="lbl-bizname">Jina la Biashara (Username)</label>
+        <input type="text" class="input-field" id="reg-name" placeholder="Mfano: JohnBoutique">
+      </div>
+      <div class="input-group">
+        <label class="input-label" id="lbl-biztype">Aina ya Biashara</label>
+        <select class="input-field" id="reg-type">
+          <option value="">-- Chagua --</option>
+          <option value="Electronics">📱 Electronics</option>
+          <option value="Computers">🖥️ Computers</option>
+          <option value="Boutique">👗 Boutique</option>
+          <option value="Bakery">🍰 Bakery</option>
+          <option value="Cosmetics">💄 Cosmetics</option>
+          <option value="Furniture">🛋️ Furniture</option>
+          <option value="Home">🏠 Home Products</option>
+          <option value="Food">🍽️ Food & Restaurant</option>
+          <option value="Pharmacy">💊 Pharmacy</option>
+          <option value="Other">🏪 Nyingine</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label class="input-label" id="lbl-logo">Logo ya Biashara</label>
+        <div class="logo-upload" id="logo-upload-area">
+          <input type="file" accept="image/*" onchange="handleLogoUpload(event)">
+          <div id="logo-preview-wrap">
+            <div class="logo-placeholder">🏪</div>
+            <div class="logo-text-hint" id="lbl-tap-logo">Bonyeza kupakia logo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">📞 Mawasiliano</div>
+      <div class="input-group">
+        <label class="input-label">WhatsApp</label>
+        <input type="tel" class="input-field" id="reg-whatsapp" placeholder="+255 xxx xxx xxx">
+      </div>
+      <div class="input-group">
+        <label class="input-label" id="lbl-hours">Masaa ya Kufungua</label>
+        <select class="input-field" id="reg-hours">
+          <option value="7am – 7pm Daily">7am – 7pm Kila siku</option>
+          <option value="8am – 9pm Daily">8am – 9pm Kila siku</option>
+          <option value="9am – 10pm Daily">9am – 10pm Kila siku</option>
+          <option value="24 / 7">24/7</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">🚚 Usafirishaji</div>
+      <div class="delivery-options">
+        <div class="delivery-opt selected" onclick="selectDelivery(this,'free')" id="del-free">🆓 Bure</div>
+        <div class="delivery-opt" onclick="selectDelivery(this,'paid')" id="del-paid">💰 Malipo</div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">📍 Eneo</div>
+      <div class="input-group">
+        <label class="input-label" id="lbl-region">Mkoa</label>
+        <select class="input-field" id="reg-region">
+          <option>Dar es Salaam</option><option>Mwanza</option><option>Arusha</option>
+          <option>Dodoma</option><option>Mbeya</option><option>Morogoro</option>
+          <option>Tanga</option><option>Tabora</option><option>Zanzibar</option>
+          <option>Kigoma</option><option>Shinyanga</option><option>Lindi</option>
+          <option>Mtwara</option><option>Ruvuma</option><option>Singida</option>
+          <option>Mara</option><option>Kagera</option><option>Iringa</option>
+          <option>Kilimanjaro</option><option>Njombe</option><option>Rukwa</option>
+          <option>Katavi</option><option>Simiyu</option><option>Geita</option><option>Songwe</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">🔐 Usalama</div>
+      <div class="input-group">
+        <label class="input-label" id="lbl-pass">Nywila</label>
+        <input type="password" class="input-field" id="reg-pass" placeholder="Nywila yako ya siri">
+      </div>
+      <div class="input-group">
+        <label class="input-label" id="lbl-pass2">Thibitisha Nywila</label>
+        <input type="password" class="input-field" id="reg-pass2" placeholder="Rudia nywila">
+      </div>
+    </div>
+    <button class="btn-submit" onclick="registerStore()" id="btn-register">🚀 Unda Duka Langu</button>
+    <div style="height:20px"></div>
+  </div>
+</div>
+
+<!-- ===== LOGIN ===== -->
+<div class="screen" id="login">
+  <div class="navbar">
+    <button class="nav-back" onclick="showScreen('landing')">←</button>
+    <span class="nav-title" id="nav-login">Ingia</span>
+    <div style="width:34px"></div>
+  </div>
+  <div class="login-body">
+    <div class="login-logo">
+      <div class="login-logo-icon">🏪</div>
+      <div class="login-title" id="login-title">Karibu Tena!</div>
+      <div class="login-sub" id="login-sub">Ingia kudhibiti biashara yako</div>
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-bizname-login">Jina la Biashara</label>
+      <input type="text" class="input-field" id="login-name" placeholder="Jina la biashara yako">
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-pass-login">Nywila</label>
+      <input type="password" class="input-field" id="login-pass" placeholder="Nywila yako">
+    </div>
+    <button class="btn-submit" onclick="loginStore()" id="btn-login">🔑 Ingia</button>
+    <div class="login-link" id="login-link">Huna akaunti? <a onclick="showScreen('register')">Jisajili hapa →</a></div>
+  </div>
+</div>
+
+<!-- ===== CUSTOMER ===== -->
+<div class="screen" id="customer">
+  <div class="navbar">
+    <button class="nav-back" onclick="showScreen('landing')">←</button>
+    <span class="nav-title" id="nav-customer">Maduka Tanzania</span>
+    <button class="nav-action" onclick="showScreen('settings-screen')">⚙️</button>
+  </div>
+  <div class="search-bar">
+    <div class="search-input-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Tafuta duka au bidhaa..." oninput="searchStores()">
+    </div>
+  </div>
+  <div class="filter-scroll" id="filter-scroll">
+    <div class="filter-chip active" onclick="filterStores('all',this)" data-label-sw="🏪 Zote" data-label-en="🏪 All">🏪 Zote</div>
+    <div class="filter-chip" onclick="filterStores('Electronics',this)" data-label-sw="📱 Electronics" data-label-en="📱 Electronics">📱 Electronics</div>
+    <div class="filter-chip" onclick="filterStores('Boutique',this)" data-label-sw="👗 Boutique" data-label-en="👗 Boutique">👗 Boutique</div>
+    <div class="filter-chip" onclick="filterStores('Bakery',this)" data-label-sw="🍰 Bakery" data-label-en="🍰 Bakery">🍰 Bakery</div>
+    <div class="filter-chip" onclick="filterStores('Cosmetics',this)" data-label-sw="💄 Cosmetics" data-label-en="💄 Cosmetics">💄 Cosmetics</div>
+    <div class="filter-chip" onclick="filterStores('Food',this)" data-label-sw="🍽️ Chakula" data-label-en="🍽️ Food">🍽️ Chakula</div>
+    <div class="filter-chip" onclick="filterStores('Furniture',this)" data-label-sw="🛋️ Samani" data-label-en="🛋️ Furniture">🛋️ Samani</div>
+  </div>
+  <div id="stores-container" style="flex:1;overflow-y:auto">
+    <div class="loader" id="stores-loader">
+      <div class="spinner"></div>
+      <span class="loader-text" id="loading-text">Inapakia maduka...</span>
+    </div>
+    <div class="stores-grid" id="stores-grid" style="display:none"></div>
+    <div class="empty-state" id="stores-empty" style="display:none">
+      <div class="empty-icon">🏪</div>
+      <div class="empty-title" id="empty-title">Hakuna maduka bado</div>
+      <div class="empty-sub" id="empty-sub">Kuwa wa kwanza kufungua duka!</div>
+      <button class="btn-submit" style="width:auto;padding:12px 24px;margin-top:8px" onclick="showScreen('register')" id="btn-open-store">Fungua Duka</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STORE PAGE ===== -->
+<div class="screen" id="store">
+  <div class="navbar">
+    <button class="nav-back" onclick="goBack()">←</button>
+    <span class="nav-title" id="store-nav-title">Duka</span>
+    <button class="nav-action" onclick="shareStore()">🔗</button>
+  </div>
+  <div style="flex:1;overflow-y:auto" id="store-scroll">
+    <div class="store-hero" id="store-hero">
+      <div id="store-logo-wrap">
+        <div class="store-hero-placeholder" id="store-logo-placeholder">🏪</div>
+      </div>
+      <div class="store-hero-name" id="store-name-display">Duka</div>
+      <div class="store-hero-type" id="store-type-display">Biashara</div>
+      <div class="store-hero-info">
+        <div class="hero-info-item">
+          <div class="hero-info-icon">📍</div>
+          <div class="hero-info-label" id="lbl-location">Eneo</div>
+          <div class="hero-info-value" id="store-location-display">—</div>
+        </div>
+        <div class="hero-info-item">
+          <div class="hero-info-icon">🕐</div>
+          <div class="hero-info-label" id="lbl-hours2">Masaa</div>
+          <div class="hero-info-value" id="store-hours-display">—</div>
+        </div>
+        <div class="hero-info-item">
+          <div class="hero-info-icon">🚚</div>
+          <div class="hero-info-label" id="lbl-delivery">Delivery</div>
+          <div class="hero-info-value" id="store-delivery-display">—</div>
+        </div>
+        <div class="hero-info-item">
+          <div class="hero-info-icon">⭐</div>
+          <div class="hero-info-label" id="lbl-rating">Rating</div>
+          <div class="hero-info-value" id="store-rating-display">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="store-tabs" id="store-tabs">
+      <div class="store-tab active" onclick="switchTab('products',this)" id="tab-products">🛍️ Bidhaa</div>
+      <div class="store-tab" onclick="switchTab('reviews',this)" id="tab-reviews">⭐ Maoni</div>
+      <div class="store-tab" onclick="switchTab('gallery',this)" id="tab-gallery">📸 Picha</div>
+      <div class="store-tab" onclick="switchTab('budget',this)" id="tab-budget">💰 Budget</div>
+      <div class="store-tab" onclick="switchTab('info',this)" id="tab-info">ℹ️ Info</div>
+    </div>
+    <div class="store-content">
+      <!-- Products -->
+      <div id="tab-content-products">
+        <div class="loader" id="products-loader"><div class="spinner"></div></div>
+        <div class="products-grid" id="products-grid" style="display:none"></div>
+        <div class="empty-state" id="products-empty" style="display:none">
+          <div class="empty-icon">📦</div>
+          <div class="empty-title" id="no-products-title">Hakuna bidhaa bado</div>
+          <div class="empty-sub" id="no-products-sub">Mmiliki bado hajaongeza bidhaa</div>
+        </div>
+      </div>
+      <!-- Reviews -->
+      <div id="tab-content-reviews" style="display:none">
+        <div id="reviews-list"></div>
+        <div style="background:white;border-radius:var(--radius2);padding:16px;margin-top:8px">
+          <div class="section-title" id="add-review-title">Acha Maoni Yako</div>
+          <div class="rating-input" id="rating-stars">
+            <span class="star-btn" onclick="setRating(1)">⭐</span>
+            <span class="star-btn" onclick="setRating(2)">⭐</span>
+            <span class="star-btn" onclick="setRating(3)">⭐</span>
+            <span class="star-btn" onclick="setRating(4)">⭐</span>
+            <span class="star-btn" onclick="setRating(5)">⭐</span>
+          </div>
+          <input type="text" class="input-field" id="reviewer-name" placeholder="Jina lako" style="margin-bottom:10px">
+          <textarea class="input-field" id="review-text" rows="3" placeholder="Andika maoni yako..." style="resize:none"></textarea>
+          <button class="btn-submit" style="margin-top:10px" onclick="submitReview()" id="btn-submit-review">📝 Tuma Maoni</button>
+        </div>
+      </div>
+      <!-- Gallery -->
+      <div id="tab-content-gallery" style="display:none">
+        <div class="gallery-grid" id="gallery-grid"></div>
+        <div class="empty-state" id="gallery-empty" style="display:none">
+          <div class="empty-icon">📸</div>
+          <div class="empty-title">Hakuna picha bado</div>
+        </div>
+      </div>
+      <!-- Budget -->
+      <div id="tab-content-budget" style="display:none">
+        <div class="budget-section">
+          <div class="section-title" id="budget-title">Chagua Budget Yako</div>
+          <div class="budget-slider-wrap">
+            <div class="budget-amount" id="budget-amount">TZS 500,000</div>
+            <input type="range" class="budget-range" min="1000" max="5000000" step="1000" value="500000" oninput="updateBudget(this.value)" id="budget-slider">
+          </div>
+          <div class="products-grid" id="budget-products"></div>
+        </div>
+      </div>
+      <!-- Info -->
+      <div id="tab-content-info" style="display:none">
+        <div style="background:white;border-radius:var(--radius2);padding:16px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f3f4f6">
+            <span style="font-size:14px;color:var(--gray)" id="info-lbl-name">Jina</span>
+            <span style="font-size:14px;font-weight:700" id="info-store-name">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f3f4f6">
+            <span style="font-size:14px;color:var(--gray)" id="info-lbl-type">Aina</span>
+            <span style="font-size:14px;font-weight:700" id="info-store-type">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f3f4f6">
+            <span style="font-size:14px;color:var(--gray)" id="info-lbl-region">Mkoa</span>
+            <span style="font-size:14px;font-weight:700" id="info-store-region">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f3f4f6">
+            <span style="font-size:14px;color:var(--gray)" id="info-lbl-hours">Masaa</span>
+            <span style="font-size:14px;font-weight:700" id="info-store-hours">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0">
+            <span style="font-size:14px;color:var(--gray)" id="info-lbl-delivery">Delivery</span>
+            <span style="font-size:14px;font-weight:700" id="info-store-delivery">—</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:14px">
+          <button class="action-btn-green" onclick="callStore()" id="btn-call"><span>📞</span><span id="btn-call-text">Piga Simu</span></button>
+          <button class="action-btn-gold" onclick="whatsappStore()" id="btn-wa"><span>💬</span><span>WhatsApp</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="action-bar">
+    <button class="action-btn-outline" onclick="openOrderModal()" id="btn-order-store">📦 Agiza</button>
+    <button class="action-btn-green" onclick="whatsappStore()" id="btn-wa-store">💬 WhatsApp</button>
+  </div>
+</div>
+
+<!-- ===== ADMIN ===== -->
+<div class="screen" id="admin">
+  <div class="navbar">
+    <button class="nav-back" onclick="confirmLogout()">←</button>
+    <span class="nav-title" id="admin-nav-title">Dashboard</span>
+    <button class="nav-action" onclick="showScreen('settings-screen')">⚙️</button>
+  </div>
+  <div style="flex:1;overflow-y:auto">
+    <div style="background:linear-gradient(135deg,var(--green),var(--green2));color:white;padding:16px 20px">
+      <div style="font-size:13px;opacity:0.8" id="admin-welcome">Karibu,</div>
+      <div style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800" id="admin-store-name">Duka Lako</div>
+    </div>
+    <div class="admin-stats">
+      <div class="admin-stat">
+        <div class="admin-stat-num" id="stat-products">0</div>
+        <div class="admin-stat-label" id="lbl-products-stat">Bidhaa</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-num" id="stat-orders">0</div>
+        <div class="admin-stat-label" id="lbl-orders-stat">Orders</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-num" id="stat-reviews">0</div>
+        <div class="admin-stat-label" id="lbl-reviews-stat">Maoni</div>
+      </div>
+    </div>
+    <div class="admin-sections">
+      <!-- Notifications -->
+      <div class="admin-section">
+        <div class="admin-section-header">
+          <div class="admin-section-title" id="lbl-notif">🔔 Notifications</div>
+          <button class="admin-section-btn" onclick="toggleNotifications()" id="notif-btn">Washa</button>
+        </div>
+        <div class="admin-section-body">
+          <p style="font-size:13px;color:var(--gray)" id="notif-desc">Pata taarifa za orders mpya hata ukiwa nje ya app!</p>
+        </div>
+      </div>
+      <!-- Products -->
+      <div class="admin-section">
+        <div class="admin-section-header">
+          <div class="admin-section-title" id="lbl-my-products">📦 Bidhaa Zangu</div>
+          <button class="admin-section-btn" onclick="openAddProduct()" id="btn-add-product">+ Ongeza</button>
+        </div>
+        <div class="admin-section-body" id="admin-products-list">
+          <div class="loader"><div class="spinner"></div></div>
+        </div>
+      </div>
+      <!-- Orders -->
+      <div class="admin-section">
+        <div class="admin-section-header">
+          <div class="admin-section-title" id="lbl-orders">📋 Orders</div>
+          <span style="font-size:13px;color:var(--gray)" id="orders-count">0 orders</span>
+        </div>
+        <div class="admin-section-body" id="admin-orders-list">
+          <div style="text-align:center;padding:20px;color:var(--gray);font-size:14px" id="no-orders-text">Hakuna orders bado</div>
+        </div>
+      </div>
+      <!-- Gallery -->
+      <div class="admin-section">
+        <div class="admin-section-header">
+          <div class="admin-section-title" id="lbl-gallery-admin">📸 Gallery</div>
+          <button class="admin-section-btn" onclick="openGalleryUpload()" id="btn-add-photo">+ Picha</button>
+        </div>
+        <div class="admin-section-body">
+          <div class="gallery-grid" id="admin-gallery-grid"></div>
+          <div id="admin-gallery-empty" style="text-align:center;padding:20px;color:var(--gray);font-size:14px">Hakuna picha bado</div>
+        </div>
+      </div>
+      <!-- Delivery Fees -->
+      <div class="admin-section">
+        <div class="admin-section-header">
+          <div class="admin-section-title" id="lbl-delivery-fees">🚚 Bei za Delivery</div>
+        </div>
+        <div class="admin-section-body">
+          <div class="input-group">
+            <label class="input-label" id="lbl-nearby">📍 Karibu (TZS)</label>
+            <input type="number" class="input-field" id="fee-nearby" placeholder="0">
+          </div>
+          <div class="input-group">
+            <label class="input-label" id="lbl-far">🗺️ Mbali (TZS)</label>
+            <input type="number" class="input-field" id="fee-far" placeholder="0">
+          </div>
+          <div class="input-group">
+            <label class="input-label" id="lbl-very-far">🌍 Mbali Sana (TZS)</label>
+            <input type="number" class="input-field" id="fee-very-far" placeholder="0">
+          </div>
+          <button class="btn-submit" onclick="saveDeliveryFees()" id="btn-save-fees">💾 Hifadhi</button>
+        </div>
+      </div>
+      <!-- Danger Zone -->
+      <div class="danger-zone">
+        <div class="danger-title" id="danger-title">⚠️ Hatari</div>
+        <div class="danger-text" id="danger-text">Kufuta duka lako kutafuta bidhaa, orders, na picha zote. Haiwezi kurudishwa!</div>
+        <button class="btn-danger" onclick="deleteStore()" id="btn-delete-store">🗑️ Futa Duka Langu</button>
+      </div>
+      <div style="height:20px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SETTINGS ===== -->
+<div class="screen" id="settings-screen">
+  <div class="navbar">
+    <button class="nav-back" onclick="goBack()">←</button>
+    <span class="nav-title" id="nav-settings">Mipangilio</span>
+    <div style="width:34px"></div>
+  </div>
+  <div class="settings-body">
+    <div class="settings-card">
+      <div class="settings-item">
+        <div class="settings-item-left">
+          <div class="settings-icon green">🌐</div>
+          <div>
+            <div class="settings-item-title" id="lbl-language">Lugha</div>
+            <div class="settings-item-sub" id="lbl-language-sub">Chagua lugha unayopendelea</div>
+          </div>
+        </div>
+        <div class="lang-selector">
+          <div class="lang-opt active" onclick="setLang('sw',this)" id="lang-sw">SW</div>
+          <div class="lang-opt" onclick="setLang('en',this)" id="lang-en">EN</div>
+        </div>
+      </div>
+      <div class="settings-item" onclick="openBotPanel()">
+        <div class="settings-item-left">
+          <div class="settings-icon blue">🤖</div>
+          <div>
+            <div class="settings-item-title" id="lbl-ai-bot">AI Assistant</div>
+            <div class="settings-item-sub" id="lbl-ai-bot-sub">Zungumza na AI kwa Kiswahili</div>
+          </div>
+        </div>
+        <span style="color:var(--gray)">→</span>
+      </div>
+      <div class="settings-item" onclick="toggleDarkMode()">
+        <div class="settings-item-left">
+          <div class="settings-icon orange">🌙</div>
+          <div>
+            <div class="settings-item-title" id="lbl-dark">Giza Mode</div>
+            <div class="settings-item-sub" id="lbl-dark-sub">Badilisha muonekano</div>
+          </div>
+        </div>
+        <div class="toggle" id="dark-toggle"></div>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="settings-item" onclick="showScreen('customer')">
+        <div class="settings-item-left">
+          <div class="settings-icon green">🛍️</div>
+          <div>
+            <div class="settings-item-title" id="lbl-browse">Tazama Maduka</div>
+          </div>
+        </div>
+        <span style="color:var(--gray)">→</span>
+      </div>
+      <div class="settings-item" onclick="shareApp()">
+        <div class="settings-item-left">
+          <div class="settings-icon blue">🔗</div>
+          <div>
+            <div class="settings-item-title" id="lbl-share-app">Shiriki OST</div>
+          </div>
+        </div>
+        <span style="color:var(--gray)">→</span>
+      </div>
+    </div>
+    <div style="text-align:center;padding:20px;color:var(--gray);font-size:13px">
+      OST · Tanzania 🇹🇿 · v2.0
+    </div>
+  </div>
+</div>
+
+<!-- ===== BOT PANEL ===== -->
+<div class="bot-panel" id="bot-panel">
+  <div class="bot-header">
+    <div class="bot-title">
+      <span>🤖</span>
+      <span id="bot-name">OST AI Assistant</span>
+      <div class="bot-online"></div>
+    </div>
+    <button class="bot-close" onclick="closeBotPanel()">✕</button>
+  </div>
+  <div class="bot-messages" id="bot-messages">
+    <div class="msg msg-bot" id="bot-welcome">Habari! 👋 Mimi ni AI Assistant wa OST. Ninaweza kukusaidia kwa Kiswahili au Kiingereza. Unaweza kuniuliza kuhusu maduka, bidhaa, au chochote! 😊</div>
+  </div>
+  <div class="msg-typing" id="typing-indicator">
+    <div class="typing-dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+  <div class="bot-suggestions" id="bot-suggestions">
+    <div class="suggestion" onclick="sendSuggestion(this)">Maduka yaliyopo</div>
+    <div class="suggestion" onclick="sendSuggestion(this)">Jinsi ya kufungua duka</div>
+    <div class="suggestion" onclick="sendSuggestion(this)">Bei za delivery</div>
+    <div class="suggestion" onclick="sendSuggestion(this)">Msaada</div>
+  </div>
+  <div class="bot-input-area">
+    <input type="text" class="bot-input" id="bot-input" placeholder="Andika ujumbe..." onkeypress="if(event.key==='Enter')sendBotMessage()">
+    <button class="bot-send" onclick="sendBotMessage()">➤</button>
+  </div>
+</div>
+
+<!-- ===== BOT FAB ===== -->
+<button class="bot-fab" onclick="openBotPanel()" id="bot-fab" style="display:none">🤖</button>
+
+<!-- ===== MODALS ===== -->
+<!-- Order Modal -->
+<div class="modal-overlay" id="order-modal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="order-modal-title">📦 Agiza Bidhaa</div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-your-name">Jina lako</label>
+      <input type="text" class="input-field" id="order-name" placeholder="Jina kamili">
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-your-phone">Namba ya Simu</label>
+      <input type="tel" class="input-field" id="order-phone" placeholder="+255 xxx xxx xxx">
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-your-region">Mkoa wako</label>
+      <select class="input-field" id="order-region">
+        <option>Dar es Salaam</option><option>Mwanza</option><option>Arusha</option>
+        <option>Dodoma</option><option>Mbeya</option><option>Morogoro</option>
+        <option>Tanga</option><option>Tabora</option><option>Zanzibar</option>
+        <option>Kigoma</option><option>Shinyanga</option><option>Lindi</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-delivery-zone">Umbali wa Delivery</label>
+      <div class="delivery-zones">
+        <div class="zone-opt selected" onclick="selectZone(this,'nearby')" data-price-id="fee-nearby">
+          <span>📍 Karibu</span><span class="zone-price" id="zone-nearby-price">TZS 0</span>
+        </div>
+        <div class="zone-opt" onclick="selectZone(this,'far')" data-price-id="fee-far">
+          <span>🗺️ Mbali</span><span class="zone-price" id="zone-far-price">TZS 0</span>
+        </div>
+        <div class="zone-opt" onclick="selectZone(this,'very-far')" data-price-id="fee-very-far">
+          <span>🌍 Mbali Sana</span><span class="zone-price" id="zone-vfar-price">TZS 0</span>
+        </div>
+      </div>
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-address">Anwani</label>
+      <input type="text" class="input-field" id="order-address" placeholder="Mtaa, nyumba...">
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-product-order">Bidhaa unayotaka</label>
+      <input type="text" class="input-field" id="order-product" placeholder="Jina la bidhaa">
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-notes">Maelezo zaidi</label>
+      <textarea class="input-field" id="order-notes" rows="2" placeholder="Size, rangi, n.k..." style="resize:none"></textarea>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:4px">
+      <button class="action-btn-outline" onclick="closeOrderModal()" id="btn-cancel-order">Ghairi</button>
+      <button class="action-btn-green" onclick="placeOrder()" id="btn-place-order">✅ Agiza</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Product Modal -->
+<div class="modal-overlay" id="add-product-modal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="add-product-title">➕ Ongeza Bidhaa</div>
+    <input type="hidden" id="edit-product-id">
+    <div class="input-group">
+      <label class="input-label" id="lbl-product-name">Jina la Bidhaa</label>
+      <input type="text" class="input-field" id="product-name" placeholder="Mfano: Dress ya Harusi">
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-product-category">Kategoria</label>
+      <input type="text" class="input-field" id="product-category" placeholder="Mfano: Dresses">
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-product-price">Bei (TZS)</label>
+      <input type="number" class="input-field" id="product-price" placeholder="25000">
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-product-stock">Stock</label>
+      <input type="number" class="input-field" id="product-stock" placeholder="10">
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-product-desc">Maelezo</label>
+      <textarea class="input-field" id="product-desc" rows="3" placeholder="Eleza bidhaa yako..." style="resize:none"></textarea>
+    </div>
+    <div class="input-group">
+      <label class="input-label" id="lbl-product-img">Picha ya Bidhaa (URL)</label>
+      <input type="text" class="input-field" id="product-img" placeholder="https://...">
+    </div>
+    <div style="display:flex;gap:10px;margin-top:4px">
+      <button class="action-btn-outline" onclick="closeModal('add-product-modal')" id="btn-cancel-product">Ghairi</button>
+      <button class="action-btn-green" onclick="saveProduct()" id="btn-save-product">💾 Hifadhi</button>
+    </div>
+  </div>
+</div>
+
+<!-- Product Detail Modal -->
+<div class="modal-overlay" id="product-detail-modal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <img id="modal-product-img" style="width:100%;height:200px;object-fit:cover;border-radius:14px;margin-bottom:14px;display:none">
+    <div id="modal-product-img-placeholder" style="width:100%;height:150px;background:linear-gradient(135deg,#f0faf4,#d1fae5);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:48px;margin-bottom:14px">📦</div>
+    <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:800;margin-bottom:4px" id="modal-product-name">Bidhaa</div>
+    <div style="font-size:22px;font-weight:800;color:var(--green);margin-bottom:8px" id="modal-product-price">TZS 0</div>
+    <div style="font-size:14px;color:var(--gray);line-height:1.6;margin-bottom:16px" id="modal-product-desc">—</div>
+    <div style="font-size:13px;font-weight:600;color:var(--green);margin-bottom:16px" id="modal-product-stock">Stock: —</div>
+    <div style="display:flex;gap:10px">
+      <button class="action-btn-outline" onclick="closeModal('product-detail-modal')" id="btn-close-product">Funga</button>
+      <button class="action-btn-green" onclick="orderThisProduct()" id="btn-order-product">📦 Agiza</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== STATE =====
+let currentLang = 'sw';
+let currentScreen = 'landing';
+let screenHistory = [];
+let allStores = [];
+let currentStore = null;
+let currentRating = 0;
+let adminToken = null;
+let selectedDelivery = 'free';
+let selectedZone = 'nearby';
+let botHistory = [];
+let previousScreen = null;
+
+const API = 'https://onlinestores-backend.onrender.com';
+
+// ===== TRANSLATIONS =====
+const T = {
+  sw: {
+    'hero-badge':'🇹🇿 Biashara ya Tanzania',
+    'hero-title':'Fungua Duka Lako <span>Online</span> Leo!',
+    'hero-sub':'Jukwaa bora la biashara Tanzania. Fikia wateja kote nchini kwa urahisi na haraka.',
+    'stat-stores-label':'Maduka','stat-regions-label':'Mikoa','stat-online-label':'Online',
+    'btn-register-landing':'🚀 Anza Biashara Yako','btn-browse-landing':'🛍️ Tazama Maduka',
+    'btn-login-landing':'🔑 Ingia kama Mmiliki','features-title':'Kwa nini OST?',
+    'f1':'PWA — Kama App','f2':'AI Assistant','f3':'WhatsApp Orders','f4':'Notifications',
+    'f5':'Reviews & Ratings','f6':'Budget Filter',
+    'nav-register':'Fungua Duka','nav-login':'Ingia','nav-customer':'Maduka Tanzania',
+    'nav-settings':'Mipangilio',
+    'lbl-bizname':'Jina la Biashara (Username)','lbl-biztype':'Aina ya Biashara',
+    'lbl-logo':'Logo ya Biashara','lbl-tap-logo':'Bonyeza kupakia logo',
+    'lbl-hours':'Masaa ya Kufungua','lbl-pass':'Nywila','lbl-pass2':'Thibitisha Nywila',
+    'lbl-region':'Mkoa','btn-register':'🚀 Unda Duka Langu',
+    'login-title':'Karibu Tena!','login-sub':'Ingia kudhibiti biashara yako',
+    'lbl-bizname-login':'Jina la Biashara','lbl-pass-login':'Nywila','btn-login':'🔑 Ingia',
+    'login-link':'Huna akaunti? <a onclick="showScreen(\'register\')">Jisajili hapa →</a>',
+    'loading-text':'Inapakia maduka...','empty-title':'Hakuna maduka bado',
+    'empty-sub':'Kuwa wa kwanza kufungua duka!','btn-open-store':'Fungua Duka',
+    'lbl-location':'Eneo','lbl-hours2':'Masaa','lbl-delivery':'Delivery','lbl-rating':'Rating',
+    'tab-products':'🛍️ Bidhaa','tab-reviews':'⭐ Maoni','tab-gallery':'📸 Picha',
+    'tab-budget':'💰 Budget','tab-info':'ℹ️ Info',
+    'no-products-title':'Hakuna bidhaa bado','no-products-sub':'Mmiliki bado hajaongeza bidhaa',
+    'add-review-title':'Acha Maoni Yako','btn-submit-review':'📝 Tuma Maoni',
+    'budget-title':'Chagua Budget Yako',
+    'info-lbl-name':'Jina','info-lbl-type':'Aina','info-lbl-region':'Mkoa',
+    'info-lbl-hours':'Masaa','info-lbl-delivery':'Delivery',
+    'btn-call-text':'Piga Simu','btn-order-store':'📦 Agiza','btn-wa-store':'💬 WhatsApp',
+    'admin-welcome':'Karibu,','lbl-products-stat':'Bidhaa',
+    'lbl-orders-stat':'Orders','lbl-reviews-stat':'Maoni',
+    'lbl-notif':'🔔 Notifications','notif-btn':'Washa',
+    'notif-desc':'Pata taarifa za orders mpya hata ukiwa nje ya app!',
+    'lbl-my-products':'📦 Bidhaa Zangu','btn-add-product':'+ Ongeza',
+    'lbl-orders':'📋 Orders','no-orders-text':'Hakuna orders bado',
+    'lbl-gallery-admin':'📸 Gallery','btn-add-photo':'+ Picha',
+    'lbl-delivery-fees':'🚚 Bei za Delivery','lbl-nearby':'📍 Karibu (TZS)',
+    'lbl-far':'🗺️ Mbali (TZS)','lbl-very-far':'🌍 Mbali Sana (TZS)','btn-save-fees':'💾 Hifadhi',
+    'danger-title':'⚠️ Hatari','btn-delete-store':'🗑️ Futa Duka Langu',
+    'danger-text':'Kufuta duka lako kutafuta bidhaa, orders, na picha zote. Haiwezi kurudishwa!',
+    'lbl-language':'Lugha','lbl-language-sub':'Chagua lugha unayopendelea',
+    'lbl-ai-bot':'AI Assistant','lbl-ai-bot-sub':'Zungumza na AI kwa Kiswahili',
+    'lbl-dark':'Giza Mode','lbl-dark-sub':'Badilisha muonekano',
+    'lbl-browse':'Tazama Maduka','lbl-share-app':'Shiriki OST',
+    'order-modal-title':'📦 Agiza Bidhaa','lbl-your-name':'Jina lako',
+    'lbl-your-phone':'Namba ya Simu','lbl-your-region':'Mkoa wako',
+    'lbl-delivery-zone':'Umbali wa Delivery','lbl-address':'Anwani',
+    'lbl-product-order':'Bidhaa unayotaka','lbl-notes':'Maelezo zaidi',
+    'btn-cancel-order':'Ghairi','btn-place-order':'✅ Agiza',
+    'add-product-title':'➕ Ongeza Bidhaa','lbl-product-name':'Jina la Bidhaa',
+    'lbl-product-category':'Kategoria','lbl-product-price':'Bei (TZS)',
+    'lbl-product-stock':'Stock','lbl-product-desc':'Maelezo',
+    'lbl-product-img':'Picha ya Bidhaa (URL)','btn-cancel-product':'Ghairi',
+    'btn-save-product':'💾 Hifadhi','btn-close-product':'Funga','btn-order-product':'📦 Agiza',
+    'bot-name':'OST AI Assistant',
+    'bot-welcome':'Habari! 👋 Mimi ni AI Assistant wa OST. Ninaweza kukusaidia kwa Kiswahili au Kiingereza. Unaweza kuniuliza kuhusu maduka, bidhaa, au chochote! 😊',
+    'store-nav-title':'Duka','admin-nav-title':'Dashboard',
+    'del-free':'🆓 Bure','del-paid':'💰 Malipo',
+  },
+  en: {
+    'hero-badge':'🇹🇿 Tanzania Business',
+    'hero-title':'Open Your <span>Online</span> Store Today!',
+    'hero-sub':'Tanzania\'s best business platform. Reach customers across the country easily and fast.',
+    'stat-stores-label':'Stores','stat-regions-label':'Regions','stat-online-label':'Online',
+    'btn-register-landing':'🚀 Start Your Business','btn-browse-landing':'🛍️ Browse Stores',
+    'btn-login-landing':'🔑 Sign In as Owner','features-title':'Why OST?',
+    'f1':'PWA — Like an App','f2':'AI Assistant','f3':'WhatsApp Orders','f4':'Notifications',
+    'f5':'Reviews & Ratings','f6':'Budget Filter',
+    'nav-register':'Open Store','nav-login':'Sign In','nav-customer':'Stores in Tanzania',
+    'nav-settings':'Settings',
+    'lbl-bizname':'Business Name (Username)','lbl-biztype':'Business Type',
+    'lbl-logo':'Business Logo','lbl-tap-logo':'Tap to upload logo',
+    'lbl-hours':'Opening Hours','lbl-pass':'Password','lbl-pass2':'Confirm Password',
+    'lbl-region':'Region','btn-register':'🚀 Create My Store',
+    'login-title':'Welcome Back!','login-sub':'Sign in to manage your business',
+    'lbl-bizname-login':'Business Name','lbl-pass-login':'Password','btn-login':'🔑 Sign In',
+    'login-link':'No account? <a onclick="showScreen(\'register\')">Register here →</a>',
+    'loading-text':'Loading stores...','empty-title':'No stores yet',
+    'empty-sub':'Be the first to open a store!','btn-open-store':'Open Store',
+    'lbl-location':'Location','lbl-hours2':'Hours','lbl-delivery':'Delivery','lbl-rating':'Rating',
+    'tab-products':'🛍️ Products','tab-reviews':'⭐ Reviews','tab-gallery':'📸 Gallery',
+    'tab-budget':'💰 Budget','tab-info':'ℹ️ Info',
+    'no-products-title':'No products yet','no-products-sub':'Owner hasn\'t added products yet',
+    'add-review-title':'Leave Your Review','btn-submit-review':'📝 Submit Review',
+    'budget-title':'Set Your Budget',
+    'info-lbl-name':'Name','info-lbl-type':'Type','info-lbl-region':'Region',
+    'info-lbl-hours':'Hours','info-lbl-delivery':'Delivery',
+    'btn-call-text':'Call','btn-order-store':'📦 Order','btn-wa-store':'💬 WhatsApp',
+    'admin-welcome':'Welcome,','lbl-products-stat':'Products',
+    'lbl-orders-stat':'Orders','lbl-reviews-stat':'Reviews',
+    'lbl-notif':'🔔 Notifications','notif-btn':'Enable',
+    'notif-desc':'Get notified of new orders even when outside the app!',
+    'lbl-my-products':'📦 My Products','btn-add-product':'+ Add',
+    'lbl-orders':'📋 Orders','no-orders-text':'No orders yet',
+    'lbl-gallery-admin':'📸 Gallery','btn-add-photo':'+ Photo',
+    'lbl-delivery-fees':'🚚 Delivery Fees','lbl-nearby':'📍 Nearby (TZS)',
+    'lbl-far':'🗺️ Far (TZS)','lbl-very-far':'🌍 Very Far (TZS)','btn-save-fees':'💾 Save',
+    'danger-title':'⚠️ Danger Zone','btn-delete-store':'🗑️ Delete My Store',
+    'danger-text':'Deleting your store will remove all products, orders, and gallery. This cannot be undone!',
+    'lbl-language':'Language','lbl-language-sub':'Choose your preferred language',
+    'lbl-ai-bot':'AI Assistant','lbl-ai-bot-sub':'Chat with AI in Swahili or English',
+    'lbl-dark':'Dark Mode','lbl-dark-sub':'Change appearance',
+    'lbl-browse':'Browse Stores','lbl-share-app':'Share OST',
+    'order-modal-title':'📦 Place Order','lbl-your-name':'Your Name',
+    'lbl-your-phone':'Phone Number','lbl-your-region':'Your Region',
+    'lbl-delivery-zone':'Delivery Distance','lbl-address':'Address',
+    'lbl-product-order':'Product you want','lbl-notes':'Additional notes',
+    'btn-cancel-order':'Cancel','btn-place-order':'✅ Order',
+    'add-product-title':'➕ Add Product','lbl-product-name':'Product Name',
+    'lbl-product-category':'Category','lbl-product-price':'Price (TZS)',
+    'lbl-product-stock':'Stock','lbl-product-desc':'Description',
+    'lbl-product-img':'Product Image (URL)','btn-cancel-product':'Cancel',
+    'btn-save-product':'💾 Save','btn-close-product':'Close','btn-order-product':'📦 Order',
+    'bot-name':'OST AI Assistant',
+    'bot-welcome':'Hello! 👋 I\'m OST\'s AI Assistant. I can help you in Swahili or English. Ask me about stores, products, or anything! 😊',
+    'store-nav-title':'Store','admin-nav-title':'Dashboard',
+    'del-free':'🆓 Free','del-paid':'💰 Paid',
+  }
+};
+
+function applyTranslations(){
+  const t = T[currentLang];
+  Object.keys(t).forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.innerHTML = t[id];
+  });
+  document.documentElement.lang = currentLang;
+  // Update bot suggestions
+  if(currentLang==='sw'){
+    const suggs = document.querySelectorAll('.suggestion');
+    const sw = ['Maduka yaliyopo','Jinsi ya kufungua duka','Bei za delivery','Msaada'];
+    suggs.forEach((s,i)=>{ if(sw[i]) s.textContent=sw[i]; });
+  } else {
+    const suggs = document.querySelectorAll('.suggestion');
+    const en = ['Available stores','How to open a store','Delivery prices','Help'];
+    suggs.forEach((s,i)=>{ if(en[i]) s.textContent=en[i]; });
+  }
+}
+
+function setLang(lang, el){
+  currentLang = lang;
+  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.remove('active'));
+  if(el) el.classList.add('active');
+  // sync both selectors
+  document.getElementById('lang-sw').classList.toggle('active', lang==='sw');
+  document.getElementById('lang-en').classList.toggle('active', lang==='en');
+  document.getElementById('landing-lang-text').textContent = lang==='sw'?'SW':'EN';
+  applyTranslations();
+  localStorage.setItem('ost-lang', lang);
+}
+
+function toggleLandingLang(){
+  setLang(currentLang==='sw'?'en':'sw', null);
+}
+
+// ===== SCREENS =====
+function showScreen(id){
+  previousScreen = currentScreen;
+  screenHistory.push(currentScreen);
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  currentScreen = id;
+  // Show/hide bot fab
+  const showFab = ['customer','store','admin','landing'].includes(id);
+  document.getElementById('bot-fab').style.display = showFab ? 'flex' : 'none';
+  window.scrollTo(0,0);
+}
+
+function goBack(){
+  const prev = screenHistory.pop();
+  if(prev){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById(prev).classList.add('active');
+    currentScreen = prev;
+    const showFab = ['customer','store','admin'].includes(prev);
+    document.getElementById('bot-fab').style.display = showFab ? 'flex' : 'none';
+  } else {
+    showScreen('landing');
+  }
+}
+
+// ===== TOAST =====
+function showToast(msg, type=''){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(()=>t.className='toast', 3000);
+}
+
+// ===== LOGO UPLOAD =====
+let logoBase64 = '';
+function handleLogoUpload(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    logoBase64 = ev.target.result;
+    document.getElementById('logo-preview-wrap').innerHTML =
+      `<img src="${logoBase64}" class="logo-preview">
+       <div class="logo-text-hint">Logo imepakiwa ✅</div>`;
+  };
+  reader.readAsDataURL(file);
+}
+
+// ===== DELIVERY =====
+function selectDelivery(el, val){
+  document.querySelectorAll('.delivery-opt').forEach(d=>d.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedDelivery = val;
+}
+
+// ===== REGISTER =====
+async function registerStore(){
+  const name = document.getElementById('reg-name').value.trim();
+  const type = document.getElementById('reg-type').value;
+  const whatsapp = document.getElementById('reg-whatsapp').value.trim();
+  const hours = document.getElementById('reg-hours').value;
+  const region = document.getElementById('reg-region').value;
+  const pass = document.getElementById('reg-pass').value;
+  const pass2 = document.getElementById('reg-pass2').value;
+  if(!name||!type||!whatsapp||!pass){
+    showToast(currentLang==='sw'?'Jaza sehemu zote!':'Fill all fields!','error'); return;
+  }
+  if(pass!==pass2){
+    showToast(currentLang==='sw'?'Nywila hazifanani!':'Passwords don\'t match!','error'); return;
+  }
+  const btn = document.getElementById('btn-register');
+  btn.textContent = currentLang==='sw'?'Inaunda...':'Creating...';
+  btn.disabled = true;
+  try {
+    const res = await fetch(`${API}/api/stores/register`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,type,whatsapp,hours,region,password:pass,
+        delivery:selectedDelivery,logoUrl:logoBase64||''})
+    });
+    const data = await res.json();
+    if(data.success){
+      adminToken = data.token;
+      currentStore = data.store;
+      localStorage.setItem('ost-token', adminToken);
+      localStorage.setItem('ost-store', JSON.stringify(currentStore));
+      showToast(currentLang==='sw'?'Duka limeundwa! 🎉':'Store created! 🎉','success');
+      setTimeout(()=>loadAdminDashboard(), 500);
+    } else {
+      showToast(data.message||'Hitilafu!','error');
+    }
+  } catch(e){
+    showToast(currentLang==='sw'?'Hitilafu ya mtandao!':'Network error!','error');
+  }
+  btn.textContent = T[currentLang]['btn-register'];
+  btn.disabled = false;
+}
+
+// ===== LOGIN =====
+async function loginStore(){
+  const name = document.getElementById('login-name').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  if(!name||!pass){showToast(currentLang==='sw'?'Jaza sehemu zote!':'Fill all fields!','error');return;}
+  const btn = document.getElementById('btn-login');
+  btn.textContent = currentLang==='sw'?'Inaingia...':'Signing in...';
+  btn.disabled = true;
+  try {
+    const res = await fetch(`${API}/api/stores/login`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,password:pass})
+    });
+    const data = await res.json();
+    if(data.success){
+      adminToken = data.token;
+      currentStore = data.store;
+      localStorage.setItem('ost-token', adminToken);
+      localStorage.setItem('ost-store', JSON.stringify(currentStore));
+      showToast(currentLang==='sw'?'Umeingia! 👋':'Signed in! 👋','success');
+      setTimeout(()=>loadAdminDashboard(), 300);
+    } else {
+      showToast(data.message||'Nywila au jina si sahihi!','error');
+    }
+  } catch(e){
+    showToast(currentLang==='sw'?'Hitilafu ya mtandao!':'Network error!','error');
+  }
+  btn.textContent = T[currentLang]['btn-login'];
+  btn.disabled = false;
+}
+
+// ===== LOAD STORES =====
+async function loadStores(){
+  document.getElementById('stores-loader').style.display='flex';
+  document.getElementById('stores-grid').style.display='none';
+  document.getElementById('stores-empty').style.display='none';
+  try {
+    const res = await fetch(`${API}/api/stores`);
+    const data = await res.json();
+    allStores = data.stores || data.data || [];
+    document.getElementById('stat-stores').textContent = allStores.length;
+    renderStores(allStores);
+  } catch(e){
+    document.getElementById('stores-loader').style.display='none';
+    document.getElementById('stores-empty').style.display='flex';
+  }
+}
+
+function renderStores(stores){
+  document.getElementById('stores-loader').style.display='none';
+  const grid = document.getElementById('stores-grid');
+  const empty = document.getElementById('stores-empty');
+  if(!stores||stores.length===0){
+    grid.style.display='none'; empty.style.display='flex'; return;
+  }
+  grid.style.display='grid';
+  empty.style.display='none';
+  grid.innerHTML = stores.map(s=>`
+    <div class="store-card" onclick="openStore('${s._id||s.id}')">
+      ${s.logoUrl ? `<img class="store-card-img" src="${s.logoUrl}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="store-card-img-placeholder" style="display:none">${getTypeEmoji(s.type)}</div>` :
+        `<div class="store-card-img-placeholder">${getTypeEmoji(s.type)}</div>`}
+      <div class="store-card-body">
+        <div class="store-card-name">${s.name}</div>
+        <div class="store-card-type">${s.type||'Biashara'} • ${s.region||'Tanzania'}</div>
+        <div class="store-card-footer">
+          <span class="store-status open">${currentLang==='sw'?'Wazi':'Open'}</span>
+          <span class="store-rating">⭐ ${s.rating||'Mpya'}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function getTypeEmoji(type){
+  const emojis = {Electronics:'📱',Computers:'🖥️',Boutique:'👗',Bakery:'🍰',
+    Cosmetics:'💄',Furniture:'🛋️',Home:'🏠',Food:'🍽️',Pharmacy:'💊'};
+  return emojis[type]||'🏪';
+}
+
+function filterStores(type, el){
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  if(type==='all') renderStores(allStores);
+  else renderStores(allStores.filter(s=>s.type===type));
+}
+
+function searchStores(){
+  const q = document.getElementById('search-input').value.toLowerCase();
+  if(!q){renderStores(allStores);return;}
+  renderStores(allStores.filter(s=>
+    s.name.toLowerCase().includes(q) || (s.type&&s.type.toLowerCase().includes(q)) ||
+    (s.region&&s.region.toLowerCase().includes(q))
+  ));
+}
+
+// ===== OPEN STORE =====
+async function openStore(storeId){
+  const store = allStores.find(s=>(s._id||s.id)===storeId);
+  if(!store){showToast('Hitilafu!','error');return;}
+  currentStore = store;
+  // Populate hero
+  document.getElementById('store-nav-title').textContent = store.name;
+  document.getElementById('store-name-display').textContent = store.name;
+  document.getElementById('store-type-display').textContent = `${getTypeEmoji(store.type)} ${store.type||'Biashara'}`;
+  document.getElementById('store-location-display').textContent = store.region||'Tanzania';
+  document.getElementById('store-hours-display').textContent = store.hours||'24/7';
+  document.getElementById('store-delivery-display').textContent = store.delivery==='free'?(currentLang==='sw'?'Bure':'Free'):(currentLang==='sw'?'Malipo':'Paid');
+  document.getElementById('store-rating-display').textContent = store.rating||'—';
+  // Logo
+  if(store.logoUrl){
+    document.getElementById('store-logo-placeholder').innerHTML = `<img src="${store.logoUrl}" style="width:70px;height:70px;border-radius:20px;object-fit:cover;border:3px solid rgba(255,255,255,0.3)">`;
+  } else {
+    document.getElementById('store-logo-placeholder').textContent = getTypeEmoji(store.type);
+  }
+  // Info tab
+  document.getElementById('info-store-name').textContent = store.name;
+  document.getElementById('info-store-type').textContent = store.type||'—';
+  document.getElementById('info-store-region').textContent = store.region||'—';
+  document.getElementById('info-store-hours').textContent = store.hours||'—';
+  document.getElementById('info-store-delivery').textContent = store.delivery==='free'?(currentLang==='sw'?'Bure':'Free'):(currentLang==='sw'?'Malipo':'Paid');
+  // Switch to products tab
+  switchTab('products', document.querySelector('.store-tab'));
+  showScreen('store');
+  loadProducts(storeId);
+  loadReviews(storeId);
+  loadGallery(storeId);
+}
+
+function switchTab(tab, el){
+  document.querySelectorAll('.store-tab').forEach(t=>t.classList.remove('active'));
+  if(el) el.classList.add('active');
+  else document.getElementById('tab-'+tab).classList.add('active');
+  ['products','reviews','gallery','budget','info'].forEach(t=>{
+    document.getElementById('tab-content-'+t).style.display = t===tab?'block':'none';
+  });
+  if(tab==='budget') loadBudgetProducts();
+}
+
+// ===== PRODUCTS =====
+async function loadProducts(storeId){
+  document.getElementById('products-loader').style.display='flex';
+  document.getElementById('products-grid').style.display='none';
+  document.getElementById('products-empty').style.display='none';
+  try {
+    const res = await fetch(`${API}/api/stores/${storeId}/products`);
+    const data = await res.json();
+    const products = data.products || data.data || [];
+    renderProducts(products, 'products-grid', 'products-loader', 'products-empty');
+    currentStore._products = products;
+    document.getElementById('stat-products').textContent = products.length;
+  } catch(e){
+    document.getElementById('products-loader').style.display='none';
+    document.getElementById('products-empty').style.display='flex';
+  }
+}
+
+function renderProducts(products, gridId, loaderId, emptyId){
+  if(loaderId) document.getElementById(loaderId).style.display='none';
+  const grid = document.getElementById(gridId);
+  const empty = emptyId ? document.getElementById(emptyId) : null;
+  if(!products||products.length===0){
+    if(grid) grid.style.display='none';
+    if(empty) empty.style.display='flex';
+    return;
+  }
+  if(empty) empty.style.display='none';
+  grid.style.display='grid';
+  grid.innerHTML = products.map(p=>`
+    <div class="product-card" onclick="openProduct(${JSON.stringify(p).replace(/"/g,'&quot;')})">
+      ${p.imageUrl?`<img class="product-img" src="${p.imageUrl}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="product-img-placeholder" style="display:none">📦</div>`
+        :`<div class="product-img-placeholder">📦</div>`}
+      <div class="product-body">
+        <div class="product-name">${p.name}</div>
+        <div class="product-price">TZS ${Number(p.sellingPrice||p.price||0).toLocaleString()} <span>/kipande</span></div>
+        <button class="product-btn">${currentLang==='sw'?'Agiza':'Order'}</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openProduct(p){
+  document.getElementById('modal-product-name').textContent = p.name;
+  document.getElementById('modal-product-price').textContent = 'TZS '+Number(p.sellingPrice||p.price||0).toLocaleString();
+  document.getElementById('modal-product-desc').textContent = p.description||(currentLang==='sw'?'Hakuna maelezo':'No description');
+  document.getElementById('modal-product-stock').textContent = (currentLang==='sw'?'Stock: ':'Stock: ')+(p.stock||'—');
+  if(p.imageUrl){
+    document.getElementById('modal-product-img').src = p.imageUrl;
+    document.getElementById('modal-product-img').style.display='block';
+    document.getElementById('modal-product-img-placeholder').style.display='none';
+  } else {
+    document.getElementById('modal-product-img').style.display='none';
+    document.getElementById('modal-product-img-placeholder').style.display='flex';
+  }
+  document.getElementById('order-product').value = p.name;
+  openModal('product-detail-modal');
+}
+
+function orderThisProduct(){
+  closeModal('product-detail-modal');
+  openOrderModal();
+}
+
+// ===== REVIEWS =====
+let reviewsData = [];
+async function loadReviews(storeId){
+  try {
+    const res = await fetch(`${API}/api/stores/${storeId}/reviews`);
+    const data = await res.json();
+    reviewsData = data.reviews || data.data || [];
+    renderReviews();
+    document.getElementById('stat-reviews').textContent = reviewsData.length;
+  } catch(e){}
+}
+
+function renderReviews(){
+  const list = document.getElementById('reviews-list');
+  if(!reviewsData.length){
+    list.innerHTML = `<div class="empty-state"><div class="empty-icon">⭐</div><div class="empty-title">${currentLang==='sw'?'Hakuna maoni bado':'No reviews yet'}</div></div>`;
+    return;
+  }
+  list.innerHTML = reviewsData.map(r=>`
+    <div class="review-item">
+      <div class="review-header">
+        <div class="review-name">${r.name||'Mteja'}</div>
+        <div class="review-stars">${'⭐'.repeat(r.rating||5)}</div>
+      </div>
+      <div class="review-text">${r.text||r.comment||''}</div>
+      <div class="review-date">${r.createdAt?new Date(r.createdAt).toLocaleDateString():''}</div>
+    </div>
+  `).join('');
+}
+
+function setRating(n){
+  currentRating = n;
+  document.querySelectorAll('.star-btn').forEach((s,i)=>s.classList.toggle('active',i<n));
+}
+
+async function submitReview(){
+  const name = document.getElementById('reviewer-name').value.trim();
+  const text = document.getElementById('review-text').value.trim();
+  if(!name||!text||!currentRating){
+    showToast(currentLang==='sw'?'Jaza maoni yako!':'Fill your review!','error');return;
+  }
+  const storeId = currentStore._id||currentStore.id;
+  try {
+    const res = await fetch(`${API}/api/stores/${storeId}/reviews`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,text,rating:currentRating})
+    });
+    const data = await res.json();
+    if(data.success){
+      showToast(currentLang==='sw'?'Asante kwa maoni! ⭐':'Thanks for your review! ⭐','success');
+      document.getElementById('reviewer-name').value='';
+      document.getElementById('review-text').value='';
+      setRating(0);
+      loadReviews(storeId);
+    }
+  } catch(e){showToast('Hitilafu!','error');}
+}
+
+// ===== GALLERY =====
+async function loadGallery(storeId){
+  try {
+    const res = await fetch(`${API}/api/stores/${storeId}/gallery`);
+    const data = await res.json();
+    const photos = data.gallery || data.data || [];
+    renderGallery(photos, 'gallery-grid', 'gallery-empty');
+    renderGallery(photos, 'admin-gallery-grid', 'admin-gallery-empty');
+  } catch(e){}
+}
+
+function renderGallery(photos, gridId, emptyId){
+  const grid = document.getElementById(gridId);
+  const empty = document.getElementById(emptyId);
+  if(!grid) return;
+  if(!photos||!photos.length){
+    grid.style.display='none';
+    if(empty) empty.style.display='block';
+    return;
+  }
+  if(empty) empty.style.display='none';
+  grid.style.display='grid';
+  grid.innerHTML = photos.map(p=>`
+    <div class="gallery-item">
+      <img src="${p.url||p.imageUrl||p}" alt="Gallery" loading="lazy" onerror="this.parentElement.style.display='none'">
+    </div>
+  `).join('');
+}
+
+function openGalleryUpload(){
+  showToast(currentLang==='sw'?'Feature inakuja hivi karibuni!':'Feature coming soon!');
+}
+
+// ===== BUDGET =====
+function updateBudget(val){
+  const formatted = 'TZS '+Number(val).toLocaleString();
+  document.getElementById('budget-amount').textContent = formatted;
+  loadBudgetProducts();
+}
+
+function loadBudgetProducts(){
+  const max = parseInt(document.getElementById('budget-slider').value);
+  const products = (currentStore._products||[]).filter(p=>(p.sellingPrice||p.price||0)<=max);
+  renderProducts(products,'budget-products',null,null);
+  if(!products.length){
+    document.getElementById('budget-products').innerHTML = `<div style="grid-column:span 2;text-align:center;padding:20px;color:var(--gray);font-size:14px">${currentLang==='sw'?'Hakuna bidhaa kwenye budget hii':'No products in this budget'}</div>`;
+  }
+}
+
+// ===== ORDER =====
+function openOrderModal(){
+  // Update zone prices
+  document.getElementById('zone-nearby-price').textContent = 'TZS '+(document.getElementById('fee-nearby').value||0);
+  document.getElementById('zone-far-price').textContent = 'TZS '+(document.getElementById('fee-far').value||0);
+  document.getElementById('zone-vfar-price').textContent = 'TZS '+(document.getElementById('fee-very-far').value||0);
+  openModal('order-modal');
+}
+
+function closeOrderModal(){closeModal('order-modal');}
+
+function selectZone(el, zone){
+  document.querySelectorAll('.zone-opt').forEach(z=>z.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedZone = zone;
+}
+
+async function placeOrder(){
+  const name = document.getElementById('order-name').value.trim();
+  const phone = document.getElementById('order-phone').value.trim();
+  const product = document.getElementById('order-product').value.trim();
+  if(!name||!phone||!product){
+    showToast(currentLang==='sw'?'Jaza sehemu zote!':'Fill all fields!','error');return;
+  }
+  const storeId = currentStore._id||currentStore.id;
+  const order = {
+    customerName:name, phone, product,
+    region:document.getElementById('order-region').value,
+    address:document.getElementById('order-address').value,
+    notes:document.getElementById('order-notes').value,
+    deliveryZone:selectedZone
+  };
+  try {
+    const res = await fetch(`${API}/api/stores/${storeId}/orders`,{
+      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(order)
+    });
+    const data = await res.json();
+    if(data.success){
+      closeOrderModal();
+      showToast(currentLang==='sw'?'Order imewekwa! 🎉':'Order placed! 🎉','success');
+      // Also send via WhatsApp
+      const wa = currentStore.whatsapp?.replace(/[^0-9]/g,'');
+      if(wa){
+        const msg = `🛍️ *ORDER MPYA - OST*\n👤 ${name}\n📞 ${phone}\n📦 ${product}\n📍 ${order.address}\n💬 ${order.notes||'—'}`;
+        window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+      }
+    }
+  } catch(e){
+    showToast(currentLang==='sw'?'Hitilafu!':'Error!','error');
+  }
+}
+
+// ===== SHARE =====
+function shareStore(){
+  const url = window.location.href + '?store=' + (currentStore?._id||currentStore?.id);
+  if(navigator.share){
+    navigator.share({title:currentStore?.name,url});
+  } else {
+    navigator.clipboard.writeText(url).then(()=>showToast(currentLang==='sw'?'Link imenakiliwa!':'Link copied!','success'));
+  }
+}
+
+function shareApp(){
+  if(navigator.share){
+    navigator.share({title:'Online Stores TZ',url:window.location.href});
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(()=>showToast('Link imenakiliwa!','success'));
+  }
+}
+
+// ===== WHATSAPP =====
+function whatsappStore(){
+  if(!currentStore?.whatsapp){showToast(currentLang==='sw'?'Hakuna WhatsApp!':'No WhatsApp!','error');return;}
+  const wa = currentStore.whatsapp.replace(/[^0-9]/g,'');
+  window.open(`https://wa.me/${wa}`,'_blank');
+}
+
+function callStore(){
+  if(!currentStore?.whatsapp){showToast(currentLang==='sw'?'Hakuna namba!':'No number!','error');return;}
+  window.location.href = `tel:${currentStore.whatsapp}`;
+}
+
+// ===== ADMIN DASHBOARD =====
+async function loadAdminDashboard(){
+  showScreen('admin');
+  const store = currentStore;
+  document.getElementById('admin-store-name').textContent = store.name||'Duka Lako';
+  const storeId = store._id||store.id;
+  // Load products
+  try {
+    const res = await fetch(`${API}/api/stores/${storeId}/products`,{
+      headers:{Authorization:`Bearer ${adminToken}`}
+    });
+    const data = await res.json();
+    const products = data.products||data.data||[];
+    currentStore._products = products;
+    document.getElementById('stat-products').textContent = products.length;
+    renderAdminProducts(products);
+  } catch(e){
+    document.getElementById('admin-products-list').innerHTML='<div style="color:var(--gray);font-size:14px;text-align:center;padding:16px">Hitilafu kupakia bidhaa</div>';
+  }
+  // Load orders
+  try {
+    const res = await fetch(`${API}/api/stores/${storeId}/orders`,{
+      headers:{Authorization:`Bearer ${adminToken}`}
+    });
+    const data = await res.json();
+    const orders = data.orders||data.data||[];
+    document.getElementById('stat-orders').textContent = orders.length;
+    document.getElementById('orders-count').textContent = orders.length+' orders';
+    renderAdminOrders(orders);
+  } catch(e){}
+  // Load gallery
+  loadGallery(storeId);
+  // Load delivery fees
+  loadDeliveryFees(storeId);
+}
+
+function renderAdminProducts(products){
+  const list = document.getElementById('admin-products-list');
+  if(!products.length){
+    list.innerHTML = `<div style="text-align:center;padding:20px;color:var(--gray);font-size:14px">${currentLang==='sw'?'Ongeza bidhaa yako ya kwanza!':'Add your first product!'}</div>`;
+    return;
+  }
+  list.innerHTML = products.map(p=>`
+    <div class="product-admin-item">
+      ${p.imageUrl?`<img class="product-admin-img" src="${p.imageUrl}" onerror="this.textContent='📦'">`:`<div class="product-admin-img" style="display:flex;align-items:center;justify-content:center;font-size:24px">📦</div>`}
+      <div class="product-admin-info">
+        <div class="product-admin-name">${p.name}</div>
+        <div class="product-admin-price">TZS ${Number(p.sellingPrice||p.price||0).toLocaleString()}</div>
+      </div>
+      <div class="product-admin-actions">
+        <button class="btn-edit" onclick="editProduct(${JSON.stringify(p).replace(/"/g,'&quot;')})">✏️</button>
+        <button class="btn-delete" onclick="deleteProduct('${p._id||p.id}')">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderAdminOrders(orders){
+  const list = document.getElementById('admin-orders-list');
+  if(!orders.length){list.innerHTML=`<div style="text-align:center;padding:20px;color:var(--gray);font-size:14px" id="no-orders-text">${currentLang==='sw'?'Hakuna orders bado':'No orders yet'}</div>`;return;}
+  list.innerHTML = orders.map(o=>`
+    <div class="order-item">
+      <div class="order-header">
+        <span class="order-id">#${(o._id||o.id||'').slice(-6)}</span>
+        <span class="order-status ${o.status==='confirmed'?'order-confirmed':'order-pending'}">${o.status||'pending'}</span>
+      </div>
+      <div class="order-details">👤 ${o.customerName||o.name} • 📦 ${o.product} • 📍 ${o.region||''}</div>
+      <div class="order-details" style="margin-top:4px">📞 ${o.phone||''}</div>
+      <div class="order-actions">
+        <button class="btn-confirm" onclick="confirmOrder('${o._id||o.id}')">✅ ${currentLang==='sw'?'Thibitisha':'Confirm'}</button>
+        <button class="btn-whatsapp" onclick="whatsappOrder('${o.phone||''}','${o.customerName||o.name||''}','${o.product||''}')">💬 WhatsApp</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+async function confirmOrder(orderId){
+  const storeId = currentStore._id||currentStore.id;
+  try {
+    await fetch(`${API}/api/stores/${storeId}/orders/${orderId}`,{
+      method:'PATCH',headers:{Authorization:`Bearer ${adminToken}`,'Content-Type':'application/json'},
+      body:JSON.stringify({status:'confirmed'})
+    });
+    showToast(currentLang==='sw'?'Order imethibitishwa!':'Order confirmed!','success');
+    loadAdminDashboard();
+  } catch(e){}
+}
+
+function whatsappOrder(phone, name, product){
+  const wa = phone.replace(/[^0-9]/g,'');
+  const msg = `Habari ${name}! 👋\nOrder yako ya *${product}* imethibitishwa! ✅\nAsante kwa kununua kutoka ${currentStore?.name}! 🛍️`;
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+// ===== ADD/EDIT PRODUCT =====
+function openAddProduct(){
+  document.getElementById('edit-product-id').value = '';
+  document.getElementById('product-name').value = '';
+  document.getElementById('product-category').value = '';
+  document.getElementById('product-price').value = '';
+  document.getElementById('product-stock').value = '';
+  document.getElementById('product-desc').value = '';
+  document.getElementById('product-img').value = '';
+  document.getElementById('add-product-title').textContent = T[currentLang]['add-product-title'];
+  openModal('add-product-modal');
+}
+
+function editProduct(p){
+  document.getElementById('edit-product-id').value = p._id||p.id||'';
+  document.getElementById('product-name').value = p.name||'';
+  document.getElementById('product-category').value = p.category||'';
+  document.getElementById('product-price').value = p.sellingPrice||p.price||'';
+  document.getElementById('product-stock').value = p.stock||'';
+  document.getElementById('product-desc').value = p.description||'';
+  document.getElementById('product-img').value = p.imageUrl||'';
+  document.getElementById('add-product-title').textContent = currentLang==='sw'?'✏️ Hariri Bidhaa':'✏️ Edit Product';
+  openModal('add-product-modal');
+}
+
+async function saveProduct(){
+  const id = document.getElementById('edit-product-id').value;
+  const name = document.getElementById('product-name').value.trim();
+  const price = document.getElementById('product-price').value;
+  if(!name||!price){showToast(currentLang==='sw'?'Jaza jina na bei!':'Fill name and price!','error');return;}
+  const product = {
+    name, category:document.getElementById('product-category').value,
+    sellingPrice:Number(price), price:Number(price),
+    stock:Number(document.getElementById('product-stock').value)||0,
+    description:document.getElementById('product-desc').value,
+    imageUrl:document.getElementById('product-img').value
+  };
+  const storeId = currentStore._id||currentStore.id;
+  try {
+    const url = id ? `${API}/api/stores/${storeId}/products/${id}` : `${API}/api/stores/${storeId}/products`;
+    const method = id ? 'PUT' : 'POST';
+    const res = await fetch(url,{method,headers:{Authorization:`Bearer ${adminToken}`,'Content-Type':'application/json'},body:JSON.stringify(product)});
+    const data = await res.json();
+    if(data.success||data.product||data.data){
+      closeModal('add-product-modal');
+      showToast(currentLang==='sw'?'Bidhaa imehifadhiwa! ✅':'Product saved! ✅','success');
+      loadAdminDashboard();
+    } else showToast(data.message||'Hitilafu!','error');
+  } catch(e){showToast('Hitilafu!','error');}
+}
+
+async function deleteProduct(productId){
+  if(!confirm(currentLang==='sw'?'Futa bidhaa hii?':'Delete this product?')) return;
+  const storeId = currentStore._id||currentStore.id;
+  try {
+    await fetch(`${API}/api/stores/${storeId}/products/${productId}`,{
+      method:'DELETE',headers:{Authorization:`Bearer ${adminToken}`}
+    });
+    showToast(currentLang==='sw'?'Bidhaa imefutwa!':'Product deleted!','success');
+    loadAdminDashboard();
+  } catch(e){}
+}
+
+// ===== DELIVERY FEES =====
+async function loadDeliveryFees(storeId){
+  try {
+    const res = await fetch(`${API}/api/stores/${storeId}/delivery`,{headers:{Authorization:`Bearer ${adminToken}`}});
+    const data = await res.json();
+    if(data.fees){
+      document.getElementById('fee-nearby').value = data.fees.nearby||0;
+      document.getElementById('fee-far').value = data.fees.far||0;
+      document.getElementById('fee-very-far').value = data.fees.veryFar||0;
+    }
+  } catch(e){}
+}
+
+async function saveDeliveryFees(){
+  const storeId = currentStore._id||currentStore.id;
+  try {
+    await fetch(`${API}/api/stores/${storeId}/delivery`,{
+      method:'POST',headers:{Authorization:`Bearer ${adminToken}`,'Content-Type':'application/json'},
+      body:JSON.stringify({nearby:document.getElementById('fee-nearby').value,far:document.getElementById('fee-far').value,veryFar:document.getElementById('fee-very-far').value})
+    });
+    showToast(currentLang==='sw'?'Bei zimehifadhiwa!':'Fees saved!','success');
+  } catch(e){showToast('Hitilafu!','error');}
+}
+
+// ===== NOTIFICATIONS =====
+async function toggleNotifications(){
+  if(!('Notification' in window)){showToast('Hazipatikani kwenye browser hii!','error');return;}
+  const perm = await Notification.requestPermission();
+  if(perm==='granted'){
+    showToast(currentLang==='sw'?'Notifications zimewashwa! 🔔':'Notifications enabled! 🔔','success');
+    document.getElementById('notif-btn').textContent = currentLang==='sw'?'Imewashwa ✅':'Enabled ✅';
+  } else {
+    showToast(currentLang==='sw'?'Ruhusa imekataliwa!':'Permission denied!','error');
+  }
+}
+
+// ===== DELETE STORE =====
+async function deleteStore(){
+  const confirm1 = confirm(currentLang==='sw'?'Una uhakika? Hii itafuta duka lako KABISA!':'Are you sure? This will permanently delete your store!');
+  if(!confirm1)return;
+  const storeId = currentStore._id||currentStore.id;
+  try {
+    await fetch(`${API}/api/stores/${storeId}`,{method:'DELETE',headers:{Authorization:`Bearer ${adminToken}`}});
+    adminToken=null;currentStore=null;
+    localStorage.removeItem('ost-token');localStorage.removeItem('ost-store');
+    showToast(currentLang==='sw'?'Duka limefutwa.':'Store deleted.','success');
+    setTimeout(()=>showScreen('landing'),1000);
+  } catch(e){showToast('Hitilafu!','error');}
+}
+
+function confirmLogout(){
+  if(confirm(currentLang==='sw'?'Toka kwenye duka lako?':'Sign out from your store?')){
+    adminToken=null;currentStore=null;
+    localStorage.removeItem('ost-token');localStorage.removeItem('ost-store');
+    showScreen('landing');
+  }
+}
+
+// ===== MODALS =====
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+
+// ===== BOT =====
+function openBotPanel(){
+  document.getElementById('bot-panel').classList.add('open');
+}
+function closeBotPanel(){
+  document.getElementById('bot-panel').classList.remove('open');
+}
+
+function sendSuggestion(el){
+  document.getElementById('bot-input').value = el.textContent;
+  sendBotMessage();
+}
+
+async function sendBotMessage(){
+  const input = document.getElementById('bot-input');
+  const msg = input.value.trim();
+  if(!msg) return;
+  input.value = '';
+  // Add user message
+  addBotMessage(msg, 'user');
+  botHistory.push({role:'user',content:msg});
+  // Show typing
+  const typing = document.getElementById('typing-indicator');
+  typing.style.display='block';
+  scrollBotToBottom();
+  // Get stores context
+  const storesContext = allStores.length > 0 ? `Maduka yaliyopo OST sasa hivi: ${allStores.map(s=>`${s.name} (${s.type}, ${s.region})`).join(', ')}` : 'Bado hakuna maduka yaliyosajiliwa.';
+  const systemPrompt = `Wewe ni AI Assistant wa Online Stores TZ (OST) - jukwaa la biashara Tanzania.
+
+MUHIMU: Zungumza Kiswahili vizuri, kwa urahisi, kama rafiki - sio rasmi sana. Tumia lugha ya kawaida ya Tanzania. Ikiwa mtumiaji anaandika Kiingereza, jibu Kiingereza.
+
+Kuhusu OST:
+- OST ni platform ya biashara ya Tanzania - wafanyabiashara wanaweza kufungua maduka online bure
+- Maduka yana bidhaa, gallery, orders, reviews, na delivery
+- ${storesContext}
+- Website: https://samdone763.github.io/onlinestores-tz
+
+Wewe unaweza kusaidia:
+- Kuhusu maduka na bidhaa zilizopo
+- Jinsi ya kufungua duka
+- Jinsi ya kuagiza bidhaa
+- Maswali yoyote kuhusu biashara Tanzania
+- Ushauri wa biashara
+
+Jibu fupi na mzuri - sio ndefu sana. Tumia emoji kidogo.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:systemPrompt,
+        messages:botHistory.slice(-10)
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || (currentLang==='sw'?'Samahani, kuna hitilafu. Jaribu tena!':'Sorry, there was an error. Try again!');
+    botHistory.push({role:'assistant',content:reply});
+    typing.style.display='none';
+    addBotMessage(reply,'bot');
+  } catch(e){
+    typing.style.display='none';
+    addBotMessage(currentLang==='sw'?'Samahani, kuna hitilafu ya mtandao. Jaribu tena! 🙏':'Sorry, network error. Please try again! 🙏','bot');
+  }
+}
+
+function addBotMessage(text, type){
+  const msgs = document.getElementById('bot-messages');
+  const div = document.createElement('div');
+  div.className = `msg msg-${type}`;
+  div.textContent = text;
+  msgs.appendChild(div);
+  scrollBotToBottom();
+}
+
+function scrollBotToBottom(){
+  const msgs = document.getElementById('bot-messages');
+  setTimeout(()=>msgs.scrollTop=msgs.scrollHeight,100);
+}
+
+// ===== DARK MODE =====
+let darkMode = false;
+function toggleDarkMode(){
+  darkMode = !darkMode;
+  document.getElementById('dark-toggle').classList.toggle('on',darkMode);
+  if(darkMode){
+    document.documentElement.style.setProperty('--light','#0d1117');
+    document.documentElement.style.setProperty('--white','#161b22');
+    document.documentElement.style.setProperty('--gray2','#21262d');
+    document.body.style.background='#0d1117';
+    document.body.style.color='#e6edf3';
+  } else {
+    document.documentElement.style.setProperty('--light','#f0faf4');
+    document.documentElement.style.setProperty('--white','#ffffff');
+    document.documentElement.style.setProperty('--gray2','#f3f4f6');
+    document.body.style.background='#f0faf4';
+    document.body.style.color='#1a1a1a';
+  }
+  localStorage.setItem('ost-dark',darkMode);
+}
+
+// ===== INIT =====
+window.addEventListener('load', async ()=>{
+  // Load saved lang
+  const savedLang = localStorage.getItem('ost-lang')||'sw';
+  currentLang = savedLang;
+  applyTranslations();
+  document.getElementById(savedLang==='sw'?'lang-sw':'lang-en').classList.add('active');
+  document.getElementById(savedLang==='sw'?'lang-en':'lang-sw').classList.remove('active');
+  document.getElementById('landing-lang-text').textContent = savedLang==='sw'?'SW':'EN';
+  // Load dark mode
+  if(localStorage.getItem('ost-dark')==='true') toggleDarkMode();
+  // Check if already logged in
+  const token = localStorage.getItem('ost-token');
+  const store = localStorage.getItem('ost-store');
+  if(token && store){
+    adminToken = token;
+    currentStore = JSON.parse(store);
+  }
+  // Load store count
+  try {
+    const res = await fetch(`${API}/api/stores`);
+    const data = await res.json();
+    const count = (data.stores||data.data||[]).length;
+    document.getElementById('stat-stores').textContent = count||'0';
+    allStores = data.stores||data.data||[];
+    buildSlider();
+  } catch(e){
+    buildSlider(); // Build with demo only
+  }
+  // Handle deep link
+  const params = new URLSearchParams(window.location.search);
+  const storeParam = params.get('store');
+  if(storeParam && allStores.length){
+    const s = allStores.find(s=>(s._id||s.id)===storeParam);
+    if(s){openStore(s._id||s.id);return;}
+  }
+  // PWA install prompt
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt',e=>{
+    e.preventDefault();deferredPrompt=e;
+    setTimeout(()=>showToast(currentLang==='sw'?'Bonyeza "Install" kusakinisha app! 📲':'Tap "Install" to install app! 📲'),3000);
+  });
+});
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(o=>{
+  o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');});
+});
+
+// ===== DEMO DATA =====
+const DEMO_SLIDES = [
+  {
+    store:'Zara Boutique DSM', type:'Boutique', region:'Dar es Salaam',
+    product:'Dress ya Harusi — Elegance', price:'TZS 85,000',
+    bg:'linear-gradient(135deg,#6b21a8,#9333ea)',
+    emoji:'👗', color:'#9333ea'
+  },
+  {
+    store:'TechHub Mwanza', type:'Electronics', region:'Mwanza',
+    product:'Samsung A54 — Mpya!', price:'TZS 950,000',
+    bg:'linear-gradient(135deg,#0369a1,#0ea5e9)',
+    emoji:'📱', color:'#0ea5e9'
+  },
+  {
+    store:'Sweet Cakes Arusha', type:'Bakery', region:'Arusha',
+    product:'Birthday Cake — Custom', price:'TZS 45,000',
+    bg:'linear-gradient(135deg,#be185d,#ec4899)',
+    emoji:'🍰', color:'#ec4899'
+  },
+  {
+    store:'Glow Beauty DSM', type:'Cosmetics', region:'Dar es Salaam',
+    product:'Skincare Package — Glow Kit', price:'TZS 35,000',
+    bg:'linear-gradient(135deg,#b45309,#f59e0b)',
+    emoji:'💄', color:'#f59e0b'
+  },
+  {
+    store:'Furniture Palace Dodoma', type:'Furniture', region:'Dodoma',
+    product:'Sofa Set — 3+1+1', price:'TZS 1,200,000',
+    bg:'linear-gradient(135deg,#065f46,#10b981)',
+    emoji:'🛋️', color:'#10b981'
+  },
+  {
+    store:'PharmaCare Mbeya', type:'Pharmacy', region:'Mbeya',
+    product:'Vitamini Package — Health Kit', price:'TZS 25,000',
+    bg:'linear-gradient(135deg,#1d4ed8,#3b82f6)',
+    emoji:'💊', color:'#3b82f6'
+  }
+];
+
+let sliderIndex = 0;
+let sliderInterval = null;
+let sliderSlides = [];
+
+function buildSlider(){
+  // Collect real product images from stores + fill with demo
+  let slides = [];
+  // From real stores
+  allStores.forEach(store => {
+    if(store._products && store._products.length > 0){
+      store._products.forEach(p => {
+        if(p.imageUrl){
+          slides.push({
+            store: store.name,
+            type: store.type,
+            region: store.region,
+            product: p.name,
+            price: 'TZS ' + Number(p.sellingPrice||p.price||0).toLocaleString(),
+            imageUrl: p.imageUrl,
+            storeId: store._id||store.id
+          });
+        }
+      });
+    }
+  });
+  // Add demo slides to fill gaps
+  if(slides.length < 3){
+    DEMO_SLIDES.forEach(d => slides.push(d));
+  }
+  sliderSlides = slides;
+  renderSlider(slides);
+}
+
+function renderSlider(slides){
+  const track = document.getElementById('main-slider-track');
+  const dots = document.getElementById('main-slider-dots');
+  if(!track || !slides.length) return;
+  track.innerHTML = slides.map((s, i) => `
+    <div class="slide" onclick="${s.storeId ? `openStore('${s.storeId}')` : `showScreen('customer')`}">
+      <div class="slide-inner">
+        ${s.imageUrl
+          ? `<img class="slide-img" src="${s.imageUrl}" loading="lazy" onerror="this.parentElement.style.background='${s.bg||'linear-gradient(135deg,#0a4f2e,#0d6b3e)'}';this.style.display='none'">`
+          : `<div class="slide-placeholder" style="background:${s.bg||'linear-gradient(135deg,#0a4f2e,#0d6b3e)'};width:100%;height:100%"><span style="font-size:64px">${s.emoji||'🏪'}</span></div>`
+        }
+        <div class="slide-overlay"></div>
+        <div class="slide-info">
+          <div class="slide-store">${s.store} • ${s.region||'Tanzania'}</div>
+          <div class="slide-product">${s.product}</div>
+          <div class="slide-price">${s.price}</div>
+        </div>
+        <button class="slide-order-btn" onclick="event.stopPropagation();showScreen('customer')">🛍️</button>
+      </div>
+    </div>
+  `).join('');
+  // Dots
+  dots.innerHTML = slides.map((_,i) => 
+    `<div class="slider-dot ${i===0?'active':''}" onclick="goToSlide(${i})"></div>`
+  ).join('');
+  updateSlideCounter(0, slides.length);
+  startSliderAuto();
+}
+
+function goToSlide(n){
+  sliderIndex = n;
+  const track = document.getElementById('main-slider-track');
+  if(track) track.style.transform = `translateX(-${n*100}%)`;
+  document.querySelectorAll('.slider-dot').forEach((d,i)=>d.classList.toggle('active',i===n));
+  updateSlideCounter(n, sliderSlides.length);
+}
+
+function updateSlideCounter(current, total){
+  const counter = document.getElementById('slide-counter');
+  if(counter) counter.textContent = `${current+1}/${total}`;
+}
+
+function startSliderAuto(){
+  if(sliderInterval) clearInterval(sliderInterval);
+  sliderInterval = setInterval(()=>{
+    if(!sliderSlides.length) return;
+    sliderIndex = (sliderIndex+1) % sliderSlides.length;
+    goToSlide(sliderIndex);
+  }, 3500);
+}
+
+// Touch swipe for slider
+let touchStartX = 0;
+document.addEventListener('DOMContentLoaded', ()=>{
+  const wrap = document.getElementById('main-slider-wrap');
+  if(!wrap) return;
+  wrap.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX, {passive:true});
+  wrap.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if(Math.abs(diff) > 50){
+      sliderIndex = diff > 0
+        ? (sliderIndex+1) % sliderSlides.length
+        : (sliderIndex-1+sliderSlides.length) % sliderSlides.length;
+      goToSlide(sliderIndex);
+    }
+  }, {passive:true});
+});
+
+// ===== Auto-load stores when customer screen is shown
+const _origShow = showScreen;
+window.showScreen = function(id){
+  _origShow(id);
+  if(id==='customer') loadStores();
+};
+</script>
+</body>
+</html>
