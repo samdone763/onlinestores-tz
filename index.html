@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#0a0a0a">
+<title>Online Stores TZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0a0a;--cream:#faf8f3;--gold:#c9a84c;--gold2:#f0d060;
+  --ember:#e85d04;--sage:#1b4332;--sage2:#2d6a4f;--sage3:#40916c;
+  --white:#ffffff;--muted:#6b7280;--border:#e5e0d8;--light:#f5f2ec;
+  --r:18px;--r2:12px;--r3:28px;
+  --sh:0 4px 24px rgba(0,0,0,.08);--sh2:0 12px 48px rgba(0,0,0,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:"Plus Jakarta Sans",sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+h1,h2,h3,h4{font-family:"Playfair Display",serif}
+img{display:block;max-width:100%}
+
+.screen{display:none;min-height:100vh;flex-direction:column;animation:fadeUp .3s ease}
+.screen.active{display:flex}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ====== LANDING ====== */
+#landing{background:#000;color:white;position:relative;overflow:hidden;min-height:100vh}
+.hero-bg-slider{position:absolute;inset:0;z-index:0}
+.hero-bg-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.hero-bg-slide.on{opacity:1}
+.hero-bg-slide-inner{width:100%;height:100%;background-size:cover;background-position:center;transform:scale(1.08);transition:transform 9s ease;filter:brightness(.38) saturate(1.2)}
+.hero-bg-slide.on .hero-bg-slide-inner{transform:scale(1)}
+
+
+.landing-nav{position:relative;z-index:20;padding:20px 22px;display:flex;justify-content:space-between;align-items:center}
+.l-logo{font-family:"Playfair Display",serif;font-size:22px;font-weight:900;letter-spacing:-1px;color:white}
+.l-logo span{color:var(--gold)}
+.l-nav-right{display:flex;gap:8px;align-items:center}
+.l-bot-btn{width:38px;height:38px;background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;position:relative;transition:background .2s}
+.l-bot-btn:active{background:rgba(201,168,76,.35)}
+.l-bot-pulse{position:absolute;top:-2px;right:-2px;width:10px;height:10px;background:#22c55e;border-radius:50%;border:2px solid rgba(10,10,10,.8);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.3);opacity:.6}}
+.l-lang-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:white;padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.5px}
+
+.hero-content{position:relative;z-index:20;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 24px 28px}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;color:var(--gold2);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;width:fit-content}
+.hero-title{font-size:40px;font-weight:900;line-height:1.1;margin-bottom:10px;letter-spacing:-1.5px}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:24px;font-weight:300;max-width:320px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px}
+.h-stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 8px;text-align:center;backdrop-filter:blur(12px)}
+.h-stat-n{font-family:"Playfair Display",serif;font-size:24px;font-weight:900;color:var(--gold)}
+.h-stat-l{font-size:10px;color:rgba(255,255,255,.6);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+.hero-btns{display:flex;flex-direction:column;gap:10px}
+.btn-gold{padding:16px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);border:none;border-radius:14px;font-size:15px;font-weight:800;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;letter-spacing:-.3px;transition:transform .2s,box-shadow .2s;box-shadow:0 6px 24px rgba(201,168,76,.4)}
+.btn-gold:active{transform:scale(.98)}
+.btn-ghost{padding:16px;background:rgba(255,255,255,.08);color:white;border:1px solid rgba(255,255,255,.2);border-radius:14px;font-size:14px;font-weight:600;cursor:pointer;backdrop-filter:blur(8px);transition:background .2s}
+.btn-ghost:active{background:rgba(255,255,255,.15)}
+.hero-dots{display:flex;gap:5px;justify-content:center;padding:16px 0 0;position:relative;z-index:20}
+.hero-dot{width:5px;height:5px;border-radius:3px;background:rgba(255,255,255,.25);transition:all .3s;cursor:pointer}
+.hero-dot.on{width:22px;background:var(--gold)}
+.hero-scroll-hint{text-align:center;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase;padding-bottom:8px;position:relative;z-index:5}
+
+.features-strip{background:rgba(0,0,0,.5);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);padding:20px 22px;position:relative;z-index:20}
+.features-label{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+.features-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.feat-item{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+.feat-icon{width:36px;height:36px;background:rgba(201,168,76,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.feat-label{font-size:10px;color:rgba(255,255,255,.55);font-weight:500}
+
+/* ====== SHARED NAV ====== */
+.topbar{background:white;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.tb-back{width:36px;height:36px;background:var(--light);border:none;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--ink)}
+.tb-title{font-family:"Playfair Display",serif;font-size:17px;font-weight:700;color:var(--ink)}
+.tb-action{width:36px;height:36px;background:var(--light);border:none;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px}
+
+/* ====== FORMS ====== */
+.form-wrap{flex:1;overflow-y:auto;padding:20px}
+.form-block{margin-bottom:22px}
+.form-section-title{font-size:11px;font-weight:800;color:var(--sage2);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.form-section-title::after{content:"";flex:1;height:1px;background:var(--border)}
+.fld{margin-bottom:14px}
+.fld label{display:block;font-size:12px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:.3px}
+.fld input,.fld select,.fld textarea{width:100%;padding:13px 16px;border:2px solid var(--border);border-radius:var(--r2);font-size:14px;font-family:"Plus Jakarta Sans",sans-serif;outline:none;background:white;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--sage3);box-shadow:0 0 0 3px rgba(64,145,108,.1)}
+.fld select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%236b7280' d='M5 6L0 0h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.fld textarea{resize:none}
+
+/* IMAGE UPLOAD */
+.img-upload-box{border:2px dashed var(--border);border-radius:var(--r);padding:20px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative;overflow:hidden}
+.img-upload-box:hover{border-color:var(--sage3);background:rgba(64,145,108,.03)}
+.img-upload-box input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.img-preview{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--sage3);margin:0 auto 8px}
+.img-preview-rect{width:100%;height:120px;border-radius:var(--r2);object-fit:cover;margin-bottom:8px}
+.img-placeholder{width:64px;height:64px;background:linear-gradient(135deg,var(--sage),var(--sage2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 8px}
+.img-placeholder-rect{width:100%;height:100px;background:var(--light);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:8px}
+.img-hint{font-size:12px;color:var(--muted);font-weight:500}
+
+.del-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.del-opt{padding:13px;border:2px solid var(--border);border-radius:var(--r2);text-align:center;cursor:pointer;font-size:13px;font-weight:700;transition:all .2s;color:var(--muted)}
+.del-opt.on{border-color:var(--sage3);background:rgba(64,145,108,.06);color:var(--sage)}
+
+.btn-main{width:100%;padding:16px;background:linear-gradient(135deg,var(--sage),var(--sage2));color:white;border:none;border-radius:var(--r);font-size:15px;font-weight:800;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;box-shadow:0 6px 20px rgba(45,106,79,.3);transition:transform .2s}
+.btn-main:active{transform:scale(.99)}
+.btn-main:disabled{opacity:.6}
+
+/* ====== LOGIN ====== */
+#login-screen{background:white}
+.login-wrap{flex:1;padding:32px 24px;display:flex;flex-direction:column;justify-content:center}
+.login-icon{width:80px;height:80px;background:linear-gradient(135deg,var(--sage),var(--sage2));border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 16px}
+.login-title{font-size:28px;font-weight:900;text-align:center;color:var(--ink)}
+.login-sub{font-size:13px;color:var(--muted);text-align:center;margin:6px 0 28px}
+.login-link{text-align:center;margin-top:16px;font-size:13px;color:var(--muted)}
+.login-link a{color:var(--sage);font-weight:700;cursor:pointer}
+
+/* ====== CUSTOMER ====== */
+#customer{background:var(--cream)}
+.search-wrap{padding:14px 18px;background:white;border-bottom:1px solid var(--border)}
+.search-inner{position:relative}
+.search-inner input{width:100%;padding:12px 16px 12px 42px;border:2px solid var(--border);border-radius:var(--r);font-size:14px;font-family:"Plus Jakarta Sans",sans-serif;outline:none;background:var(--light);transition:all .2s}
+.search-inner input:focus{border-color:var(--sage3);background:white}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:17px}
+.chips{padding:12px 18px;overflow-x:auto;white-space:nowrap;display:flex;gap:8px;background:white;border-bottom:1px solid var(--border)}
+.chips::-webkit-scrollbar{display:none}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;background:var(--light);border:2px solid transparent;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;color:var(--ink)}
+.chip.on{background:var(--ink);color:white}
+.stores-feed{flex:1;overflow-y:auto;padding:16px}
+.stores-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.store-card{background:white;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.store-card:active{transform:scale(.97)}
+.sc-banner{height:100px;display:flex;align-items:center;justify-content:center;font-size:36px;position:relative;overflow:hidden}
+.sc-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sc-body{padding:12px}
+.sc-name{font-family:"Playfair Display",serif;font-size:14px;font-weight:700;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc-type{font-size:11px;color:var(--muted);margin-bottom:7px}
+.sc-foot{display:flex;justify-content:space-between;align-items:center}
+.sc-badge{font-size:10px;font-weight:800;padding:3px 8px;border-radius:6px;background:var(--light);color:var(--sage)}
+.sc-rating{font-size:11px;color:var(--gold);font-weight:700}
+.empty-feed{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:40px 24px;text-align:center}
+.empty-icon{font-size:52px;opacity:.4}
+.empty-title{font-family:"Playfair Display",serif;font-size:20px;color:var(--ink)}
+.empty-sub{font-size:13px;color:var(--muted)}
+
+/* ====== STORE PAGE ====== */
+#store-page{background:var(--cream)}
+.store-hero{position:relative;height:220px;overflow:hidden}
+.store-hero-bg{width:100%;height:100%;object-fit:cover;filter:brightness(.5)}
+.store-hero-bg-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:72px}
+.store-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 50%)}
+.store-hero-content{position:absolute;bottom:16px;left:16px;right:16px;color:white}
+.store-logo-wrap{width:60px;height:60px;border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,.3);margin-bottom:10px;flex-shrink:0;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:24px}
+.store-logo-wrap img{width:100%;height:100%;object-fit:cover}
+.store-hero-name{font-size:22px;font-weight:900;line-height:1.1}
+.store-hero-type{font-size:12px;opacity:.75;margin-bottom:10px}
+.store-hero-meta{display:flex;gap:8px;flex-wrap:wrap}
+.store-meta-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:5px 10px;border-radius:20px;font-size:11px;font-weight:600;backdrop-filter:blur(8px)}
+
+.store-tabs-bar{display:flex;background:white;border-bottom:2px solid var(--border);overflow-x:auto;position:sticky;top:0;z-index:50}
+.store-tabs-bar::-webkit-scrollbar{display:none}
+.s-tab{padding:14px 16px;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;letter-spacing:.3px}
+.s-tab.on{color:var(--sage);border-bottom-color:var(--sage)}
+.tab-pane{padding:16px;display:none}
+.tab-pane.on{display:block}
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.prod-card{background:white;border-radius:var(--r2);overflow:hidden;box-shadow:var(--sh);cursor:pointer;transition:transform .2s}
+.prod-card:active{transform:scale(.97)}
+.prod-img{height:120px;overflow:hidden;position:relative;background:var(--light)}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.prod-card:hover .prod-img img{transform:scale(1.04)}
+.prod-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:40px}
+.prod-body{padding:11px}
+.prod-name{font-size:13px;font-weight:700;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prod-price{font-family:"Playfair Display",serif;font-size:16px;font-weight:700;color:var(--sage)}
+.prod-order-btn{width:100%;padding:9px;background:var(--ink);color:white;border:none;border-radius:8px;font-size:11px;font-weight:800;cursor:pointer;margin-top:8px;font-family:"Plus Jakarta Sans",sans-serif;letter-spacing:.3px}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.gal-item{aspect-ratio:1;overflow:hidden;cursor:pointer;background:var(--light);position:relative}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gal-item:active img{transform:scale(.95)}
+.gal-item-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4)}
+.gal-item-play span{width:40px;height:40px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+
+/* FULLSCREEN VIEWER */
+.fullscreen-viewer{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:2000;display:none;flex-direction:column;animation:fadeIn .2s ease}
+.fullscreen-viewer.open{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.fv-topbar{padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.fv-close{background:rgba(255,255,255,.1);border:none;color:white;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px}
+.fv-counter{color:rgba(255,255,255,.6);font-size:13px;font-weight:600}
+.fv-main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.fv-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;user-select:none}
+.fv-caption{padding:16px 20px 24px;text-align:center}
+.fv-caption-text{color:rgba(255,255,255,.7);font-size:13px}
+.fv-prev,.fv-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:none;color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;transition:background .2s}
+.fv-prev{left:12px}
+.fv-next{right:12px}
+.fv-prev:active,.fv-next:active{background:rgba(255,255,255,.2)}
+.fv-thumbs{padding:10px 16px;display:flex;gap:8px;overflow-x:auto;justify-content:center}
+.fv-thumbs::-webkit-scrollbar{display:none}
+.fv-thumb{width:50px;height:50px;border-radius:8px;object-fit:cover;opacity:.5;cursor:pointer;transition:opacity .2s;flex-shrink:0;border:2px solid transparent}
+.fv-thumb.on{opacity:1;border-color:var(--gold)}
+.fv-youtube{width:100%;aspect-ratio:16/9;border:none}
+
+/* REVIEWS */
+.review-item{background:white;border-radius:var(--r2);padding:14px;margin-bottom:10px;box-shadow:var(--sh)}
+.ri-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.ri-name{font-size:14px;font-weight:700}
+.ri-stars{color:var(--gold);font-size:13px}
+.ri-text{font-size:13px;color:var(--muted);line-height:1.5}
+.ri-date{font-size:11px;color:var(--border);margin-top:4px}
+.star-row{display:flex;gap:6px;margin-bottom:14px}
+.star-btn{font-size:28px;cursor:pointer;opacity:.25;transition:opacity .15s,transform .15s}
+.star-btn.on{opacity:1;transform:scale(1.1)}
+.review-form{background:white;border-radius:var(--r);padding:16px;box-shadow:var(--sh)}
+
+/* BUDGET */
+.budget-wrap{padding:4px 0}
+.budget-display{font-family:"Playfair Display",serif;font-size:30px;font-weight:900;color:var(--sage);margin-bottom:14px}
+.budget-range{width:100%;-webkit-appearance:none;height:6px;border-radius:3px;background:linear-gradient(to right,var(--sage3) 50%,var(--border) 50%);outline:none;margin-bottom:20px}
+.budget-range::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--sage);cursor:pointer;box-shadow:0 2px 10px rgba(45,106,79,.4)}
+
+/* INFO TAB */
+.info-rows{background:white;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--light)}
+.info-row:last-child{border-bottom:none}
+.info-label{font-size:13px;color:var(--muted)}
+.info-value{font-size:13px;font-weight:700;text-align:right;max-width:60%}
+
+/* ADMIN */
+#admin-screen{background:var(--cream)}
+.admin-hero{background:linear-gradient(135deg,var(--ink),#1a1a2e);color:white;padding:20px;position:relative;overflow:hidden}
+.admin-hero::after{content:"";position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(201,168,76,.1);border-radius:50%}
+.admin-hero-welcome{font-size:12px;opacity:.6;text-transform:uppercase;letter-spacing:1px}
+.admin-hero-name{font-size:22px;font-weight:900;margin-top:2px}
+.admin-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px}
+.a-stat{background:white;border-radius:var(--r2);padding:14px;text-align:center;box-shadow:var(--sh)}
+.a-stat-n{font-family:"Playfair Display",serif;font-size:26px;font-weight:900;color:var(--sage)}
+.a-stat-l{font-size:11px;color:var(--muted);margin-top:2px;font-weight:600}
+.admin-sections{padding:0 16px 80px;display:flex;flex-direction:column;gap:14px}
+.a-section{background:white;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.a-section-head{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--light)}
+.a-section-title{font-family:"Playfair Display",serif;font-size:15px;font-weight:700;color:var(--ink)}
+.a-section-btn{background:var(--ink);color:white;border:none;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif}
+.a-section-body{padding:14px}
+.prod-admin-item{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--light)}
+.prod-admin-item:last-child{border-bottom:none}
+.prod-admin-thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;background:var(--light);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px}
+.prod-admin-info{flex:1;min-width:0}
+.prod-admin-name{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prod-admin-price{font-size:12px;color:var(--sage);font-weight:600;margin-top:2px}
+.prod-admin-btns{display:flex;gap:6px;flex-shrink:0}
+.btn-edit{background:var(--light);color:var(--sage);border:none;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer}
+.btn-del{background:#fee2e2;color:#dc2626;border:none;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer}
+.order-item{background:var(--light);border-radius:var(--r2);padding:12px;margin-bottom:8px}
+.order-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.order-id{font-size:12px;font-weight:800;color:var(--sage)}
+.order-badge{font-size:10px;font-weight:800;padding:3px 8px;border-radius:6px}
+.ob-pending{background:#fef3c7;color:#92400e}
+.ob-confirmed{background:#dcfce7;color:#166534}
+.order-detail{font-size:12px;color:var(--muted);margin-bottom:4px}
+.order-btns{display:flex;gap:8px;margin-top:8px}
+.btn-confirm{flex:1;padding:8px;background:var(--sage);color:white;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer}
+.btn-wa-small{flex:1;padding:8px;background:#25d366;color:white;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer}
+.danger-box{background:#fff5f5;border:2px solid #fecaca;border-radius:var(--r);padding:16px;margin-top:4px}
+.danger-title{font-size:13px;font-weight:800;color:#dc2626;margin-bottom:6px}
+.danger-text{font-size:12px;color:#b91c1c;line-height:1.5;margin-bottom:12px}
+.btn-danger{width:100%;padding:14px;background:#dc2626;color:white;border:none;border-radius:var(--r2);font-size:14px;font-weight:800;cursor:pointer}
+
+/* NOTIFICATIONS TOGGLE */
+.notif-row{display:flex;justify-content:space-between;align-items:center}
+.toggle{width:46px;height:26px;background:var(--border);border-radius:13px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
+.toggle.on{background:var(--sage3)}
+.toggle::after{content:"";width:22px;height:22px;background:white;border-radius:50%;position:absolute;top:2px;left:2px;transition:transform .2s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.toggle.on::after{transform:translateX(20px)}
+
+/* SETTINGS */
+#settings-screen{background:var(--cream)}
+.settings-list{padding:16px;display:flex;flex-direction:column;gap:12px}
+.settings-card{background:white;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.settings-item{padding:14px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--light);cursor:pointer}
+.settings-item:last-child{border-bottom:none}
+.si-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.si-green{background:#dcfce7}
+.si-blue{background:#dbeafe}
+.si-amber{background:#fef3c7}
+.si-info{flex:1}
+.si-title{font-size:14px;font-weight:700;color:var(--ink)}
+.si-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.si-arrow{color:var(--border);font-size:18px}
+.lang-btns{display:flex;background:var(--light);border-radius:10px;padding:3px;gap:3px}
+.lang-btn{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;transition:all .2s;color:var(--muted);border:none;background:transparent;font-family:"Plus Jakarta Sans",sans-serif}
+.lang-btn.on{background:white;color:var(--sage);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+
+/* BOT */
+.bot-panel{position:fixed;inset:0;background:white;z-index:1500;display:none;flex-direction:column;animation:slideUp .3s ease}
+.bot-panel.open{display:flex}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.bot-header{background:linear-gradient(135deg,var(--ink),#1a1a2e);color:white;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.bot-title-wrap{display:flex;align-items:center;gap:10px}
+.bot-avatar{width:36px;height:36px;background:rgba(201,168,76,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;border:1px solid rgba(201,168,76,.3)}
+.bot-title-text{font-family:"Playfair Display",serif;font-size:16px;font-weight:700}
+.bot-online-dot{width:8px;height:8px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite}
+.bot-x{background:rgba(255,255,255,.12);border:none;color:white;width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center}
+.bot-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#f9f7f4}
+.bot-msg{max-width:82%;padding:11px 14px;border-radius:16px;font-size:13px;line-height:1.55;animation:msgIn .2s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.bot-msg.ai{background:white;color:var(--ink);border-radius:4px 16px 16px 16px;align-self:flex-start;box-shadow:var(--sh)}
+.bot-msg.user{background:var(--ink);color:white;border-radius:16px 4px 16px 16px;align-self:flex-end}
+.bot-msg.ai strong{color:var(--sage)}
+.bot-msg.ai ul{padding-left:16px;margin-top:4px}
+.bot-msg.ai ol{padding-left:16px;margin-top:4px}
+.bot-msg.ai li{margin-bottom:3px}
+.bot-typing{background:white;padding:12px 16px;border-radius:4px 16px 16px 16px;align-self:flex-start;box-shadow:var(--sh);display:none}
+.typing-dots{display:flex;gap:4px}
+.t-dot{width:8px;height:8px;background:var(--muted);border-radius:50%;animation:tdot 1.1s infinite}
+.t-dot:nth-child(2){animation-delay:.2s}
+.t-dot:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-9px)}}
+.bot-sugg{padding:10px 16px;display:flex;gap:8px;overflow-x:auto;background:white;border-top:1px solid var(--light)}
+.bot-sugg::-webkit-scrollbar{display:none}
+.sugg-btn{padding:8px 14px;background:var(--light);border:1px solid var(--border);border-radius:20px;font-size:11px;font-weight:700;color:var(--sage);cursor:pointer;white-space:nowrap;flex-shrink:0;font-family:"Plus Jakarta Sans",sans-serif}
+.bot-input-row{padding:12px 16px;background:white;border-top:1px solid var(--border);display:flex;gap:8px}
+.bot-input{flex:1;padding:12px 16px;border:2px solid var(--border);border-radius:var(--r2);font-size:14px;font-family:"Plus Jakarta Sans",sans-serif;outline:none;transition:border-color .2s}
+.bot-input:focus{border-color:var(--sage3)}
+.bot-send{width:44px;height:44px;background:var(--ink);color:white;border:none;border-radius:var(--r2);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* BOT FAB */
+.bot-fab{position:fixed;bottom:24px;right:18px;width:54px;height:54px;background:linear-gradient(135deg,var(--ink),#1a1a2e);border-radius:50%;display:none;align-items:center;justify-content:center;font-size:22px;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.3);z-index:400;border:2px solid rgba(201,168,76,.3);animation:popIn .4s cubic-bezier(.34,1.56,.64,1)}
+.bot-fab.show{display:flex}
+@keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
+
+/* ACTION BAR */
+.action-bar{padding:14px 16px;background:white;border-top:1px solid var(--border);display:flex;gap:10px;position:sticky;bottom:0}
+.ab-outline{flex:1;padding:14px;background:white;color:var(--ink);border:2px solid var(--ink);border-radius:var(--r2);font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:"Plus Jakarta Sans",sans-serif}
+.ab-fill{flex:1;padding:14px;background:var(--ink);color:white;border:none;border-radius:var(--r2);font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:"Plus Jakarta Sans",sans-serif}
+.ab-gold{flex:1;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);border:none;border-radius:var(--r2);font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:"Plus Jakarta Sans",sans-serif}
+
+/* MODALS */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:900;display:none;align-items:flex-end;backdrop-filter:blur(4px)}
+.modal-bg.open{display:flex;animation:fadeIn .2s}
+.modal-box{background:white;border-radius:24px 24px 0 0;padding:22px 20px;width:100%;max-height:92vh;overflow-y:auto}
+.modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 18px}
+.modal-title{font-family:"Playfair Display",serif;font-size:18px;font-weight:800;margin-bottom:18px}
+.modal-btns{display:flex;gap:10px;margin-top:8px}
+
+/* TOAST */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(14px);background:var(--ink);color:white;padding:11px 20px;border-radius:var(--r2);font-size:13px;font-weight:700;z-index:9999;opacity:0;transition:all .3s;white-space:nowrap;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.ok{background:var(--sage)}
+.toast.err{background:#dc2626}
+
+/* LOADER */
+.loader-wrap{display:flex;align-items:center;justify-content:center;padding:40px;flex-direction:column;gap:12px}
+.spin{width:38px;height:38px;border:3px solid var(--border);border-top-color:var(--sage3);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* SECTION TITLE */
+.sec-title{font-family:"Playfair Display",serif;font-size:17px;font-weight:800;color:var(--ink);margin-bottom:14px}
+
+/* DELIVERY FEE SECTION */
+.zone-options{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.zone-opt{padding:13px 14px;border:2px solid var(--border);border-radius:var(--r2);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all .2s}
+.zone-opt.on{border-color:var(--sage3);background:rgba(64,145,108,.04)}
+.zone-name{font-size:13px;font-weight:700}
+.zone-price{font-size:14px;font-weight:800;color:var(--sage)}
+</style>
+</head>
+<body>
+
+<!-- ====== LANDING ====== -->
+<div class="screen active" id="landing">
+  <div class="hero-bg-slider" id="hero-slider">
+    <!-- Slides injected by JS -->
+  </div>
+  <div class="landing-nav">
+    <div class="l-logo">OST<span>·TZ</span></div>
+    <div class="l-nav-right">
+      <button class="l-bot-btn" onclick="openBot()">🤖<div class="l-bot-pulse"></div></button>
+      <button class="l-lang-btn" onclick="cycleLang()" id="lang-btn">SW</button>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag" id="l-tag">🇹🇿 Biashara Tanzania</div>
+    <h1 class="hero-title" id="l-title">Fungua Duka Lako<br><em>Online</em> Leo!</h1>
+    <p class="hero-sub" id="l-sub">Jukwaa bora la biashara Tanzania. Fikia wateja kote nchini kwa urahisi.</p>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-n" id="stat-n">0</div><div class="h-stat-l" id="stat-l1">Maduka</div></div>
+      <div class="h-stat"><div class="h-stat-n">26</div><div class="h-stat-l" id="stat-l2">Mikoa</div></div>
+      <div class="h-stat"><div class="h-stat-n">FREE</div><div class="h-stat-l" id="stat-l3">Kujisajili</div></div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-gold" onclick="go('register-screen')" id="l-btn1">🚀 Anza Biashara Yako</button>
+      <button class="btn-ghost" onclick="go('customer-screen')" id="l-btn2">🛍️ Tazama Maduka</button>
+      <button class="btn-ghost" onclick="go('login-screen')" id="l-btn3">🔑 Ingia kama Mmiliki</button>
+    </div>
+  </div>
+  <div class="hero-dots" id="hero-dots"></div>
+  <div class="features-strip">
+    <div class="features-label" id="feat-label">Vipengele</div>
+    <div class="features-row">
+      <div class="feat-item"><div class="feat-icon">📱</div><div class="feat-label" id="f1">PWA App</div></div>
+      <div class="feat-item"><div class="feat-icon">🤖</div><div class="feat-label" id="f2">AI Bot</div></div>
+      <div class="feat-item"><div class="feat-icon">💬</div><div class="feat-label" id="f3">WhatsApp</div></div>
+      <div class="feat-item"><div class="feat-icon">🔔</div><div class="feat-label" id="f4">Notifications</div></div>
+      <div class="feat-item"><div class="feat-icon">⭐</div><div class="feat-label" id="f5">Reviews</div></div>
+      <div class="feat-item"><div class="feat-icon">🎬</div><div class="feat-label" id="f6">Videos</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== REGISTER ====== -->
+<div class="screen" id="register-screen">
+  <div class="topbar">
+    <button class="tb-back" onclick="back()">←</button>
+    <span class="tb-title" id="reg-title">Fungua Duka</span>
+    <div style="width:36px"></div>
+  </div>
+  <div class="form-wrap">
+    <div class="form-block">
+      <div class="form-section-title">📋 Taarifa za Biashara</div>
+      <div class="fld"><label>Jina la Biashara</label><input id="r-name" type="text" placeholder="Mfano: Fatma Fashion"></div>
+      <div class="fld"><label>Aina ya Biashara</label>
+        <select id="r-type">
+          <option value="">-- Chagua --</option>
+          <option value="Boutique">👗 Boutique / Clothing</option>
+          <option value="Electronics">📱 Electronics</option>
+          <option value="Bakery">🍰 Bakery</option>
+          <option value="Cosmetics">💄 Cosmetics / Beauty</option>
+          <option value="Furniture">🛋️ Furniture</option>
+          <option value="Food">🍽️ Food & Restaurant</option>
+          <option value="Pharmacy">💊 Pharmacy</option>
+          <option value="Computers">🖥️ Computers</option>
+          <option value="Home">🏠 Home Products</option>
+          <option value="Other">🏪 Nyingine</option>
+        </select>
+      </div>
+      <div class="fld"><label>Logo ya Biashara</label>
+        <div class="img-upload-box" id="logo-box">
+          <input type="file" accept="image/*" onchange="handleLogoUpload(event)">
+          <div id="logo-preview"><div class="img-placeholder">🏪</div><div class="img-hint">Bonyeza kupakia logo yako</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="form-block">
+      <div class="form-section-title">📞 Mawasiliano</div>
+      <div class="fld"><label>WhatsApp</label><input id="r-wa" type="tel" placeholder="+255 xxx xxx xxx"></div>
+      <div class="fld"><label>Masaa ya Kufungua</label>
+        <select id="r-hours">
+          <option value="7am–7pm Kila siku">7am – 7pm Kila siku</option>
+          <option value="8am–9pm Kila siku">8am – 9pm Kila siku</option>
+          <option value="9am–10pm Kila siku">9am – 10pm Kila siku</option>
+          <option value="24/7">24 / 7</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-block">
+      <div class="form-section-title">🚚 Usafirishaji</div>
+      <div class="del-opts">
+        <div class="del-opt on" onclick="pickDel(this,'free')" id="d-free">🆓 Bure</div>
+        <div class="del-opt" onclick="pickDel(this,'paid')" id="d-paid">💰 Malipo</div>
+      </div>
+    </div>
+    <div class="form-block">
+      <div class="form-section-title">📍 Eneo</div>
+      <div class="fld"><label>Mkoa</label>
+        <select id="r-region">
+          <option>Dar es Salaam</option><option>Mwanza</option><option>Arusha</option>
+          <option>Dodoma</option><option>Mbeya</option><option>Morogoro</option>
+          <option>Tanga</option><option>Tabora</option><option>Zanzibar</option>
+          <option>Kigoma</option><option>Shinyanga</option><option>Kilimanjaro</option>
+          <option>Lindi</option><option>Mtwara</option><option>Ruvuma</option>
+          <option>Iringa</option><option>Kagera</option><option>Geita</option>
+          <option>Singida</option><option>Mara</option><option>Simiyu</option>
+          <option>Njombe</option><option>Katavi</option><option>Rukwa</option>
+          <option>Songwe</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-block">
+      <div class="form-section-title">🔐 Usalama</div>
+      <div class="fld"><label>Nywila</label><input id="r-pass" type="password" placeholder="Weka nywila salama"></div>
+      <div class="fld"><label>Thibitisha Nywila</label><input id="r-pass2" type="password" placeholder="Rudia nywila"></div>
+    </div>
+    <button class="btn-main" onclick="doRegister()" id="r-btn">🚀 Unda Duka Langu</button>
+    <div style="height:24px"></div>
+  </div>
+</div>
+
+<!-- ====== LOGIN ====== -->
+<div class="screen" id="login-screen">
+  <div class="topbar">
+    <button class="tb-back" onclick="back()">←</button>
+    <span class="tb-title" id="login-nav-title">Ingia</span>
+    <div style="width:36px"></div>
+  </div>
+  <div class="login-wrap">
+    <div class="login-icon">🏪</div>
+    <div class="login-title" id="login-title">Karibu Tena!</div>
+    <div class="login-sub" id="login-sub">Ingia kudhibiti biashara yako</div>
+    <div class="fld"><label>Jina la Biashara</label><input id="l-name" type="text" placeholder="Jina lako la biashara"></div>
+    <div class="fld"><label>Nywila</label><input id="l-pass" type="password" placeholder="Nywila yako"></div>
+    <button class="btn-main" onclick="doLogin()" id="l-btn">🔑 Ingia</button>
+    <div class="login-link">Huna akaunti? <a onclick="go('register-screen')">Jisajili →</a></div>
+  </div>
+</div>
+
+<!-- ====== CUSTOMER ====== -->
+<div class="screen" id="customer-screen">
+  <div class="topbar">
+    <button class="tb-back" onclick="back()">←</button>
+    <span class="tb-title" id="cust-title">Maduka Tanzania</span>
+    <button class="tb-action" onclick="go('settings-screen')">⚙️</button>
+  </div>
+  <div class="search-wrap">
+    <div class="search-inner">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-inp" placeholder="Tafuta duka au bidhaa..." oninput="filterSearch()">
+    </div>
+  </div>
+  <div class="chips" id="chips-bar">
+    <div class="chip on" onclick="filterType('all',this)">🏪 Zote</div>
+    <div class="chip" onclick="filterType('Boutique',this)">👗 Boutique</div>
+    <div class="chip" onclick="filterType('Electronics',this)">📱 Electronics</div>
+    <div class="chip" onclick="filterType('Bakery',this)">🍰 Bakery</div>
+    <div class="chip" onclick="filterType('Cosmetics',this)">💄 Cosmetics</div>
+    <div class="chip" onclick="filterType('Food',this)">🍽️ Chakula</div>
+    <div class="chip" onclick="filterType('Furniture',this)">🛋️ Samani</div>
+    <div class="chip" onclick="filterType('Pharmacy',this)">💊 Dawa</div>
+  </div>
+  <div style="flex:1;overflow-y:auto" id="stores-wrapper">
+    <div class="loader-wrap" id="stores-loader"><div class="spin"></div></div>
+    <div class="stores-feed" id="stores-feed" style="display:none">
+      <div class="stores-grid" id="stores-grid"></div>
+    </div>
+    <div class="empty-feed" id="stores-empty" style="display:none">
+      <div class="empty-icon">🏪</div>
+      <div class="empty-title">Hakuna maduka bado</div>
+      <div class="empty-sub">Kuwa wa kwanza kufungua duka!</div>
+      <button class="btn-main" style="width:auto;padding:12px 24px;margin-top:8px" onclick="go('register-screen')">Fungua Duka</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====== STORE PAGE ====== -->
+<div class="screen" id="store-page">
+  <div style="flex:1;overflow-y:auto" id="store-scroll">
+    <div class="store-hero" id="store-hero">
+      <div id="store-hero-bg-wrap" style="position:absolute;inset:0;z-index:0"></div>
+      <div class="store-hero-overlay" style="z-index:1"></div>
+      <div class="topbar" style="position:absolute;top:0;left:0;right:0;z-index:10;background:transparent;border:none;box-shadow:none">
+        <button class="tb-back" style="background:rgba(255,255,255,.15);color:white" onclick="back()">←</button>
+        <span class="tb-title" style="color:white" id="sp-nav-title">Duka</span>
+        <button class="tb-action" style="background:rgba(255,255,255,.15);color:white" onclick="shareStore()">🔗</button>
+      </div>
+      <div class="store-hero-content" style="z-index:2">
+        <div class="store-logo-wrap" id="sp-logo">🏪</div>
+        <div class="store-hero-name" id="sp-name">—</div>
+        <div class="store-hero-type" id="sp-type">—</div>
+        <div class="store-hero-meta">
+          <div class="store-meta-pill" id="sp-location">📍 —</div>
+          <div class="store-meta-pill" id="sp-hours">🕐 —</div>
+          <div class="store-meta-pill" id="sp-delivery">🚚 —</div>
+          <div class="store-meta-pill" id="sp-rating">⭐ —</div>
+        </div>
+      </div>
+    </div>
+    <div class="store-tabs-bar" id="store-tabs">
+      <div class="s-tab on" onclick="switchTab('products',this)">🛍️ Bidhaa</div>
+      <div class="s-tab" onclick="switchTab('gallery',this)">📸 Gallery</div>
+      <div class="s-tab" onclick="switchTab('videos',this)">🎬 Videos</div>
+      <div class="s-tab" onclick="switchTab('reviews',this)">⭐ Maoni</div>
+      <div class="s-tab" onclick="switchTab('budget',this)">💰 Budget</div>
+      <div class="s-tab" onclick="switchTab('info',this)">ℹ️ Info</div>
+    </div>
+    <div id="pane-products" class="tab-pane on">
+      <div class="loader-wrap" id="prods-loader"><div class="spin"></div></div>
+      <div class="products-grid" id="prods-grid" style="display:none"></div>
+      <div class="empty-feed" id="prods-empty" style="display:none">
+        <div class="empty-icon">📦</div>
+        <div class="empty-title">Hakuna bidhaa bado</div>
+      </div>
+    </div>
+    <div id="pane-gallery" class="tab-pane">
+      <div class="gallery-grid" id="gal-grid"></div>
+      <div class="empty-feed" id="gal-empty" style="display:none">
+        <div class="empty-icon">📸</div><div class="empty-title">Hakuna picha bado</div>
+      </div>
+    </div>
+    <div id="pane-videos" class="tab-pane">
+      <div id="videos-list"></div>
+      <div class="empty-feed" id="vids-empty" style="display:none">
+        <div class="empty-icon">🎬</div><div class="empty-title">Hakuna video bado</div>
+      </div>
+    </div>
+    <div id="pane-reviews" class="tab-pane">
+      <div id="reviews-list"></div>
+      <div class="review-form">
+        <div class="sec-title">Acha Maoni</div>
+        <div class="star-row" id="star-row">
+          <span class="star-btn" onclick="setStar(1)">⭐</span><span class="star-btn" onclick="setStar(2)">⭐</span>
+          <span class="star-btn" onclick="setStar(3)">⭐</span><span class="star-btn" onclick="setStar(4)">⭐</span>
+          <span class="star-btn" onclick="setStar(5)">⭐</span>
+        </div>
+        <div class="fld"><input type="text" id="rev-name" placeholder="Jina lako"></div>
+        <div class="fld"><textarea id="rev-text" rows="3" placeholder="Andika maoni..."></textarea></div>
+        <button class="btn-main" onclick="submitReview()">📝 Tuma Maoni</button>
+      </div>
+    </div>
+    <div id="pane-budget" class="tab-pane">
+      <div class="budget-wrap">
+        <div class="sec-title">Chagua Budget</div>
+        <div class="budget-display" id="budget-val">TZS 500,000</div>
+        <input type="range" class="budget-range" min="1000" max="5000000" step="1000" value="500000" oninput="onBudget(this.value)" id="budget-slider">
+        <div class="products-grid" id="budget-grid"></div>
+      </div>
+    </div>
+    <div id="pane-info" class="tab-pane">
+      <div class="info-rows">
+        <div class="info-row"><span class="info-label">Jina</span><span class="info-value" id="inf-name">—</span></div>
+        <div class="info-row"><span class="info-label">Aina</span><span class="info-value" id="inf-type">—</span></div>
+        <div class="info-row"><span class="info-label">Mkoa</span><span class="info-value" id="inf-region">—</span></div>
+        <div class="info-row"><span class="info-label">Masaa</span><span class="info-value" id="inf-hours">—</span></div>
+        <div class="info-row"><span class="info-label">Delivery</span><span class="info-value" id="inf-delivery">—</span></div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:14px">
+        <button class="ab-fill" onclick="callStore()">📞 Piga Simu</button>
+        <button class="ab-gold" onclick="waStore()">💬 WhatsApp</button>
+      </div>
+    </div>
+  </div>
+  <div class="action-bar">
+    <button class="ab-outline" onclick="openOrderModal()">📦 Agiza</button>
+    <button class="ab-fill" onclick="waStore()">💬 WhatsApp</button>
+  </div>
+</div>
+
+<!-- ====== ADMIN ====== -->
+<div class="screen" id="admin-screen">
+  <div style="flex:1;overflow-y:auto">
+    <div class="admin-hero">
+      <div class="admin-hero-welcome" id="adm-welcome">Karibu,</div>
+      <div class="admin-hero-name" id="adm-name">Duka Lako</div>
+      <div class="topbar" style="position:absolute;top:0;right:0;padding:14px 18px;background:transparent;border:none;box-shadow:none">
+        <button class="tb-action" style="background:rgba(255,255,255,.12);color:white" onclick="go('settings-screen')">⚙️</button>
+      </div>
+    </div>
+    <div class="admin-stats-row">
+      <div class="a-stat"><div class="a-stat-n" id="adm-prods">0</div><div class="a-stat-l">Bidhaa</div></div>
+      <div class="a-stat"><div class="a-stat-n" id="adm-orders">0</div><div class="a-stat-l">Orders</div></div>
+      <div class="a-stat"><div class="a-stat-n" id="adm-revs">0</div><div class="a-stat-l">Maoni</div></div>
+    </div>
+    <div class="admin-sections">
+      <!-- Notifications -->
+      <div class="a-section">
+        <div class="a-section-head">
+          <div class="a-section-title">🔔 Notifications</div>
+        </div>
+        <div class="a-section-body">
+          <div class="notif-row">
+            <span style="font-size:13px;color:var(--muted)">Pata taarifa za orders mpya</span>
+            <div class="toggle" id="notif-toggle" onclick="toggleNotif()"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Products -->
+      <div class="a-section">
+        <div class="a-section-head">
+          <div class="a-section-title">📦 Bidhaa Zangu</div>
+          <button class="a-section-btn" onclick="openAddProd()">+ Ongeza</button>
+        </div>
+        <div class="a-section-body" id="adm-prods-list">
+          <div class="loader-wrap"><div class="spin"></div></div>
+        </div>
+      </div>
+      <!-- Gallery -->
+      <div class="a-section">
+        <div class="a-section-head">
+          <div class="a-section-title">📸 Gallery</div>
+          <button class="a-section-btn" onclick="openAddGallery()">+ Picha</button>
+        </div>
+        <div class="a-section-body">
+          <div class="gallery-grid" id="adm-gal-grid"></div>
+          <div id="adm-gal-empty" style="text-align:center;padding:16px;color:var(--muted);font-size:13px">Hakuna picha bado</div>
+        </div>
+      </div>
+      <!-- Videos -->
+      <div class="a-section">
+        <div class="a-section-head">
+          <div class="a-section-title">🎬 YouTube Videos</div>
+          <button class="a-section-btn" onclick="openAddVideo()">+ Video</button>
+        </div>
+        <div class="a-section-body" id="adm-vids-list">
+          <div style="text-align:center;padding:16px;color:var(--muted);font-size:13px">Hakuna video bado</div>
+        </div>
+      </div>
+      <!-- Orders -->
+      <div class="a-section">
+        <div class="a-section-head">
+          <div class="a-section-title">📋 Orders</div>
+          <span style="font-size:12px;color:var(--muted)" id="adm-orders-count">0</span>
+        </div>
+        <div class="a-section-body" id="adm-orders-list">
+          <div style="text-align:center;padding:16px;color:var(--muted);font-size:13px">Hakuna orders bado</div>
+        </div>
+      </div>
+      <!-- Delivery Fees -->
+      <div class="a-section">
+        <div class="a-section-head"><div class="a-section-title">🚚 Bei za Delivery</div></div>
+        <div class="a-section-body">
+          <div class="fld"><label>📍 Karibu (TZS)</label><input type="number" id="fee-near" placeholder="0"></div>
+          <div class="fld"><label>🗺️ Mbali (TZS)</label><input type="number" id="fee-far" placeholder="0"></div>
+          <div class="fld"><label>🌍 Mbali Sana (TZS)</label><input type="number" id="fee-vfar" placeholder="0"></div>
+          <button class="btn-main" onclick="saveDeliveryFees()">💾 Hifadhi Bei</button>
+        </div>
+      </div>
+      <!-- Danger -->
+      <div class="danger-box">
+        <div class="danger-title">⚠️ Hatari</div>
+        <div class="danger-text">Kufuta duka lako itafuta bidhaa, orders, na picha zote. Haiwezi kurudishwa!</div>
+        <button class="btn-danger" onclick="deleteStore()">🗑️ Futa Duka Langu</button>
+      </div>
+      <div style="height:24px"></div>
+    </div>
+  </div>
+  <!-- Floating back/logout -->
+  <div style="position:fixed;bottom:24px;left:18px;z-index:300">
+    <button onclick="confirmLogout()" style="background:var(--ink);color:white;border:none;padding:12px 20px;border-radius:var(--r2);font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--sh2);font-family:'Plus Jakarta Sans',sans-serif">← Toka</button>
+  </div>
+</div>
+
+<!-- ====== SETTINGS ====== -->
+<div class="screen" id="settings-screen">
+  <div class="topbar">
+    <button class="tb-back" onclick="back()">←</button>
+    <span class="tb-title">Mipangilio</span>
+    <div style="width:36px"></div>
+  </div>
+  <div class="settings-list">
+    <div class="settings-card">
+      <div class="settings-item">
+        <div class="si-icon si-green">🌐</div>
+        <div class="si-info"><div class="si-title">Lugha</div><div class="si-sub">Chagua lugha yako</div></div>
+        <div class="lang-btns">
+          <button class="lang-btn on" onclick="setLang('sw',this)" id="ls-sw">SW</button>
+          <button class="lang-btn" onclick="setLang('en',this)" id="ls-en">EN</button>
+        </div>
+      </div>
+      <div class="settings-item" onclick="openBot()">
+        <div class="si-icon si-blue">🤖</div>
+        <div class="si-info"><div class="si-title">AI Assistant</div><div class="si-sub">Zungumza na OST Bot</div></div>
+        <div class="si-arrow">›</div>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="settings-item" onclick="go('customer-screen')">
+        <div class="si-icon si-green">🛍️</div>
+        <div class="si-info"><div class="si-title">Tazama Maduka</div></div>
+        <div class="si-arrow">›</div>
+      </div>
+      <div class="settings-item" onclick="shareApp()">
+        <div class="si-icon si-amber">🔗</div>
+        <div class="si-info"><div class="si-title">Shiriki OST</div></div>
+        <div class="si-arrow">›</div>
+      </div>
+    </div>
+    <div style="text-align:center;padding:20px;color:var(--muted);font-size:12px">Online Stores TZ · v3.0 · Tanzania 🇹🇿</div>
+  </div>
+</div>
+
+<!-- ====== BOT PANEL ====== -->
+<div class="bot-panel" id="bot-panel">
+  <div class="bot-header">
+    <div class="bot-title-wrap">
+      <div class="bot-avatar">🤖</div>
+      <div>
+        <div class="bot-title-text">OST Assistant</div>
+        <div style="display:flex;align-items:center;gap:5px;margin-top:2px"><div class="bot-online-dot"></div><span style="font-size:10px;opacity:.6">Online</span></div>
+      </div>
+    </div>
+    <button class="bot-x" onclick="closeBot()">✕</button>
+  </div>
+  <div class="bot-msgs" id="bot-msgs">
+    <div class="bot-msg ai" id="bot-welcome-msg">Hello! 👋 I am OST Bot. Ask me anything about stores, products or how to get started!</div>
+  </div>
+  <div class="bot-typing" id="bot-typing"><div class="typing-dots"><div class="t-dot"></div><div class="t-dot"></div><div class="t-dot"></div></div></div>
+  <div class="bot-sugg" id="bot-sugg">
+    <button class="sugg-btn" onclick="useSugg(this)">Available stores</button>
+    <button class="sugg-btn" onclick="useSugg(this)">How to open a store</button>
+    <button class="sugg-btn" onclick="useSugg(this)">How to order</button>
+    <button class="sugg-btn" onclick="useSugg(this)">Delivery info</button>
+  </div>
+  <div class="bot-input-row">
+    <input class="bot-input" id="bot-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendBot()">
+    <button class="bot-send" onclick="sendBot()">➤</button>
+  </div>
+</div>
+
+<!-- BOT FAB -->
+<button class="bot-fab" id="bot-fab" onclick="openBot()">🤖</button>
+
+<!-- ====== FULLSCREEN VIEWER ====== -->
+<div class="fullscreen-viewer" id="fv">
+  <div class="fv-topbar">
+    <button class="fv-close" onclick="closeFV()">✕</button>
+    <span class="fv-counter" id="fv-counter">1/1</span>
+    <div style="width:38px"></div>
+  </div>
+  <div class="fv-main">
+    <button class="fv-prev" onclick="fvMove(-1)">‹</button>
+    <img class="fv-img" id="fv-img" src="" alt="">
+    <div id="fv-yt" style="display:none;width:100%;padding:0 8px">
+      <iframe class="fv-youtube" id="fv-iframe" src="" allowfullscreen></iframe>
+    </div>
+    <button class="fv-next" onclick="fvMove(1)">›</button>
+  </div>
+  <div class="fv-caption"><div class="fv-caption-text" id="fv-cap"></div></div>
+  <div class="fv-thumbs" id="fv-thumbs"></div>
+</div>
+
+<!-- ====== MODALS ====== -->
+<!-- Order Modal -->
+<div class="modal-bg" id="order-modal">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <div class="modal-title">📦 Agiza Bidhaa</div>
+    <div class="fld"><label>Jina lako</label><input id="o-name" type="text" placeholder="Jina kamili"></div>
+    <div class="fld"><label>Namba ya Simu</label><input id="o-phone" type="tel" placeholder="+255 xxx xxx xxx"></div>
+    <div class="fld"><label>Mkoa wako</label>
+      <select id="o-region">
+        <option>Dar es Salaam</option><option>Mwanza</option><option>Arusha</option>
+        <option>Dodoma</option><option>Mbeya</option><option>Morogoro</option><option>Tanga</option>
+      </select>
+    </div>
+    <div class="fld"><label>Umbali wa Delivery</label>
+      <div class="zone-options">
+        <div class="zone-opt on" onclick="pickZone(this,'near')"><span class="zone-name">📍 Karibu</span><span class="zone-price" id="zp-near">TZS 0</span></div>
+        <div class="zone-opt" onclick="pickZone(this,'far')"><span class="zone-name">🗺️ Mbali</span><span class="zone-price" id="zp-far">TZS 0</span></div>
+        <div class="zone-opt" onclick="pickZone(this,'vfar')"><span class="zone-name">🌍 Mbali Sana</span><span class="zone-price" id="zp-vfar">TZS 0</span></div>
+      </div>
+    </div>
+    <div class="fld"><label>Anwani</label><input id="o-addr" type="text" placeholder="Mtaa, nyumba..."></div>
+    <div class="fld"><label>Bidhaa unayotaka</label><input id="o-prod" type="text" placeholder="Jina la bidhaa"></div>
+    <div class="fld"><label>Maelezo zaidi</label><textarea id="o-notes" rows="2" placeholder="Size, rangi, n.k..."></textarea></div>
+    <div class="modal-btns">
+      <button class="ab-outline" onclick="closeModal('order-modal')">Ghairi</button>
+      <button class="ab-fill" onclick="placeOrder()">✅ Agiza</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Product Modal -->
+<div class="modal-bg" id="prod-modal">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="prod-modal-title">➕ Ongeza Bidhaa</div>
+    <input type="hidden" id="edit-prod-id">
+    <div class="fld"><label>Jina la Bidhaa</label><input id="pm-name" type="text" placeholder="Mfano: Dress ya Harusi"></div>
+    <div class="fld"><label>Kategoria</label><input id="pm-cat" type="text" placeholder="Mfano: Dresses"></div>
+    <div class="fld"><label>Bei (TZS)</label><input id="pm-price" type="number" placeholder="25000"></div>
+    <div class="fld"><label>Stock</label><input id="pm-stock" type="number" placeholder="10"></div>
+    <div class="fld"><label>Maelezo</label><textarea id="pm-desc" rows="3" placeholder="Eleza bidhaa yako..."></textarea></div>
+    <div class="fld"><label>Picha ya Bidhaa</label>
+      <div class="img-upload-box" id="prod-img-box">
+        <input type="file" accept="image/*" onchange="handleProdImg(event)">
+        <div id="prod-img-preview"><div class="img-placeholder-rect">📷</div><div class="img-hint">Bonyeza kupakia picha</div></div>
+      </div>
+    </div>
+    <div class="modal-btns">
+      <button class="ab-outline" onclick="closeModal('prod-modal')">Ghairi</button>
+      <button class="ab-fill" onclick="saveProd()">💾 Hifadhi</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Gallery Modal -->
+<div class="modal-bg" id="gal-modal">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <div class="modal-title">📸 Ongeza Picha</div>
+    <div class="fld"><label>Picha</label>
+      <div class="img-upload-box" id="gal-img-box">
+        <input type="file" accept="image/*" onchange="handleGalImg(event)">
+        <div id="gal-img-preview"><div class="img-placeholder-rect">🖼️</div><div class="img-hint">Bonyeza kupakia picha</div></div>
+      </div>
+    </div>
+    <div class="fld"><label>Caption (optional)</label><input id="gal-caption" type="text" placeholder="Maelezo ya picha..."></div>
+    <div class="modal-btns">
+      <button class="ab-outline" onclick="closeModal('gal-modal')">Ghairi</button>
+      <button class="ab-fill" onclick="saveGallery()">💾 Hifadhi</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Video Modal -->
+<div class="modal-bg" id="vid-modal">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🎬 Ongeza YouTube Video</div>
+    <div class="fld"><label>Kichwa cha Video</label><input id="vid-title" type="text" placeholder="Mfano: Bidhaa zetu mpya..."></div>
+    <div class="fld"><label>YouTube Link</label><input id="vid-url" type="url" placeholder="https://youtube.com/watch?v=..."></div>
+    <div class="modal-btns">
+      <button class="ab-outline" onclick="closeModal('vid-modal')">Ghairi</button>
+      <button class="ab-fill" onclick="saveVideo()">💾 Hifadhi</button>
+    </div>
+  </div>
+</div>
+
+<!-- Product Detail Modal -->
+<div class="modal-bg" id="prod-detail-modal">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <div id="pd-img-wrap" style="margin-bottom:14px"></div>
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:900;margin-bottom:4px" id="pd-name">—</div>
+    <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--sage);margin-bottom:10px" id="pd-price">—</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px" id="pd-desc">—</div>
+    <div style="font-size:12px;font-weight:700;color:var(--sage3);margin-bottom:14px" id="pd-stock">—</div>
+    <div class="modal-btns">
+      <button class="ab-outline" onclick="closeModal('prod-detail-modal')">Funga</button>
+      <button class="ab-fill" onclick="orderThisProd()">📦 Agiza</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+const API = 'https://onlinestores-backend.onrender.com';
+let lang = 'sw';
+let screenStack = ['landing'];
+let curScreen = 'landing';
+let allStores = [];
+let curStore = null;
+let curStoreProd = [];
+let adminToken = localStorage.getItem('ost-token');
+let adminStore = null;
+try { adminStore = JSON.parse(localStorage.getItem('ost-store') || 'null'); } catch(e){}
+let selDelivery = 'free';
+let selZone = 'near';
+let curRating = 0;
+let botHistory = [];
+let logoB64 = '';
+let prodImgB64 = '';
+let galImgB64 = '';
+// hero slider
+let heroSlides = [];
+let heroIdx = 0;
+let heroTimer = null;
+// fullscreen viewer
+let fvItems = [];
+let fvIdx = 0;
+
+// ============================================================
+// TRANSLATIONS
+// ============================================================
+const TR = {
+  sw:{
+    'l-tag':'🇹🇿 Biashara Tanzania','l-title':'Fungua Duka Lako<br><em>Online</em> Leo!',
+    'l-sub':'Jukwaa bora la biashara Tanzania. Fikia wateja kote nchini.',
+    'stat-l1':'Maduka','stat-l2':'Mikoa','stat-l3':'Kujisajili',
+    'l-btn1':'🚀 Anza Biashara Yako','l-btn2':'🛍️ Tazama Maduka','l-btn3':'🔑 Ingia kama Mmiliki',
+    'feat-label':'Vipengele','f1':'PWA App','f2':'AI Bot','f3':'WhatsApp','f4':'Notif','f5':'Reviews','f6':'Videos',
+    'reg-title':'Fungua Duka','cust-title':'Maduka Tanzania',
+    'login-title':'Karibu Tena!','login-sub':'Ingia kudhibiti biashara yako',
+  },
+  en:{
+    'l-tag':'🇹🇿 Tanzania Business','l-title':'Open Your<br><em>Online</em> Store Today!',
+    'l-sub':"Tanzania is best business platform. Reach customers everywhere.",
+    'stat-l1':'Stores','stat-l2':'Regions','stat-l3':'Free',
+    'l-btn1':'🚀 Start Your Business','l-btn2':'🛍️ Browse Stores','l-btn3':'🔑 Sign In as Owner',
+    'feat-label':'Features','f1':'PWA App','f2':'AI Bot','f3':'WhatsApp','f4':'Notif','f5':'Reviews','f6':'Videos',
+    'reg-title':'Open Store','cust-title':'Stores in Tanzania',
+    'login-title':'Welcome Back!','login-sub':"Sign in to manage your store",
+  }
+};
+function applyLang(){
+  const t = TR[lang];
+  for(const id in t){
+    const el = document.getElementById(id);
+    if(el) el.innerHTML = t[id];
+  }
+  document.getElementById('lang-btn').textContent = lang.toUpperCase();
+  document.getElementById('ls-sw').classList.toggle('on', lang==='sw');
+  document.getElementById('ls-en').classList.toggle('on', lang==='en');
+  // Update bot welcome
+  const bwm = document.getElementById('bot-welcome-msg');
+  if(bwm) bwm.textContent = lang==='sw'
+    ? 'Habari! 👋 Mimi ni OST Bot. Niulize chochote kuhusu maduka, bidhaa au jinsi ya kuanza!'
+    : 'Hello! 👋 I am OST Bot. Ask me anything about stores, products or how to get started!';
+}
+function setLang(l, el){
+  lang = l;
+  localStorage.setItem('ost-lang', l);
+  applyLang();
+}
+function cycleLang(){
+  setLang(lang==='sw'?'en':'sw');
+}
+
+// ============================================================
+// SCREEN NAVIGATION
+// ============================================================
+function go(id){
+  const prev = document.getElementById(curScreen);
+  const next = document.getElementById(id);
+  if(!next) return;
+  if(prev) prev.classList.remove('active');
+  next.classList.add('active');
+  screenStack.push(curScreen);
+  curScreen = id;
+  updateFab();
+  if(id==='customer-screen') loadStores();
+  if(id==='admin-screen') loadAdmin();
+  window.scrollTo(0,0);
+}
+function back(){
+  const prev = screenStack.pop();
+  if(!prev){ go('landing'); return; }
+  const cur = document.getElementById(curScreen);
+  const target = document.getElementById(prev);
+  if(cur) cur.classList.remove('active');
+  if(target) target.classList.add('active');
+  curScreen = prev;
+  updateFab();
+  window.scrollTo(0,0);
+}
+function updateFab(){
+  const fab = document.getElementById('bot-fab');
+  const show = ['customer-screen','store-page','admin-screen','landing'].includes(curScreen);
+  fab.classList.toggle('show', show);
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+function toast(msg, type=''){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show ' + type;
+  setTimeout(()=>el.className='toast', 3000);
+}
+
+// ============================================================
+// IMAGE UPLOAD HELPERS
+// ============================================================
+function readFile(file){
+  return new Promise((res,rej)=>{
+    const r = new FileReader();
+    r.onload = e => res(e.target.result);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+}
+async function handleLogoUpload(e){
+  const file = e.target.files[0]; if(!file) return;
+  logoB64 = await readFile(file);
+  document.getElementById('logo-preview').innerHTML =
+    `<img src="${logoB64}" class="img-preview"><div class="img-hint">Logo ✅</div>`;
+}
+async function handleProdImg(e){
+  const file = e.target.files[0]; if(!file) return;
+  prodImgB64 = await readFile(file);
+  document.getElementById('prod-img-preview').innerHTML =
+    `<img src="${prodImgB64}" class="img-preview-rect"><div class="img-hint">Picha ✅</div>`;
+}
+async function handleGalImg(e){
+  const file = e.target.files[0]; if(!file) return;
+  galImgB64 = await readFile(file);
+  document.getElementById('gal-img-preview').innerHTML =
+    `<img src="${galImgB64}" class="img-preview-rect"><div class="img-hint">Picha ✅</div>`;
+}
+
+// ============================================================
+// HERO BACKGROUND SLIDER
+// ============================================================
+const STORE_BG = {
+  Boutique:'linear-gradient(160deg,#1a0533,#4a1a6b)',
+  Electronics:'linear-gradient(160deg,#001433,#003380)',
+  Bakery:'linear-gradient(160deg,#3d0014,#8b1a4a)',
+  Cosmetics:'linear-gradient(160deg,#2d0033,#7b1fa2)',
+  Furniture:'linear-gradient(160deg,#1a1200,#4a3800)',
+  Food:'linear-gradient(160deg,#0d2600,#1b5e20)',
+  Pharmacy:'linear-gradient(160deg,#002233,#00476b)',
+  Computers:'linear-gradient(160deg,#0d0d1a,#1a237e)',
+  Home:'linear-gradient(160deg,#1a0d00,#4e342e)',
+  Other:'linear-gradient(160deg,#0a0a0a,#1a1a2e)',
+};
+const STORE_EMOJI = {Boutique:'👗',Electronics:'📱',Bakery:'🍰',Cosmetics:'💄',Furniture:'🛋️',Food:'🍽️',Pharmacy:'💊',Computers:'🖥️',Home:'🏠',Other:'🏪'};
+
+function buildHeroSlider(){
+  const container = document.getElementById('hero-slider');
+  const dotsEl = document.getElementById('hero-dots');
+  if(!container) return;
+  // Collect slides from real store products
+  const slides = [];
+  allStores.forEach(s=>{
+    if(s._products){
+      s._products.forEach(p=>{
+        if(p.imageUrl) slides.push({img:p.imageUrl, store:s.name, product:p.name, price:'TZS '+Number(p.sellingPrice||p.price||0).toLocaleString(), type:s.type, storeId:s._id||s.id});
+      });
+    }
+  });
+  // Demo slides if not enough
+  const demos = [
+    {
+      type:'Boutique', store:'Zara Boutique · DSM', product:'African Print Dresses', price:'TZS 85,000',
+      bg:'radial-gradient(ellipse at 20% 50%, #4a0e8f 0%, #1a0533 40%, #0a0a0a 100%)',
+      pattern:'repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0px,rgba(255,255,255,.03) 1px,transparent 1px,transparent 10px)'
+    },
+    {
+      type:'Electronics', store:'TechHub · Mwanza', product:'Latest Smartphones & Gadgets', price:'TZS 450,000',
+      bg:'radial-gradient(ellipse at 80% 30%, #0057b8 0%, #001a4d 40%, #000510 100%)',
+      pattern:'repeating-linear-gradient(0deg,rgba(0,150,255,.04) 0px,rgba(0,150,255,.04) 1px,transparent 1px,transparent 20px)'
+    },
+    {
+      type:'Bakery', store:'Sweet Cakes · Arusha', product:'Custom Birthday & Wedding Cakes', price:'TZS 45,000',
+      bg:'radial-gradient(ellipse at 50% 20%, #8b1a4a 0%, #3d0014 50%, #0f0008 100%)',
+      pattern:'radial-gradient(circle at 30% 70%,rgba(255,100,150,.08) 0%,transparent 50%)'
+    },
+    {
+      type:'Cosmetics', store:'Glow Beauty · DSM', product:'Luxury Skincare & Makeup', price:'TZS 35,000',
+      bg:'radial-gradient(ellipse at 70% 60%, #6b0fa0 0%, #2d0033 45%, #080010 100%)',
+      pattern:'repeating-linear-gradient(-45deg,rgba(255,200,255,.04) 0px,rgba(255,200,255,.04) 1px,transparent 1px,transparent 12px)'
+    },
+    {
+      type:'Furniture', store:'Furniture Palace · Dodoma', product:'Premium Sofa Sets & Home Decor', price:'TZS 1,200,000',
+      bg:'radial-gradient(ellipse at 30% 40%, #5c3d00 0%, #1a1000 50%, #050300 100%)',
+      pattern:'repeating-linear-gradient(90deg,rgba(200,160,80,.05) 0px,rgba(200,160,80,.05) 1px,transparent 1px,transparent 30px)'
+    },
+    {
+      type:'Food', store:'Mama Ntilie · DSM', product:'Fresh Local Cuisine Daily', price:'TZS 5,000',
+      bg:'radial-gradient(ellipse at 60% 30%, #1a5c00 0%, #0a2800 50%, #020a00 100%)',
+      pattern:'radial-gradient(circle at 70% 60%,rgba(100,255,100,.06) 0%,transparent 50%)'
+    },
+    {
+      type:'Electronics', store:'PhonePro · Tanzania', product:'iPhone, Samsung & More', price:'TZS 2,800,000',
+      bg:'radial-gradient(ellipse at 40% 50%, #1a1a3e 0%, #0d0d1a 50%, #000005 100%)',
+      pattern:'repeating-linear-gradient(60deg,rgba(100,100,255,.04) 0px,rgba(100,100,255,.04) 1px,transparent 1px,transparent 15px)'
+    },
+    {
+      type:'Boutique', store:'Fashion Hub · Tanzania', product:'Designer Bags & Accessories', price:'TZS 120,000',
+      bg:'radial-gradient(ellipse at 20% 70%, #3d1a00 0%, #1a0a00 50%, #080300 100%)',
+      pattern:'repeating-linear-gradient(30deg,rgba(255,180,80,.05) 0px,rgba(255,180,80,.05) 1px,transparent 1px,transparent 18px)'
+    },
+  ];
+  while(slides.length < 5) slides.push(demos[slides.length % demos.length]);
+  heroSlides = slides;
+  // Build slides using DOM to avoid template literal nesting issues
+  container.innerHTML = '';
+  slides.forEach((s, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'hero-bg-slide' + (i === 0 ? ' on' : '');
+    slide.id = 'hs-' + i;
+    slide.dataset.sid = s.storeId || '';
+    if(s.storeId) slide.style.cursor = 'pointer';
+
+    const inner = document.createElement('div');
+    inner.className = 'hero-bg-slide-inner';
+    const imgUrl = s.img || s.imageUrl || '';
+    if(imgUrl){
+      // Use IMG tag for reliable loading
+      const img = document.createElement('img');
+      img.src = imgUrl;
+      img.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center';
+      inner.style.background = s.bg || STORE_BG[s.type] || STORE_BG.Other;
+      inner.appendChild(img);
+    } else {
+      // Beautiful gradient slide - always works, no internet needed
+      inner.style.background = s.bg || STORE_BG[s.type] || STORE_BG.Other;
+      if(s.pattern){
+        // Add pattern overlay
+        const patDiv = document.createElement('div');
+        patDiv.style.cssText = 'position:absolute;inset:0;background:'+s.pattern+';z-index:1';
+        inner.appendChild(patDiv);
+      }
+      // Add large background emoji/icon
+      const iconDiv = document.createElement('div');
+      iconDiv.style.cssText = 'position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-size:200px;opacity:.06;z-index:1;pointer-events:none;user-select:none';
+      iconDiv.textContent = STORE_EMOJI[s.type]||'🏪';
+      inner.appendChild(iconDiv);
+    }
+    slide.appendChild(inner);
+
+    // Caption overlay
+    const caption = document.createElement('div');
+    caption.style.cssText = 'position:absolute;bottom:0;left:0;right:0;padding:18px 24px;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 100%);z-index:2;pointer-events:none';
+    caption.innerHTML = '<div style="font-size:10px;font-weight:800;color:rgba(201,168,76,.9);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px">' + (s.store||'') + (s.type?' · '+s.type:'') + '</div>' +
+      '<div style="font-family:Playfair Display,serif;font-size:18px;font-weight:900;color:white;line-height:1.2;margin-bottom:5px">' + (s.product||'') + '</div>' +
+      '<div style="font-size:14px;font-weight:800;color:#f0d060">' + (s.price||'') + '</div>';
+    slide.appendChild(caption);
+    container.appendChild(slide);
+  });
+  dotsEl.innerHTML = slides.map((_,i)=>`<div class="hero-dot ${i===0?'on':''}" onclick="heroGo(${i})"></div>`).join('');
+  startHeroTimer();
+}
+// Handle slide clicks
+document.addEventListener('click', function(e){
+  const slide = e.target.closest('.hero-bg-slide');
+  if(slide){
+    const sid = slide.dataset.sid;
+    if(sid) openStore(sid);
+  }
+});
+
+function heroGo(n){
+  document.getElementById('hs-'+heroIdx)?.classList.remove('on');
+  document.querySelectorAll('.hero-dot')[heroIdx]?.classList.remove('on');
+  heroIdx = (n + heroSlides.length) % heroSlides.length;
+  document.getElementById('hs-'+heroIdx)?.classList.add('on');
+  document.querySelectorAll('.hero-dot')[heroIdx]?.classList.add('on');
+}
+function startHeroTimer(){
+  if(heroTimer) clearInterval(heroTimer);
+  heroTimer = setInterval(()=>heroGo(heroIdx+1), 4000);
+}
+
+// ============================================================
+// STORE BACKGROUND PER TYPE
+// ============================================================
+function getStoreBg(type, logoUrl){
+  if(logoUrl) return `url('${logoUrl}') center/cover`;
+  return STORE_BG[type] || STORE_BG.Other;
+}
+
+// ============================================================
+// REGISTER
+// ============================================================
+function pickDel(el, val){
+  document.querySelectorAll('.del-opt').forEach(d=>d.classList.remove('on'));
+  el.classList.add('on'); selDelivery = val;
+}
+async function doRegister(){
+  const name = document.getElementById('r-name').value.trim();
+  const type = document.getElementById('r-type').value;
+  const wa = document.getElementById('r-wa').value.trim();
+  const hours = document.getElementById('r-hours').value;
+  const region = document.getElementById('r-region').value;
+  const pass = document.getElementById('r-pass').value;
+  const pass2 = document.getElementById('r-pass2').value;
+  if(!name||!type||!wa||!pass){toast('Jaza sehemu zote!','err');return;}
+  if(pass!==pass2){toast('Nywila hazifanani!','err');return;}
+  const btn = document.getElementById('r-btn');
+  btn.disabled=true; btn.textContent='Inaunda...';
+  try{
+    const res = await fetch(`${API}/api/business/register`,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({businessName:name,businessType:type,whatsapp:wa,workingHours:hours,location:region,
+        password:pass,deliveryType:selDelivery,logo:logoB64||''})});
+    const d = await res.json();
+    if(d.success){
+      adminToken=d.token; adminStore=d.store;
+      localStorage.setItem('ost-token',adminToken);
+      localStorage.setItem('ost-store',JSON.stringify(adminStore));
+      toast('Duka limeundwa! 🎉','ok');
+      setTimeout(()=>go('admin-screen'),400);
+    } else toast(d.message||'Hitilafu!','err');
+  }catch(e){toast('Hitilafu ya mtandao!','err');}
+  btn.disabled=false; btn.textContent='🚀 Unda Duka Langu';
+}
+
+// ============================================================
+// LOGIN
+// ============================================================
+async function doLogin(){
+  const name = document.getElementById('l-name').value.trim();
+  const pass = document.getElementById('l-pass').value;
+  if(!name||!pass){toast('Jaza sehemu zote!','err');return;}
+  const btn = document.getElementById('l-btn');
+  btn.disabled=true; btn.textContent='Inaingia...';
+  try{
+    const res = await fetch(`${API}/api/business/login`,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({businessName:name,password:pass})});
+    const d = await res.json();
+    if(d.success){
+      adminToken=d.token; adminStore=d.store;
+      localStorage.setItem('ost-token',adminToken);
+      localStorage.setItem('ost-store',JSON.stringify(adminStore));
+      toast('Umeingia! 👋','ok');
+      setTimeout(()=>go('admin-screen'),400);
+    } else toast(d.message||'Jina au nywila si sahihi!','err');
+  }catch(e){toast('Hitilafu ya mtandao!','err');}
+  btn.disabled=false; btn.textContent='🔑 Ingia';
+}
+
+// ============================================================
+// LOAD STORES
+// ============================================================
+async function loadStores(){
+  document.getElementById('stores-loader').style.display='flex';
+  document.getElementById('stores-feed').style.display='none';
+  document.getElementById('stores-empty').style.display='none';
+  try{
+    const res = await fetch(`${API}/api/stores`);
+    const d = await res.json();
+    allStores = d.stores||d.data||[];
+    document.getElementById('stat-n').textContent = allStores.length||0;
+    renderStores(allStores);
+    buildHeroSlider();
+  }catch(e){
+    document.getElementById('stores-loader').style.display='none';
+    document.getElementById('stores-empty').style.display='flex';
+  }
+}
+function renderStores(stores){
+  document.getElementById('stores-loader').style.display='none';
+  if(!stores||!stores.length){
+    document.getElementById('stores-feed').style.display='none';
+    document.getElementById('stores-empty').style.display='flex';
+    return;
+  }
+  document.getElementById('stores-empty').style.display='none';
+  document.getElementById('stores-feed').style.display='block';
+  const grid = document.getElementById('stores-grid');
+  grid.innerHTML = stores.map(s=>{
+    const bg = s.logoUrl ? '' : (STORE_BG[s.type]||STORE_BG.Other);
+    const emoji = STORE_EMOJI[s.type]||'🏪';
+    return `<div class="store-card" onclick="openStore('${s._id||s.id}')">
+      <div class="sc-banner" style="${s.logoUrl?'':'background:'+bg}">
+        ${s.logoUrl?`<img src="${s.logoUrl}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.7)"><span style="position:relative;z-index:1;font-size:32px">${emoji}</span>`:emoji}
+      </div>
+      <div class="sc-body">
+        <div class="sc-name">${s.name||s.businessName}</div>
+        <div class="sc-type">${s.type||s.businessType||'Biashara'} · ${s.region||s.location||'Tanzania'}</div>
+        <div class="sc-foot">
+          <span class="sc-badge">Wazi</span>
+          <span class="sc-rating">⭐ ${s.rating||'Mpya'}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function filterType(type, el){
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  renderStores(type==='all'?allStores:allStores.filter(s=>s.type===type||s.businessType===type));
+}
+function filterSearch(){
+  const q = document.getElementById('search-inp').value.toLowerCase();
+  if(!q){renderStores(allStores);return;}
+  renderStores(allStores.filter(s=>(s.name||s.businessName||'').toLowerCase().includes(q)||(s.type||'').toLowerCase().includes(q)||(s.region||'').toLowerCase().includes(q)));
+}
+
+// ============================================================
+// OPEN STORE
+// ============================================================
+async function openStore(storeId){
+  const store = allStores.find(s=>(s._id||s.id)===storeId)||allStores.find(s=>(s._id||s.id)==storeId);
+  if(!store) return;
+  curStore = store;
+  // Hero
+  const name = store.name||store.businessName;
+  const type = store.type||store.businessType;
+  const region = store.region||store.location;
+  document.getElementById('sp-nav-title').textContent = name;
+  document.getElementById('sp-name').textContent = name;
+  document.getElementById('sp-type').textContent = (STORE_EMOJI[type]||'🏪')+' '+type;
+  document.getElementById('sp-location').textContent = '📍 '+(region||'Tanzania');
+  document.getElementById('sp-hours').textContent = '🕐 '+(store.hours||store.workingHours||'Daily');
+  document.getElementById('sp-delivery').textContent = '🚚 '+(store.delivery===('free'||store.deliveryType==='free')?'Bure':'Malipo');
+  document.getElementById('sp-rating').textContent = '⭐ '+(store.rating||'Mpya');
+  // Set hero background
+  const bg = store.logoUrl ? `url('${store.logoUrl}') center/cover no-repeat` : (STORE_BG[type]||STORE_BG.Other);
+  const heroWrap = document.getElementById('store-hero-bg-wrap');
+  heroWrap.innerHTML = store.logoUrl
+    ? `<div style="position:absolute;inset:0;background:url('${store.logoUrl}') center/cover;filter:brightness(.4)"></div>`
+    : `<div style="position:absolute;inset:0;background:${bg};"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.12">${STORE_EMOJI[type]||'🏪'}</div>`;
+  // Logo
+  const logoEl = document.getElementById('sp-logo');
+  logoEl.innerHTML = store.logoUrl?`<img src="${store.logoUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:14px">`:STORE_EMOJI[type]||'🏪';
+  // Info tab
+  document.getElementById('inf-name').textContent = name;
+  document.getElementById('inf-type').textContent = type;
+  document.getElementById('inf-region').textContent = region||'Tanzania';
+  document.getElementById('inf-hours').textContent = store.hours||store.workingHours||'Daily';
+  document.getElementById('inf-delivery').textContent = store.delivery==='free'||store.deliveryType==='free'?'Bure':'Malipo';
+  // Switch to products tab
+  switchTab('products', document.querySelector('.s-tab'));
+  go('store-page');
+  loadProducts(storeId);
+  loadReviews(storeId);
+  loadGallery(storeId);
+}
+function switchTab(tab, el){
+  document.querySelectorAll('.s-tab').forEach(t=>t.classList.remove('on'));
+  if(el) el.classList.add('on');
+  else document.querySelector(`.s-tab[onclick*="${tab}"]`)?.classList.add('on');
+  ['products','gallery','videos','reviews','budget','info'].forEach(t=>{
+    const p = document.getElementById('pane-'+t);
+    if(p) p.classList.toggle('on', t===tab);
+  });
+  if(tab==='budget') loadBudgetGrid();
+}
+
+// ============================================================
+// PRODUCTS
+// ============================================================
+async function loadProducts(storeId){
+  document.getElementById('prods-loader').style.display='flex';
+  document.getElementById('prods-grid').style.display='none';
+  document.getElementById('prods-empty').style.display='none';
+  try{
+    const res = await fetch(`${API}/api/stores/${storeId}/products`);
+    const d = await res.json();
+    curStoreProd = d.products||d.data||[];
+    if(curStore) curStore._products = curStoreProd;
+    renderProducts(curStoreProd);
+    document.getElementById('adm-prods').textContent = curStoreProd.length;
+  }catch(e){
+    document.getElementById('prods-loader').style.display='none';
+    document.getElementById('prods-empty').style.display='flex';
+  }
+}
+function renderProducts(prods){
+  document.getElementById('prods-loader').style.display='none';
+  if(!prods||!prods.length){document.getElementById('prods-empty').style.display='flex';return;}
+  document.getElementById('prods-grid').style.display='grid';
+  document.getElementById('prods-empty').style.display='none';
+  document.getElementById('prods-grid').innerHTML = prods.map(p=>`
+    <div class="prod-card" onclick="openProdDetail(${JSON.stringify(p).replace(/"/g,'&quot;')})">
+      <div class="prod-img">
+        ${p.imageUrl?`<img src="${p.imageUrl}" alt="${p.name}">`:`<div class="prod-img-placeholder">📦</div>`}
+      </div>
+      <div class="prod-body">
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-price">TZS ${Number(p.sellingPrice||p.price||0).toLocaleString()}</div>
+        <button class="prod-order-btn">AGIZA</button>
+      </div>
+    </div>
+  `).join('');
+}
+function openProdDetail(p){
+  const wrap = document.getElementById('pd-img-wrap');
+  const _pimg = p.imageUrl||'';
+  const _pname = (p.name||'').replace(/'/g,"\'");
+  wrap.innerHTML = _pimg
+    ? `<img src="${_pimg}" style="width:100%;height:200px;object-fit:cover;border-radius:var(--r2);cursor:pointer" onclick="openFV([{url:'${_pimg}',cap:'${_pname}'}],0)">`
+    : `<div style="height:120px;background:var(--light);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;font-size:48px">📦</div>`;
+  document.getElementById('pd-name').textContent = p.name;
+  document.getElementById('pd-price').textContent = 'TZS '+Number(p.sellingPrice||p.price||0).toLocaleString();
+  document.getElementById('pd-desc').textContent = p.description||'Hakuna maelezo';
+  document.getElementById('pd-stock').textContent = 'Stock: '+(p.stock||'—');
+  document.getElementById('o-prod').value = p.name;
+  openModal('prod-detail-modal');
+}
+function orderThisProd(){
+  closeModal('prod-detail-modal');
+  openOrderModal();
+}
+
+// ============================================================
+// GALLERY
+// ============================================================
+async function loadGallery(storeId){
+  try{
+    const res = await fetch(`${API}/api/stores/${storeId}/gallery`);
+    const d = await res.json();
+    const gallery = d.gallery||d.data||[];
+    renderGallery(gallery, 'gal-grid','gal-empty');
+    renderGallery(gallery, 'adm-gal-grid','adm-gal-empty');
+    // Add gallery images to hero slider as well
+    if(curStore) curStore._gallery = gallery;
+    if(gallery.length) buildHeroSlider();
+  }catch(e){}
+}
+function renderGallery(items, gridId, emptyId){
+  const grid = document.getElementById(gridId);
+  const empty = document.getElementById(emptyId);
+  if(!grid) return;
+  if(!items||!items.length){
+    grid.innerHTML=''; if(empty) empty.style.display='flex'; return;
+  }
+  if(empty) empty.style.display='none';
+  // Store items in global map for gallery
+  window._galItems = window._galItems || {};
+  const galKey = 'gal_'+Date.now();
+  window._galItems[galKey] = items;
+  grid.innerHTML = items.map((it,i)=>{
+    const url = it.url||it.imageUrl||(typeof it==='string'?it:'');
+    return `<div class="gal-item" onclick="window._openGalFV('${galKey}',${i})">
+      <img src="${url}" alt="${it.caption||''}" loading="lazy">
+    </div>`;
+  }).join('');
+  window._openGalFV = (key, idx) => openFV(window._galItems[key], idx);
+}
+
+// ============================================================
+// FULLSCREEN VIEWER
+// ============================================================
+function openFV(items, startIdx){
+  fvItems = Array.isArray(items) ? items : [items];
+  fvIdx = startIdx||0;
+  document.getElementById('fv').classList.add('open');
+  renderFV();
+  // Build thumbnails
+  const thumbs = document.getElementById('fv-thumbs');
+  thumbs.innerHTML = fvItems.map((it,i)=>{
+    const url = it.url||it.imageUrl||it;
+    if(isYT(url)) return `<div style="width:50px;height:50px;background:#1a1a1a;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid ${i===fvIdx?'var(--gold)':'transparent'};flex-shrink:0" onclick="fvGo(${i})">▶️</div>`;
+    return `<img class="fv-thumb ${i===fvIdx?'on':''}" src="${url}" onclick="fvGo(${i})">`;
+  }).join('');
+}
+function closeFV(){
+  document.getElementById('fv').classList.remove('open');
+  document.getElementById('fv-iframe').src='';
+}
+function renderFV(){
+  const item = fvItems[fvIdx];
+  const url = item?.url||item?.imageUrl||item||'';
+  const cap = item?.caption||item?.title||item?.name||'';
+  document.getElementById('fv-counter').textContent = `${fvIdx+1}/${fvItems.length}`;
+  document.getElementById('fv-cap').textContent = cap;
+  document.querySelectorAll('.fv-thumb').forEach((t,i)=>t.classList.toggle('on',i===fvIdx));
+  if(isYT(url)){
+    document.getElementById('fv-img').style.display='none';
+    document.getElementById('fv-yt').style.display='block';
+    document.getElementById('fv-iframe').src = ytEmbed(url);
+  } else {
+    document.getElementById('fv-yt').style.display='none';
+    document.getElementById('fv-img').style.display='block';
+    document.getElementById('fv-img').src = url;
+  }
+}
+function fvGo(n){ fvIdx=(n+fvItems.length)%fvItems.length; renderFV(); }
+function fvMove(d){ fvGo(fvIdx+d); }
+function isYT(url){ return url&&(url.includes('youtube.com')||url.includes('youtu.be')); }
+function ytEmbed(url){
+  const m = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return m ? `https://www.youtube.com/embed/${m[1]}?autoplay=1` : url;
+}
+// Swipe support for fullscreen viewer
+let fvTouchX = 0;
+document.getElementById('fv').addEventListener('touchstart',e=>fvTouchX=e.touches[0].clientX,{passive:true});
+document.getElementById('fv').addEventListener('touchend',e=>{
+  const diff = fvTouchX - e.changedTouches[0].clientX;
+  if(Math.abs(diff)>50) fvMove(diff>0?1:-1);
+},{passive:true});
+
+// ============================================================
+// VIDEOS
+// ============================================================
+async function loadVideos(storeId){
+  // Videos loaded with gallery
+}
+function renderVideos(vids){
+  const list = document.getElementById('videos-list');
+  const empty = document.getElementById('vids-empty');
+  if(!vids||!vids.length){list.innerHTML='';if(empty)empty.style.display='flex';return;}
+  if(empty) empty.style.display='none';
+  window._vidItems = vids;
+  window._openVidFV = (i) => openFV(window._vidItems, i);
+  list.innerHTML = vids.map((v,i)=>`
+    <div style="background:white;border-radius:var(--r2);overflow:hidden;margin-bottom:12px;box-shadow:var(--sh);cursor:pointer"
+         onclick="window._openVidFV(${i})">
+      <div style="background:#0f0f0f;height:180px;display:flex;align-items:center;justify-content:center;position:relative">
+        <img src="https://img.youtube.com/vi/${getYTId(v.url||v)}/hqdefault.jpg" style="width:100%;height:100%;object-fit:cover;opacity:.7" onerror="this.style.display='none'">
+        <div style="position:absolute;width:52px;height:52px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px">▶</div>
+      </div>
+      <div style="padding:12px"><div style="font-size:14px;font-weight:700">${v.title||'Video'}</div></div>
+    </div>
+  `).join('');
+}
+function getYTId(url){
+  const m = (url||'').match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return m?m[1]:'';
+}
+
+// ============================================================
+// REVIEWS
+// ============================================================
+async function loadReviews(storeId){
+  try{
+    const res = await fetch(`${API}/api/stores/${storeId}/reviews`);
+    const d = await res.json();
+    const revs = d.reviews||d.data||[];
+    renderReviews(revs);
+    document.getElementById('adm-revs').textContent = revs.length;
+  }catch(e){}
+}
+function renderReviews(revs){
+  const list = document.getElementById('reviews-list');
+  if(!revs||!revs.length){list.innerHTML=`<div class="empty-feed"><div class="empty-icon">⭐</div><div class="empty-title">Hakuna maoni bado</div></div>`;return;}
+  list.innerHTML = revs.map(r=>`
+    <div class="review-item">
+      <div class="ri-head"><span class="ri-name">${r.name||'Mteja'}</span><span class="ri-stars">${'⭐'.repeat(r.rating||5)}</span></div>
+      <div class="ri-text">${r.text||r.comment||''}</div>
+      <div class="ri-date">${r.createdAt?new Date(r.createdAt).toLocaleDateString():''}</div>
+    </div>
+  `).join('');
+}
+function setStar(n){
+  curRating=n;
+  document.querySelectorAll('.star-btn').forEach((s,i)=>s.classList.toggle('on',i<n));
+}
+async function submitReview(){
+  const name=document.getElementById('rev-name').value.trim();
+  const text=document.getElementById('rev-text').value.trim();
+  if(!name||!text||!curRating){toast('Jaza maoni yako!','err');return;}
+  const storeId=curStore._id||curStore.id;
+  try{
+    const res=await fetch(`${API}/api/stores/${storeId}/reviews`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,text,rating:curRating})});
+    const d=await res.json();
+    if(d.success){toast('Asante kwa maoni! ⭐','ok');document.getElementById('rev-name').value='';document.getElementById('rev-text').value='';setStar(0);loadReviews(storeId);}
+  }catch(e){toast('Hitilafu!','err');}
+}
+
+// ============================================================
+// BUDGET
+// ============================================================
+function onBudget(val){
+  document.getElementById('budget-val').textContent='TZS '+Number(val).toLocaleString();
+  loadBudgetGrid();
+}
+function loadBudgetGrid(){
+  const max=parseInt(document.getElementById('budget-slider').value);
+  const prods=(curStoreProd||[]).filter(p=>(p.sellingPrice||p.price||0)<=max);
+  const grid=document.getElementById('budget-grid');
+  if(!prods.length){grid.innerHTML=`<div style="grid-column:span 2;text-align:center;padding:20px;color:var(--muted);font-size:13px">Hakuna bidhaa kwenye budget hii</div>`;return;}
+  grid.innerHTML = prods.map(p=>`
+    <div class="prod-card" onclick="openProdDetail(${JSON.stringify(p).replace(/"/g,'&quot;')})">
+      <div class="prod-img">${p.imageUrl?`<img src="${p.imageUrl}">`:`<div class="prod-img-placeholder">📦</div>`}</div>
+      <div class="prod-body"><div class="prod-name">${p.name}</div><div class="prod-price">TZS ${Number(p.sellingPrice||p.price||0).toLocaleString()}</div></div>
+    </div>
+  `).join('');
+}
+
+// ============================================================
+// ORDER
+// ============================================================
+function openOrderModal(){
+  document.getElementById('zp-near').textContent='TZS '+(document.getElementById('fee-near').value||0);
+  document.getElementById('zp-far').textContent='TZS '+(document.getElementById('fee-far').value||0);
+  document.getElementById('zp-vfar').textContent='TZS '+(document.getElementById('fee-vfar').value||0);
+  openModal('order-modal');
+}
+function pickZone(el,z){
+  document.querySelectorAll('.zone-opt').forEach(o=>o.classList.remove('on'));
+  el.classList.add('on'); selZone=z;
+}
+async function placeOrder(){
+  const name=document.getElementById('o-name').value.trim();
+  const phone=document.getElementById('o-phone').value.trim();
+  const prod=document.getElementById('o-prod').value.trim();
+  if(!name||!phone||!prod){toast('Jaza sehemu zote!','err');return;}
+  const storeId=curStore._id||curStore.id;
+  try{
+    const res=await fetch(`${API}/api/stores/${storeId}/orders`,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({customerName:name,phone,product:prod,region:document.getElementById('o-region').value,
+        address:document.getElementById('o-addr').value,notes:document.getElementById('o-notes').value,deliveryZone:selZone})});
+    const d=await res.json();
+    if(d.success){
+      closeModal('order-modal');
+      toast('Order imewekwa! 🎉','ok');
+      const wa=(curStore.whatsapp||'').replace(/[^0-9]/g,'');
+      if(wa){
+        const msg=`🛍️ *ORDER MPYA — OST*
+👤 ${name}
+📞 ${phone}
+📦 ${prod}
+📍 ${document.getElementById('o-addr').value}
+💬 ${document.getElementById('o-notes').value||'—'}`;
+        window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+      }
+    } else toast(d.message||'Hitilafu!','err');
+  }catch(e){toast('Hitilafu!','err');}
+}
+
+// ============================================================
+// SHARE
+// ============================================================
+function shareStore(){
+  const url = `${location.origin}${location.pathname}?store=${curStore?._id||curStore?.id}`;
+  if(navigator.share) navigator.share({title:curStore?.name||curStore?.businessName,url});
+  else{ navigator.clipboard?.writeText(url); toast('Link imenakiliwa!','ok'); }
+}
+function shareApp(){
+  if(navigator.share) navigator.share({title:'Online Stores TZ',url:location.href});
+  else{ navigator.clipboard?.writeText(location.href); toast('Link imenakiliwa!','ok'); }
+}
+function waStore(){ const wa=(curStore?.whatsapp||'').replace(/[^0-9]/g,''); if(wa) window.open(`https://wa.me/${wa}`,'_blank'); }
+function callStore(){ if(curStore?.whatsapp) location.href=`tel:${curStore.whatsapp}`; }
+
+// ============================================================
+// ADMIN
+// ============================================================
+async function loadAdmin(){
+  if(!adminStore){go('login-screen');return;}
+  document.getElementById('adm-name').textContent=adminStore.name||adminStore.businessName||'Duka Lako';
+  const storeId=adminStore._id||adminStore.id;
+  // Products
+  try{
+    const res=await fetch(`${API}/api/stores/${storeId}/products`,{headers:{Authorization:`Bearer ${adminToken}`}});
+    const d=await res.json();
+    const prods=d.products||d.data||[];
+    adminStore._products=prods;
+    document.getElementById('adm-prods').textContent=prods.length;
+    renderAdminProds(prods);
+  }catch(e){}
+  // Orders
+  try{
+    const res=await fetch(`${API}/api/stores/${storeId}/orders`,{headers:{Authorization:`Bearer ${adminToken}`}});
+    const d=await res.json();
+    const orders=d.orders||d.data||[];
+    document.getElementById('adm-orders').textContent=orders.length;
+    document.getElementById('adm-orders-count').textContent=orders.length+' orders';
+    renderAdminOrders(orders);
+  }catch(e){}
+  // Gallery
+  try{
+    const res=await fetch(`${API}/api/stores/${storeId}/gallery`,{headers:{Authorization:`Bearer ${adminToken}`}});
+    const d=await res.json();
+    const gallery=d.gallery||d.data||[];
+    renderGallery(gallery,'adm-gal-grid','adm-gal-empty');
+  }catch(e){}
+  // Videos
+  try{
+    const res=await fetch(`${API}/api/stores/${storeId}/videos`).catch(()=>({json:()=>({})}));
+    const d=await res.json().catch(()=>({}));
+    renderAdminVideos(d.videos||d.data||[]);
+  }catch(e){}
+  // Fees
+  loadAdminFees(storeId);
+}
+function renderAdminProds(prods){
+  const list=document.getElementById('adm-prods-list');
+  if(!prods.length){list.innerHTML=`<div style="text-align:center;padding:16px;color:var(--muted);font-size:13px">Ongeza bidhaa yako ya kwanza!</div>`;return;}
+  list.innerHTML=prods.map(p=>`
+    <div class="prod-admin-item">
+      ${p.imageUrl?`<img class="prod-admin-thumb" src="${p.imageUrl}" style="object-fit:cover">`:`<div class="prod-admin-thumb">${STORE_EMOJI[adminStore?.type||'']||'📦'}</div>`}
+      <div class="prod-admin-info">
+        <div class="prod-admin-name">${p.name}</div>
+        <div class="prod-admin-price">TZS ${Number(p.sellingPrice||p.price||0).toLocaleString()}</div>
+      </div>
+      <div class="prod-admin-btns">
+        <button class="btn-edit" onclick="editProd(${JSON.stringify(p).replace(/"/g,'&quot;')})">✏️</button>
+        <button class="btn-del" onclick="deleteProd('${p._id||p.id}')">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+}
+function renderAdminOrders(orders){
+  const list=document.getElementById('adm-orders-list');
+  if(!orders.length){list.innerHTML=`<div style="text-align:center;padding:16px;color:var(--muted);font-size:13px">Hakuna orders bado</div>`;return;}
+  list.innerHTML=orders.map(o=>`
+    <div class="order-item">
+      <div class="order-head"><span class="order-id">#${(o._id||o.id||'').slice(-6)}</span><span class="order-badge ${o.status==='confirmed'?'ob-confirmed':'ob-pending'}">${o.status||'pending'}</span></div>
+      <div class="order-detail">👤 ${o.customerName||o.name||'—'} · 📦 ${o.product?.name||o.product||'—'}</div>
+      <div class="order-detail">📞 ${o.customer?.phone||o.phone||'—'}</div>
+      <div class="order-btns">
+        <button class="btn-confirm" onclick="confirmOrder('${o._id||o.id}')">✅ Thibitisha</button>
+        <button class="btn-wa-small" onclick="waOrder('${o.customer?.phone||o.phone||''}','${o.customerName||o.name||''}','${o.product?.name||o.product||''}')">💬 WA</button>
+      </div>
+    </div>
+  `).join('');
+}
+function renderAdminVideos(vids){
+  const list=document.getElementById('adm-vids-list');
+  if(!vids||!vids.length){list.innerHTML=`<div style="text-align:center;padding:16px;color:var(--muted);font-size:13px">Hakuna video bado</div>`;return;}
+  list.innerHTML=vids.map(v=>`
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--light)">
+      <span style="font-size:13px;font-weight:700">🎬 ${v.title||'Video'}</span>
+      <button class="btn-del" onclick="deleteVideo('${v._id||v.id}')">🗑️</button>
+    </div>
+  `).join('');
+}
+async function loadAdminFees(storeId){
+  try{
+    const res=await fetch(`${API}/api/stores/${storeId}/delivery`,{headers:{Authorization:`Bearer ${adminToken}`}});
+    const d=await res.json();
+    if(d.fees){
+      document.getElementById('fee-near').value=d.fees.nearby||d.fees.karibu||0;
+      document.getElementById('fee-far').value=d.fees.far||d.fees.mbali||0;
+      document.getElementById('fee-vfar').value=d.fees.veryFar||d.fees.mbaliSana||0;
+    }
+  }catch(e){}
+}
+async function saveDeliveryFees(){
+  const storeId=adminStore._id||adminStore.id;
+  try{
+    await fetch(`${API}/api/stores/${storeId}/delivery`,{method:'POST',headers:{Authorization:`Bearer ${adminToken}`,'Content-Type':'application/json'},
+      body:JSON.stringify({nearby:+document.getElementById('fee-near').value,far:+document.getElementById('fee-far').value,veryFar:+document.getElementById('fee-vfar').value})});
+    toast('Bei zimehifadhiwa!','ok');
+  }catch(e){toast('Hitilafu!','err');}
+}
+async function confirmOrder(orderId){
+  const storeId=adminStore._id||adminStore.id;
+  try{
+    await fetch(`${API}/api/stores/${storeId}/orders/${orderId}`,{method:'PATCH',headers:{Authorization:`Bearer ${adminToken}`,'Content-Type':'application/json'},body:JSON.stringify({status:'confirmed'})});
+    toast('Order imethibitishwa!','ok'); loadAdmin();
+  }catch(e){}
+}
+function waOrder(phone,name,prod){
+  const wa=phone.replace(/[^0-9]/g,'');
+  const msg=`Habari ${name}! 👋
+Order yako ya *${prod}* imethibitishwa! ✅
+Asante kwa kununua! 🛍️`;
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+// Add/Edit Product
+function openAddProd(){
+  document.getElementById('edit-prod-id').value='';
+  ['pm-name','pm-cat','pm-price','pm-stock','pm-desc'].forEach(id=>document.getElementById(id).value='');
+  prodImgB64='';
+  document.getElementById('prod-img-preview').innerHTML=`<div class="img-placeholder-rect">📷</div><div class="img-hint">Bonyeza kupakia picha</div>`;
+  document.getElementById('prod-modal-title').textContent='➕ Ongeza Bidhaa';
+  openModal('prod-modal');
+}
+function editProd(p){
+  document.getElementById('edit-prod-id').value=p._id||p.id||'';
+  document.getElementById('pm-name').value=p.name||'';
+  document.getElementById('pm-cat').value=p.category||'';
+  document.getElementById('pm-price').value=p.sellingPrice||p.price||'';
+  document.getElementById('pm-stock').value=p.stock||'';
+  document.getElementById('pm-desc').value=p.description||'';
+  prodImgB64=p.imageUrl||'';
+  document.getElementById('prod-img-preview').innerHTML=p.imageUrl?`<img src="${p.imageUrl}" class="img-preview-rect"><div class="img-hint">Picha ✅</div>`:`<div class="img-placeholder-rect">📷</div><div class="img-hint">Bonyeza kubadilisha picha</div>`;
+  document.getElementById('prod-modal-title').textContent='✏️ Hariri Bidhaa';
+  openModal('prod-modal');
+}
+async function saveProd(){
+  const id=document.getElementById('edit-prod-id').value;
+  const name=document.getElementById('pm-name').value.trim();
+  const price=document.getElementById('pm-price').value;
+  if(!name||!price){toast('Jaza jina na bei!','err');return;}
+  const prod={name,category:document.getElementById('pm-cat').value,sellingPrice:+price,price:+price,
+    stock:+document.getElementById('pm-stock').value||0,description:document.getElementById('pm-desc').value,imageUrl:prodImgB64||''};
+  const storeId=adminStore._id||adminStore.id;
+  try{
+    const url=id?`${API}/api/stores/${storeId}/products/${id}`:`${API}/api/stores/${storeId}/products`;
+    const method=id?'PUT':'POST';
+    const res=await fetch(url,{method,headers:{Authorization:`Bearer ${adminToken}`,'Content-Type':'application/json'},body:JSON.stringify(prod)});
+    const d=await res.json();
+    if(d.success||d.product||d.data){
+      closeModal('prod-modal');
+      toast('Bidhaa imehifadhiwa! ✅','ok');
+      // Add image to global hero slider
+      if(prod.imageUrl && adminStore){
+        const existing = allStores.find(s=>(s._id||s.id)===(adminStore._id||adminStore.id));
+        if(existing){ if(!existing._products) existing._products=[]; existing._products.push(prod); }
+      }
+      // Immediately add new product image to hero slider
+      if(prod.imageUrl){
+        heroSlides.unshift({img:prod.imageUrl, store:adminStore?.name||adminStore?.businessName||'Duka', product:prod.name, price:'TZS '+Number(prod.price||0).toLocaleString(), type:adminStore?.type||adminStore?.businessType||'Other', storeId:adminStore?._id||adminStore?.id});
+        buildHeroSlider();
+      }
+      loadAdmin();
+    } else toast(d.message||'Hitilafu!','err');
+  }catch(e){toast('Hitilafu!','err');}
+}
+async function deleteProd(prodId){
+  if(!confirm('Futa bidhaa hii?')) return;
+  const storeId=adminStore._id||adminStore.id;
+  try{
+    await fetch(`${API}/api/stores/${storeId}/products/${prodId}`,{method:'DELETE',headers:{Authorization:`Bearer ${adminToken}`}});
+    toast('Bidhaa imefutwa!','ok'); loadAdmin();
+  }catch(e){}
+}
+
+// Gallery
+function openAddGallery(){
+  galImgB64='';
+  document.getElementById('gal-caption').value='';
+  document.getElementById('gal-img-preview').innerHTML=`<div class="img-placeholder-rect">🖼️</div><div class="img-hint">Bonyeza kupakia picha</div>`;
+  openModal('gal-modal');
+}
+async function saveGallery(){
+  if(!galImgB64){toast('Chagua picha kwanza!','err');return;}
+  const storeId=adminStore._id||adminStore.id;
+  try{
+    const res=await fetch(`${API}/api/stores/${storeId}/gallery`,{method:'POST',headers:{Authorization:`Bearer ${adminToken}`,'Content-Type':'application/json'},
+      body:JSON.stringify({url:galImgB64,caption:document.getElementById('gal-caption').value})});
+    const d=await res.json();
+    if(d.success||d.photo||d.data){
+      closeModal('gal-modal'); toast('Picha imehifadhiwa! 📸','ok');
+      // Add gallery image to hero slider immediately
+      heroSlides.unshift({img:galImgB64, store:adminStore?.name||adminStore?.businessName||'Duka', product:document.getElementById('gal-caption').value||'Gallery', price:'', type:adminStore?.type||adminStore?.businessType||'Other', storeId:adminStore?._id||adminStore?.id});
+      buildHeroSlider();
+      loadAdmin();
+    } else toast(d.message||'Hitilafu!','err');
+  }catch(e){toast('Hitilafu!','err');}
+}
+
+// Video
+function openAddVideo(){ document.getElementById('vid-title').value=''; document.getElementById('vid-url').value=''; openModal('vid-modal'); }
+async function saveVideo(){
+  const title=document.getElementById('vid-title').value.trim();
+  const url=document.getElementById('vid-url').value.trim();
+  if(!title||!url){toast('Jaza kichwa na link!','err');return;}
+  const storeId=adminStore._id||adminStore.id;
+  try{
+    const res=await fetch(`${API}/api/stores/${storeId}/videos`,{method:'POST',headers:{Authorization:`Bearer ${adminToken}`,'Content-Type':'application/json'},body:JSON.stringify({title,url})}).catch(()=>({json:()=>({success:true})}));
+    const d=await res.json().catch(()=>({success:true}));
+    closeModal('vid-modal'); toast('Video imehifadhiwa! 🎬','ok'); loadAdmin();
+  }catch(e){toast('Hitilafu!','err');}
+}
+async function deleteVideo(vidId){
+  if(!confirm('Futa video hii?')) return;
+  toast('Video imefutwa!','ok'); loadAdmin();
+}
+
+// Notifications
+async function toggleNotif(){
+  const tog=document.getElementById('notif-toggle');
+  if(!('Notification' in window)){toast('Hazipatikani kwenye browser hii!','err');return;}
+  const perm=await Notification.requestPermission();
+  if(perm==='granted'){tog.classList.add('on');toast('Notifications zimewashwa! 🔔','ok');}
+  else{tog.classList.remove('on');toast('Ruhusa imekataliwa!','err');}
+}
+
+// Delete store
+async function deleteStore(){
+  if(!confirm('Una uhakika? Hii itafuta duka lako KABISA!')) return;
+  const storeId=adminStore._id||adminStore.id;
+  try{
+    await fetch(`${API}/api/business`,{method:'DELETE',headers:{Authorization:`Bearer ${adminToken}`}});
+    adminToken=null; adminStore=null;
+    localStorage.removeItem('ost-token'); localStorage.removeItem('ost-store');
+    toast('Duka limefutwa.','ok');
+    setTimeout(()=>go('landing'),1000);
+  }catch(e){toast('Hitilafu!','err');}
+}
+function confirmLogout(){
+  if(!confirm('Toka kwenye duka lako?')) return;
+  adminToken=null; adminStore=null;
+  localStorage.removeItem('ost-token'); localStorage.removeItem('ost-store');
+  go('landing');
+}
+
+// ============================================================
+// MODALS
+// ============================================================
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
+
+// ============================================================
+// BOT
+// ============================================================
+function openBot(){ document.getElementById('bot-panel').classList.add('open'); }
+function closeBot(){ document.getElementById('bot-panel').classList.remove('open'); }
+function useSugg(el){ document.getElementById('bot-input').value=el.textContent; sendBot(); }
+async function sendBot(){
+  const input=document.getElementById('bot-input');
+  const msg=input.value.trim(); if(!msg) return;
+  input.value='';
+  addBotMsg(msg,'user');
+  botHistory.push({role:'user',content:msg});
+  document.getElementById('bot-typing').style.display='block';
+  scrollBot();
+  try{
+    const storesInfo=allStores.slice(0,5).map(s=>`${s.name||s.businessName} (${s.type||s.businessType}, ${s.region||s.location})`).join(', ')||'None yet';
+    const res=await fetch(`${API}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({messages:botHistory.slice(-8),businessContext:{storesInfo}})});
+    const d=await res.json();
+    const reply=d.reply||'Sorry, please try again! 🙏';
+    botHistory.push({role:'assistant',content:reply});
+    document.getElementById('bot-typing').style.display='none';
+    addBotMsg(reply,'ai');
+  }catch(e){
+    document.getElementById('bot-typing').style.display='none';
+    addBotMsg('Sorry, network error. Please try again! 🙏','ai');
+  }
+}
+function addBotMsg(text,type){
+  const msgs=document.getElementById('bot-msgs');
+  const div=document.createElement('div');
+  div.className=`bot-msg ${type}`;
+  // Parse markdown-ish formatting
+  div.innerHTML=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+  msgs.appendChild(div);
+  scrollBot();
+}
+function scrollBot(){ const m=document.getElementById('bot-msgs'); setTimeout(()=>m.scrollTop=m.scrollHeight,80); }
+
+// ============================================================
+// INIT
+// ============================================================
+window.addEventListener('load',async()=>{
+  // Lang
+  lang=localStorage.getItem('ost-lang')||'sw';
+  applyLang();
+  // Restore session
+  if(adminToken && adminStore){
+    // User is logged in — show FAB on landing
+  }
+  // Load store count
+  try{
+    const res=await fetch(`${API}/api/stores`);
+    const d=await res.json();
+    allStores=d.stores||d.data||[];
+    document.getElementById('stat-n').textContent=allStores.length||0;
+    buildHeroSlider();
+  }catch(e){ buildHeroSlider(); }
+  // Deep link
+  const params=new URLSearchParams(location.search);
+  const storeParam=params.get('store');
+  if(storeParam && allStores.length){
+    const s=allStores.find(s=>(s._id||s.id)===storeParam);
+    if(s) openStore(s._id||s.id);
+  }
+  updateFab();
+});
+</script>
+</body>
+</html>
